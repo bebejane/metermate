@@ -5,7 +5,7 @@ query Partner($locale: SiteLocale) {
 }
 
 fragment PartnerFragment on PartnerRecord {
-	example {
+	examples {
 		... on PartnerBlockRecord {
 			logo {
 				...ImageFragment
