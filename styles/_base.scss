@@ -1,0 +1,307 @@
+@use "fonts";
+@use "mediaqueries";
+
+:root {
+	--white: #ffffff;
+	--gray: rgb(248, 248, 248);
+	--gray-mid: #d6d6d6;
+	--gray-dark: #5a5a5a;
+	--black: var(--gray-dark);
+	--red: #cd3a00;
+	--blue: #0072bc;
+	--blue-light: #0483d5;
+	--green: #349f49;
+	--background: var(--white);
+	--foreground: var(--black);
+
+	--font-weight-light: "wght" 250;
+	--font-weight-mid: "wght" 650;
+	--font-weight-bold: "wght" 700;
+	--line-height: 1.4em;
+	--line-height-headlines: 1.2em;
+
+	--outer-margin: 4rem;
+	--gutter: 2rem;
+	--grid-unit: calc(100vw / 16);
+	--space-small: 1rem;
+	--space: 2rem;
+	--space-big: 4rem;
+
+	--blur: blur(25px);
+	--border-radius: 1rem;
+	--line: 1px solid var(--gray-mid);
+	--shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
+	--shadow-dark: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+
+	--margin: 0rem;
+	--full-margin: calc(-1 * var(--margin));
+	--full-bleed-margin: calc(calc(-1 * var(--margin)) - var(--outer-margin));
+	--content-width: calc(calc(var(--grid-unit) * 5) + calc(var(--gutter) * 5));
+	--full-width: calc(100% + 2 (* var(--outer-margin)));
+
+	--navbar-height: 4rem;
+
+	--z-navbar: 1000;
+	--z-navbar-sub: 1001;
+	--z-logo: 1100;
+	--z-hamburger: 1200;
+	--z-modal: 2000;
+	--z-page-transition: 900;
+	--z-fade-transition: 901;
+
+	--body-font: "Montserrat", Times, Serif;
+	--headline-font: "Montserrat", Arial, Helvetica, Sans-Serif;
+	--label-font: "Montserrat-Medium", Arial, Sans-serif;
+	--sans-font: "Montserrat", Arial, Sans-serif;
+
+	@include mq($until: desktop) {
+		--font-weight-light: "wght" 350;
+
+		--outer-margin: 1.5rem;
+		--margin: var(--outer-margin);
+		--navbar-height: calc(48px + var(--outer-margin));
+		--full-bleed-margin: calc(calc(-1 * var(--margin)));
+		--space-big: 3rem;
+	}
+}
+
+body {
+	width: 100%;
+	font-size: 100%;
+	line-height: 1em;
+	color: var(--foreground);
+	background-color: var(--background);
+	font-family: var(--body-font);
+	-webkit-font-smoothing: antialiased;
+	font-feature-settings: "liga", "kern";
+	padding-top: var(--navbar-height);
+	margin-bottom: 100vh;
+}
+
+html {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+main {
+	display: block;
+	min-height: 100vh;
+	padding-left: var(--outer-margin);
+	padding-right: var(--outer-margin);
+	overflow-x: hidden;
+	background-color: var(--background);
+}
+
+article {
+	hr {
+		margin-top: var(--space-big);
+		border: 0px;
+	}
+}
+
+::-webkit-scrollbar {
+	-webkit-appearance: none;
+	background: var(--beige-light);
+}
+
+::-webkit-scrollbar:vertical {
+	width: 10px;
+}
+
+::-webkit-scrollbar:horizontal {
+	height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--black);
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+a {
+	text-decoration: none;
+	color: var(--foreground);
+	transition: var(--color-transtion);
+	transition: color 0.5s;
+
+	&:has(> button) {
+		text-decoration: none !important;
+	}
+}
+
+p a {
+	&:hover {
+		color: var(--red);
+	}
+}
+
+form label {
+	display: inline-block;
+	font-weight: bold;
+	margin-top: 1.5em;
+	margin-bottom: 0.3em;
+}
+
+button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--black);
+	background-color: var(--white);
+	border-color: transparent;
+	font-family: var(--label-font);
+	text-decoration: none !important;
+	font-size: 1rem;
+	white-space: pre;
+	cursor: pointer;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	margin-top: 2rem;
+	border-top: 1px solid var(--black);
+	border-bottom: 1px solid var(--black);
+
+	&[aria-selected="true"],
+	&[data-selected="true"] {
+		color: var(--white) !important;
+		background-color: var(--black) !important;
+	}
+	&[data-type="icon"] {
+		border-radius: 50% !important;
+		padding: 1em;
+	}
+	&[disabled] {
+		opacity: 0.5;
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+
+	&:hover:not([disabled]) {
+		background-color: var(--black);
+		color: var(--white);
+	}
+}
+
+input,
+textarea,
+select,
+[contenteditable="true"] {
+	padding: var(--form-field-padding);
+	border: 1px solid transparent;
+	background-color: var(--white);
+
+	&:focus {
+		border: 1px solid var(--black);
+		outline: none;
+	}
+}
+
+input[type="checkbox"] {
+	box-sizing: border-box;
+	width: 1.2em;
+	height: 1.2em;
+	margin-bottom: 0em;
+	padding: 0;
+	border: 0px solid var(--black);
+	appearance: none;
+	outline: none;
+	transition: outline 0.1s;
+}
+
+input[type="checkbox"] + label {
+	display: inline-block;
+	margin-left: 0.5em;
+}
+
+input[type="checkbox"]:checked {
+	background-size: cover;
+	padding: 2px;
+}
+
+input[type="checkbox"]:checked {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 32 32" xml:space="preserve"><path style="fill: %23274c77" d="M11.941,28.877l-11.941-11.942l5.695-5.696l6.246,6.246l14.364-14.364L32,8.818"/></svg>');
+}
+
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+	background-repeat: no-repeat;
+	background-position-x: calc(100% - 1em);
+	background-position-y: center;
+	color: var(--black);
+}
+
+.form-error {
+	color: var(--red);
+	font-size: 0.8em;
+	margin-top: 0.5em;
+}
+
+.page-error {
+	position: fixed;
+	top: 0;
+	left: 0;
+	min-width: 100vw;
+	min-height: 100vh;
+	z-index: 100000;
+	background-color: var(--white);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#page-transition {
+	position: fixed;
+	display: block;
+	width: 100vw;
+	height: 0vh;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: var(--z-page-transition);
+	backdrop-filter: var(--blur);
+	background-color: rgba(255, 255, 255, 0.7);
+	pointer-events: none;
+	opacity: 1;
+	transition:
+		height 0.7s cubic-bezier(0.25, 0.96, 0.46, 1),
+		background-color 0.5s 0.2s ease-out,
+		backdrop-filter 0.5s 0.2s ease-out;
+
+	&.enter {
+		opacity: 0;
+		height: 0vh;
+	}
+	&.exit {
+		opacity: 1;
+		height: 100vh;
+		backdrop-filter: blur(0px);
+		background-color: rgba(255, 255, 255, 1);
+	}
+}
+
+#page-fade-transition {
+	position: fixed;
+	display: block;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0%;
+	z-index: var(--z-fade-transition);
+	background-color: var(--white);
+	pointer-events: none;
+	opacity: 1;
+	transition: opacity 0.5s ease-out;
+
+	&.enter {
+		display: block;
+		height: 100%;
+		opacity: 0;
+	}
+}

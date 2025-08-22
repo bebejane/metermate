@@ -1,0 +1,25 @@
+.article {
+	position: relative;
+
+	header {
+		@include mq($from: desktop) {
+			position: relative;
+			display: flex;
+			flex-direction: row;
+		}
+
+		.headerContent {
+			position: absolute;
+			top: 0;
+			right: 0;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin-left: var(--gutter);
+			button,
+			a {
+				flex: 0 0;
+			}
+		}
+	}
+}

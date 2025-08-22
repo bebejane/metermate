@@ -1,0 +1,98 @@
+.section {
+	position: relative;
+	margin-bottom: var(--space-big);
+	scroll-margin-top: var(--navbar-height);
+
+	@include mq($from: desktop) {
+		display: flex;
+		flex-direction: row;
+		> div {
+			flex: 0 0 50%;
+			width: 50%;
+		}
+	}
+
+	.header {
+		display: flex;
+		flex-direction: column;
+
+		@include mq($from: desktop) {
+			padding-right: var(--outer-margin);
+		}
+
+		.headline {
+			flex: 1 1 auto;
+		}
+		.image {
+			height: 30vh;
+			object-fit: contain;
+			width: 100%;
+		}
+	}
+
+	.content {
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.project {
+		flex: 0 0;
+		border-radius: 10px;
+		background-color: var(--gray);
+		display: flex;
+		flex-direction: row;
+		padding: 1rem;
+		width: 100%;
+		@include mq($until: desktop) {
+			margin-top: var(--space);
+		}
+		//margin-bottom: var(--space);
+
+		@include mq($from: desktop) {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 30%;
+		}
+
+		&:hover {
+			box-shadow: var(--shadow);
+			h4 {
+				color: var(--red);
+			}
+		}
+
+		h4 {
+			padding: 0;
+		}
+
+		div:first-child {
+		}
+		div:last-child {
+			padding-left: 1rem;
+			//white-space: nowrap;
+		}
+
+		.imageWrap {
+			aspect-ratio: 4 / 3;
+			display: flex;
+			height: 5rem;
+		}
+
+		.image,
+		img {
+			object-fit: cover;
+			//height: 4rem;
+
+			@include mq($from: desktop) {
+				//height: 100px !important;
+			}
+		}
+	}
+	.largeImage {
+		padding-bottom: var(--space);
+		@include mq($from: desktop) {
+			padding-right: 30% !important;
+		}
+	}
+}

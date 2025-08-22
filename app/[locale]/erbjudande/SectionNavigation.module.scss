@@ -1,0 +1,43 @@
+.nav {
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%) translateY(50%);
+	bottom: calc(2 * var(--outer-margin));
+	display: flex;
+	flex-direction: row;
+	transition: opacity 0.3s ease-out;
+	z-index: 1000;
+	@include mq($from: desktop) {
+		bottom: var(--outer-margin);
+	}
+
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 1 0;
+		background-color: rgba(242, 242, 242, 0.9);
+		white-space: nowrap;
+		padding: 1rem;
+		//backdrop-filter: var(--blur);
+
+		&:first-child {
+			padding-left: 1.5rem;
+			border-top-left-radius: 2rem;
+			border-bottom-left-radius: 2rem;
+		}
+		&:last-child {
+			padding-right: 1.5rem;
+			border-top-right-radius: 2rem;
+			border-bottom-right-radius: 2rem;
+		}
+		&.active {
+			color: var(--red);
+		}
+	}
+
+	&.hide {
+		opacity: 0;
+		pointer-events: none;
+	}
+}

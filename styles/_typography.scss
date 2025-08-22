@@ -1,0 +1,273 @@
+@use "fonts";
+@use "mediaqueries";
+
+html,
+body {
+	font-size: 16px;
+	font-weight: normal;
+	//font-variation-settings: "wght" 450 !important;
+
+	@include mq($from: tablet) {
+		font-size: 20px;
+	}
+
+	@include mq($from: wide) {
+		font-size: 23px;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--headline-font);
+	line-height: var(--line-height-headlines);
+	font-weight: normal;
+
+	strong {
+		font-weight: normal;
+	}
+}
+
+h1,
+h2 {
+	font-size: 2rem;
+	color: var(--blue);
+	padding-bottom: 0.5em;
+	line-height: 1.1;
+	font-variation-settings: var(--font-weight-bold) !important;
+
+	@include mq($from: desktop) {
+		font-size: 2.8rem;
+	}
+}
+
+h1 {
+	letter-spacing: -0.02em;
+}
+
+h1 strong {
+	color: var(--green);
+}
+
+h2 {
+	font-size: 2.1rem;
+	font-variation-settings: var(--font-weight-light) !important;
+	@include mq($from: desktop) {
+		font-size: 2.7rem;
+	}
+}
+
+h2 strong {
+	font-weight: normal;
+	color: var(--green);
+	font-variation-settings: var(--font-weight-light) !important;
+}
+
+h3,
+h3 strong {
+	font-size: 1.5rem;
+	color: var(--green);
+	font-variation-settings: var(--font-weight-light) !important;
+	padding-bottom: 1em;
+	@include mq($from: desktop) {
+		font-size: 1.8rem;
+	}
+}
+
+h3 strong {
+	color: var(--blue);
+}
+
+h4,
+h4 strong {
+	color: var(--blue);
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
+	font-variation-settings: var(--font-weight-bold) !important;
+	font-weight: normal;
+	font-size: 1.3rem;
+
+	@include mq($from: desktop) {
+		font-size: 1.1rem;
+	}
+}
+
+h4,
+h4 strong {
+	color: var(--blue);
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
+	font-variation-settings: var(--font-weight-bold) !important;
+	font-weight: normal;
+}
+
+h4 strong {
+	color: green;
+}
+
+h5,
+h6 {
+	color: var(--blue);
+	letter-spacing: 0.1em;
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	padding-bottom: 0.5em;
+	font-variation-settings: var(--font-weight-bold) !important;
+
+	& strong {
+		color: var(--green);
+	}
+}
+
+h6 {
+	font-size: 0.7rem;
+	margin: 0;
+	padding-bottom: 0.2em;
+	color: var(--green);
+}
+
+p {
+	line-height: var(--line-height);
+	margin-bottom: 0.7em;
+}
+
+p.intro,
+.intro p,
+.intro {
+	font-size: 1.1rem;
+}
+
+section {
+	ul {
+		font-size: 0.9rem;
+		margin-bottom: 1rem;
+		p {
+			margin-bottom: 0.25em;
+		}
+	}
+}
+
+.mid,
+.mid p {
+	font-size: 0.9rem;
+}
+
+.small,
+.small p,
+footer,
+footer nav,
+figcaption,
+.caption label {
+	font-size: 0.85rem;
+
+	@include mq($from: desktop) {
+		font-size: 0.8rem;
+	}
+}
+
+.very-small {
+	font-size: 0.6rem;
+}
+
+figcaption {
+	font-family: var(--sans-font);
+	color: var(--darkred);
+	font-size: 0.7rem;
+	line-height: var(--line-height);
+}
+
+blockquote {
+	font-size: 1.1rem;
+	font-style: italic;
+	font-variation-settings: "ital" 1;
+}
+
+nav,
+.mid,
+button,
+.mid input,
+.mid select {
+	font-size: 0.8rem;
+}
+
+strong,
+b {
+	font-weight: normal;
+	font-weight: normal;
+	font-variation-settings: var(--font-weight-bold) !important;
+}
+
+p strong {
+	font-variation-settings: var(--font-weight-mid) !important;
+}
+
+// För Article
+article {
+	p a {
+		text-decoration: underline;
+		text-underline-offset: 0.25em;
+		text-decoration-thickness: 1px;
+		text-decoration-color: --darkred;
+	}
+
+	p,
+	.intro,
+	h2,
+	.structured h3,
+	ul {
+		text-align: left;
+	}
+
+	.structured h3 {
+		padding-bottom: 0.25em;
+	}
+
+	ul p {
+		padding-left: 0;
+	}
+
+	p + h3,
+	ul + h3,
+	ul + h2,
+	p + h2 {
+		padding-top: 1rem;
+	}
+
+	p.center {
+		text-align: center;
+	}
+}
+
+.meta {
+	font-family: var(--sans-font);
+	font-size: 0.7rem;
+}
+
+button {
+	font-family: var(--headline-font);
+}
+
+em,
+i {
+	font-style: italic;
+}
+
+.sans {
+	font-family: var(--sans-font);
+}
+
+.medium-weight {
+	font-family: var(--label-font) !important;
+}
+
+.shortcut {
+	font-family: var(--sans-font);
+	font-size: 0.9rem;
+
+	&:hover {
+		//  color: var(--darkred);
+	}
+}
