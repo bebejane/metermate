@@ -28,6 +28,11 @@ fragment ProductFragment on ProductRecord {
 						...ImageFragment
 					}
 				}
+				text {
+					blocks
+					links
+					value
+				}
 			}
 		}
 		... on TextAndImageRecord {
@@ -35,6 +40,11 @@ fragment ProductFragment on ProductRecord {
 			layout
 			media {
 				...MediaFragment
+			}
+			text {
+				blocks
+				links
+				value
 			}
 		}
 		... on CtaRecord {
@@ -47,6 +57,7 @@ fragment ProductFragment on ProductRecord {
 		}
 	}
 	title
+	slug
 }
 
 fragment ProductLightFragment on ProductRecord {
@@ -62,6 +73,11 @@ fragment ProductLightFragment on ProductRecord {
 					image {
 						...ImageFragment
 					}
+					text {
+						blocks
+						links
+						value
+					}
 				}
 			}
 		}
@@ -70,6 +86,11 @@ fragment ProductLightFragment on ProductRecord {
 			layout
 			media {
 				...MediaFragment
+			}
+			text {
+				blocks
+				links
+				value
 			}
 		}
 	}

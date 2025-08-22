@@ -21,10 +21,14 @@ export default async function Products({ params }: PageProps) {
 		},
 	});
 
+	if (!product) return notFound();
+
 	return (
 		<>
 			<Article>
-				<section></section>
+				{product.layout.map((data, idx) => (
+					<Block key={idx} data={data} />
+				))}
 			</Article>
 			<DraftMode url={draftUrl} path={`/`} />
 		</>
@@ -32,9 +36,17 @@ export default async function Products({ params }: PageProps) {
 }
 
 export async function generateMetadata({ params }): Promise<Metadata> {
-	const { locale } = await params;
+	const { locale, product: slug } = await params;
+	setRequestLocale(locale);
+
+	const { product, draftUrl } = await apiQuery<ProductQuery, ProductQueryVariables>(ProductDocument, {
+		variables: {
+			locale,
+		},
+	});
 
 	return await buildMetadata({
+		title: product?.title,
 		pathname: getPathname({ locale, href: '/produkter' }),
 		locale,
 	});
