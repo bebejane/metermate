@@ -1,5 +1,5 @@
 import s from './page.module.scss';
-import { StartDocument, AllProductsDocument } from '@/graphql';
+import { ReferenceDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from 'next/navigation';
@@ -14,15 +14,19 @@ export default async function Products({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { allProducts, draftUrl } = await apiQuery<AllProductsQuery, AllProductsQueryVariables>(AllProductsDocument, {
+	const { reference, draftUrl } = await apiQuery<ReferenceQuery, ReferenceQueryVariables>(ReferenceDocument, {
 		variables: {
 			locale,
 		},
 	});
 
+	if (!reference) return notFound();
+
 	return (
 		<>
-			<Article></Article>
+			<Article title={reference.title} intro={reference.intro}>
+				<section>refrencs</section>
+			</Article>
 			<DraftMode url={draftUrl} path={`/`} />
 		</>
 	);

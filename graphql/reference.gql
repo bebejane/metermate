@@ -5,7 +5,7 @@ query Reference($locale: SiteLocale) {
 }
 
 fragment ReferenceFragment on ReferenceRecord {
-	example {
+	examples {
 		... on ReferenceBlockRecord {
 			image {
 				...ImageFragment
@@ -15,7 +15,17 @@ fragment ReferenceFragment on ReferenceRecord {
 				...ImageFragment
 			}
 			title
+			text {
+				blocks
+				links
+				value
+			}
 		}
 	}
 	title
+	intro {
+		blocks
+		links
+		value
+	}
 }

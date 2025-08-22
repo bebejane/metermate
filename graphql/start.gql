@@ -95,7 +95,7 @@ fragment StartFragment on StartRecord {
 					title
 				}
 				... on ReferenceRecord {
-					example {
+					examples {
 						... on ReferenceBlockRecord {
 							image {
 								...ImageFragment
