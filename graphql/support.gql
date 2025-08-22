@@ -1,3 +1,18 @@
+query SupportStart($locale: SiteLocale) {
+	supportStart(locale: $locale, fallbackLocales: [sv]) {
+		...SupportStartFragment
+	}
+}
+
+fragment SupportStartFragment on SupportStartRecord {
+	title
+	intro {
+		blocks
+		links
+		value
+	}
+}
+
 query Support($locale: SiteLocale) {
 	support(locale: $locale, fallbackLocales: [sv]) {
 		...SupportFragment

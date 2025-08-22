@@ -1,5 +1,5 @@
 import s from './page.module.scss';
-import { AllSupportsDocument } from '@/graphql';
+import { AllSupportsDocument, SupportStartDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from 'next/navigation';
@@ -15,6 +15,12 @@ export default async function Support({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
+	const { supportStart } = await apiQuery<SupportStartQuery, SupportStartQueryVariables>(SupportStartDocument, {
+		variables: {
+			locale,
+		},
+	});
+
 	const { allSupports, draftUrl } = await apiQuery<AllSupportsQuery, AllSupportsQueryVariables>(AllSupportsDocument, {
 		variables: {
 			locale,
@@ -23,7 +29,7 @@ export default async function Support({ params }: PageProps) {
 
 	return (
 		<>
-			<Article title={'Support'}>
+			<Article title={supportStart.title} intro={supportStart.intro}>
 				<section className={s.support}>
 					<ul className={s.menu}>
 						{allSupports.map(({ id, title, sections, slug }) => (

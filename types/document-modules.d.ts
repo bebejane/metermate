@@ -117,20 +117,12 @@ export const StartFragment: DocumentNode;
 declare module '*/support.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const Support: DocumentNode;
+  export const SupportStart: DocumentNode;
+export const SupportStartFragment: DocumentNode;
+export const Support: DocumentNode;
 export const AllSupports: DocumentNode;
 export const SupportFragment: DocumentNode;
 export const SupportLightFragment: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/support_start.gql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const SupportStart: DocumentNode;
-export const SupportStartFragment: DocumentNode;
 
   export default defaultDocument;
 }
