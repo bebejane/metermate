@@ -27,15 +27,14 @@ export default async function Partners({ params }: PageProps) {
 	return (
 		<>
 			<Article title={title}>
-				{examples.map(({ id, logo, text }) => (
-					<section key={id} className={s.example}>
-						<div className={s.wrap}>
+				<ul className={s.examples}>
+					{examples.map(({ id, logo, text }) => (
+						<li key={id}>
 							<img className={s.logo} src={logo.url} alt={logo.alt} />
-							<h3>{title}</h3>
 							<Content content={text} />
-						</div>
-					</section>
-				))}
+						</li>
+					))}
+				</ul>
 			</Article>
 			<DraftMode url={draftUrl} path={`/partners`} />
 		</>
