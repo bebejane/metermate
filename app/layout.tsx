@@ -16,7 +16,7 @@ import FullscreenGallery from '@/components/common/FullscreenGallery';
 import Footer from '@/components/layout/Footer';
 import { Jost } from 'next/font/google';
 
-const jost = Jost({});
+const jost = Jost({ subsets: ['latin'], weight: ['400', '700'] });
 
 export type LayoutProps = {
 	children: React.ReactNode;
