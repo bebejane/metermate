@@ -5,12 +5,18 @@ query Partner($locale: SiteLocale) {
 }
 
 fragment PartnerFragment on PartnerRecord {
+	title
 	examples {
 		... on PartnerBlockRecord {
+			id
+			text {
+				blocks
+				links
+				value
+			}
 			logo {
 				...ImageFragment
 			}
 		}
 	}
-	title
 }

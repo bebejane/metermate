@@ -11,7 +11,7 @@ import { Image } from 'react-datocms';
 import Article from '@/components/layout/Article';
 import Content from '@/components/common/Content';
 
-export default async function Products({ params }: PageProps) {
+export default async function References({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
