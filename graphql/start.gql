@@ -1,0 +1,5 @@
+query Start($locale: SiteLocale) {
+	start(locale: $locale, fallbackLocales: [sv]) {
+		title
+	}
+}

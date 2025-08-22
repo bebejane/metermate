@@ -23,190 +23,10 @@ type Scalars = {
   UploadId: { input: any; output: any; }
 };
 
-/** Record of type About (about) */
-type AboutRecord = RecordInterface & {
-  __typename?: 'AboutRecord';
-  _allFooterLocales?: Maybe<Array<FooterRecordNonNullMultiLocaleField>>;
-  _allHeaderLocales?: Maybe<Array<HeaderRecordNonNullMultiLocaleField>>;
-  _allSectionsLocales?: Maybe<Array<SectionRecordListListNonNullMultiLocaleField>>;
-  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _locales: Array<SiteLocale>;
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  footer: FooterRecord;
-  header: HeaderRecord;
-  id: Scalars['ItemId']['output'];
-  sections: Array<SectionRecord>;
-  seoMeta: SeoRecord;
-  title?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** Record of type About (about) */
-type AboutRecord_allFooterLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type About (about) */
-type AboutRecord_allHeaderLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type About (about) */
-type AboutRecord_allSectionsLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type About (about) */
-type AboutRecord_allSeoMetaLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type About (about) */
-type AboutRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type About (about) */
-type AboutRecordfooterArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type About (about) */
-type AboutRecordheaderArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type About (about) */
-type AboutRecordsectionsArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type About (about) */
-type AboutRecordseoMetaArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
 /** Specifies how to filter Boolean fields */
 type BooleanFilter = {
   /** Search for records with an exact match */
   eq?: InputMaybe<Scalars['BooleanType']['input']>;
-};
-
-/** Block of type Button (button) */
-type ButtonRecord = RecordInterface & {
-  __typename?: 'ButtonRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  id: Scalars['ItemId']['output'];
-  text?: Maybe<Scalars['String']['output']>;
-  url?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** Block of type Button (button) */
-type ButtonRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-type ClientModelFilter = {
-  AND?: InputMaybe<Array<InputMaybe<ClientModelFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<ClientModelFilter>>>;
-  _createdAt?: InputMaybe<CreatedAtFilter>;
-  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
-  _isValid?: InputMaybe<BooleanFilter>;
-  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
-  _publishedAt?: InputMaybe<PublishedAtFilter>;
-  _status?: InputMaybe<StatusFilter>;
-  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
-  _updatedAt?: InputMaybe<UpdatedAtFilter>;
-  id?: InputMaybe<ItemIdFilter>;
-  logo?: InputMaybe<FileFilter>;
-  name?: InputMaybe<StringFilter>;
-};
-
-enum ClientModelOrderBy {
-  _createdAt_ASC = '_createdAt_ASC',
-  _createdAt_DESC = '_createdAt_DESC',
-  _firstPublishedAt_ASC = '_firstPublishedAt_ASC',
-  _firstPublishedAt_DESC = '_firstPublishedAt_DESC',
-  _isValid_ASC = '_isValid_ASC',
-  _isValid_DESC = '_isValid_DESC',
-  _publicationScheduledAt_ASC = '_publicationScheduledAt_ASC',
-  _publicationScheduledAt_DESC = '_publicationScheduledAt_DESC',
-  _publishedAt_ASC = '_publishedAt_ASC',
-  _publishedAt_DESC = '_publishedAt_DESC',
-  _status_ASC = '_status_ASC',
-  _status_DESC = '_status_DESC',
-  _unpublishingScheduledAt_ASC = '_unpublishingScheduledAt_ASC',
-  _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
-  _updatedAt_ASC = '_updatedAt_ASC',
-  _updatedAt_DESC = '_updatedAt_DESC',
-  id_ASC = 'id_ASC',
-  id_DESC = 'id_DESC',
-  name_ASC = 'name_ASC',
-  name_DESC = 'name_DESC'
-}
-
-/** Record of type Client (client) */
-type ClientRecord = RecordInterface & {
-  __typename?: 'ClientRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  id: Scalars['ItemId']['output'];
-  logo?: Maybe<FileField>;
-  name?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** Record of type Client (client) */
-type ClientRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
 };
 
 type CollectionMetadata = {
@@ -239,20 +59,22 @@ type ColorField = {
   red: Scalars['IntType']['output'];
 };
 
-/** Record of type Contact (contact) */
-type ContactRecord = RecordInterface & {
-  __typename?: 'ContactRecord';
-  _allFooterLocales?: Maybe<Array<FooterRecordNonNullMultiLocaleField>>;
-  _allHeaderLocales?: Maybe<Array<HeaderRecordNonNullMultiLocaleField>>;
-  _allSectionsLocales?: Maybe<Array<SectionRecordListListNonNullMultiLocaleField>>;
-  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
-  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
+type ColumnModelTextField = {
+  __typename?: 'ColumnModelTextField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+/** Block of type Spalt (column) */
+type ColumnRecord = RecordInterface & {
+  __typename?: 'ColumnRecord';
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
   _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
-  _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _publishedAt: Scalars['DateTime']['output'];
@@ -261,82 +83,15 @@ type ContactRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  footer: FooterRecord;
-  header: HeaderRecord;
+  color?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  sections: Array<SectionRecord>;
-  seoMeta: SeoRecord;
-  title?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<FileField>;
+  text?: Maybe<ColumnModelTextField>;
 };
 
 
-/** Record of type Contact (contact) */
-type ContactRecord_allFooterLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Contact (contact) */
-type ContactRecord_allHeaderLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Contact (contact) */
-type ContactRecord_allSectionsLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Contact (contact) */
-type ContactRecord_allSeoMetaLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Contact (contact) */
-type ContactRecord_allTitleLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Contact (contact) */
-type ContactRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Contact (contact) */
-type ContactRecordfooterArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Contact (contact) */
-type ContactRecordheaderArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Contact (contact) */
-type ContactRecordsectionsArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Contact (contact) */
-type ContactRecordseoMetaArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Contact (contact) */
-type ContactRecordtitleArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+/** Block of type Spalt (column) */
+type ColumnRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -356,67 +111,6 @@ type CreatedAtFilter = {
   lte?: InputMaybe<Scalars['DateTime']['input']>;
   /** Filter records with a value that's outside the specified minute range. Seconds and milliseconds are truncated from the argument. */
   neq?: InputMaybe<Scalars['DateTime']['input']>;
-};
-
-type ExpandableListItemModelTextField = {
-  __typename?: 'ExpandableListItemModelTextField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-/** Block of type Expandable list item (expandable_list_item) */
-type ExpandableListItemRecord = RecordInterface & {
-  __typename?: 'ExpandableListItemRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  id: Scalars['ItemId']['output'];
-  text?: Maybe<ExpandableListItemModelTextField>;
-  title?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** Block of type Expandable list item (expandable_list_item) */
-type ExpandableListItemRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-/** Block of type Expandable list (expandable_list) */
-type ExpandableListRecord = RecordInterface & {
-  __typename?: 'ExpandableListRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  id: Scalars['ItemId']['output'];
-  items: Array<ExpandableListItemRecord>;
-};
-
-
-/** Block of type Expandable list (expandable_list) */
-type ExpandableListRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
 };
 
 enum FaviconType {
@@ -582,39 +276,7 @@ type FileFieldInterfaceurlArgs = {
   imgixParams?: InputMaybe<ImgixParams>;
 };
 
-/** Specifies how to filter Single-file/image fields */
-type FileFilter = {
-  /** Search for records with an exact match. The specified value must be an Upload ID */
-  eq?: InputMaybe<Scalars['UploadId']['input']>;
-  /** Filter records with the specified field defined (i.e. with any value) or not */
-  exists?: InputMaybe<Scalars['BooleanType']['input']>;
-  /** Filter records that have one of the specified uploads */
-  in?: InputMaybe<Array<InputMaybe<Scalars['UploadId']['input']>>>;
-  /** Exclude records with an exact match. The specified value must be an Upload ID */
-  neq?: InputMaybe<Scalars['UploadId']['input']>;
-  /** Filter records that do not have one of the specified uploads */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['UploadId']['input']>>>;
-};
-
-type FooterModelHeadlineField = {
-  __typename?: 'FooterModelHeadlineField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type FooterModelLinkField = AboutRecord | ContactRecord;
-
-type FooterModelTextField = {
-  __typename?: 'FooterModelTextField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-/** Block of type Footer (footer) */
+/** Record of type Footer (footer) */
 type FooterRecord = RecordInterface & {
   __typename?: 'FooterRecord';
   _createdAt: Scalars['DateTime']['output'];
@@ -630,29 +292,14 @@ type FooterRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  buttonText?: Maybe<Scalars['String']['output']>;
-  headline?: Maybe<FooterModelHeadlineField>;
   id: Scalars['ItemId']['output'];
-  link?: Maybe<FooterModelLinkField>;
-  text?: Maybe<FooterModelTextField>;
+  text?: Maybe<Scalars['String']['output']>;
 };
 
 
-/** Block of type Footer (footer) */
+/** Record of type Footer (footer) */
 type FooterRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
-};
-
-type FooterRecordMultiLocaleField = {
-  __typename?: 'FooterRecordMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<FooterRecord>;
-};
-
-type FooterRecordNonNullMultiLocaleField = {
-  __typename?: 'FooterRecordNonNullMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value: FooterRecord;
 };
 
 type GlobalSeoField = {
@@ -662,129 +309,6 @@ type GlobalSeoField = {
   siteName?: Maybe<Scalars['String']['output']>;
   titleSuffix?: Maybe<Scalars['String']['output']>;
   twitterAccount?: Maybe<Scalars['String']['output']>;
-};
-
-type HeaderImageModelHeadlineField = {
-  __typename?: 'HeaderImageModelHeadlineField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type HeaderImageModelTextField = {
-  __typename?: 'HeaderImageModelTextField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-/** Block of type Header with Images (header_image) */
-type HeaderImageRecord = RecordInterface & {
-  __typename?: 'HeaderImageRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  align: Scalars['String']['output'];
-  headline?: Maybe<HeaderImageModelHeadlineField>;
-  id: Scalars['ItemId']['output'];
-  image?: Maybe<FileField>;
-  images: Array<FileField>;
-  text?: Maybe<HeaderImageModelTextField>;
-};
-
-
-/** Block of type Header with Images (header_image) */
-type HeaderImageRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-type HeaderModelHeadlineField = {
-  __typename?: 'HeaderModelHeadlineField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type HeaderModelTextField = {
-  __typename?: 'HeaderModelTextField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-/** Block of type Header (header) */
-type HeaderRecord = RecordInterface & {
-  __typename?: 'HeaderRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  align: Scalars['String']['output'];
-  headline?: Maybe<HeaderModelHeadlineField>;
-  id: Scalars['ItemId']['output'];
-  image?: Maybe<FileField>;
-  text?: Maybe<HeaderModelTextField>;
-};
-
-
-/** Block of type Header (header) */
-type HeaderRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-type HeaderRecordNonNullMultiLocaleField = {
-  __typename?: 'HeaderRecordNonNullMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value: HeaderRecord;
-};
-
-/** Block of type Image(s) (image_gallery) */
-type ImageGalleryRecord = RecordInterface & {
-  __typename?: 'ImageGalleryRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  id: Scalars['ItemId']['output'];
-  images: Array<FileField>;
-};
-
-
-/** Block of type Image(s) (image_gallery) */
-type ImageGalleryRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
 };
 
 type ImgixParams = {
@@ -2605,20 +2129,14 @@ enum ItemStatus {
   updated = 'updated'
 }
 
-/** Record of type Join us (join) */
-type JoinRecord = RecordInterface & {
-  __typename?: 'JoinRecord';
-  _allFooterLocales?: Maybe<Array<FooterRecordNonNullMultiLocaleField>>;
-  _allHeaderLocales?: Maybe<Array<HeaderRecordNonNullMultiLocaleField>>;
-  _allSectionsLocales?: Maybe<Array<SectionRecordListListNonNullMultiLocaleField>>;
-  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
-  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
+/** Block of type Layout (layout) */
+type LayoutRecord = RecordInterface & {
+  __typename?: 'LayoutRecord';
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
   _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
-  _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _publishedAt: Scalars['DateTime']['output'];
@@ -2627,107 +2145,14 @@ type JoinRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  footer: FooterRecord;
-  header: HeaderRecord;
+  content?: Maybe<TextAndImageRecord>;
   id: Scalars['ItemId']['output'];
-  sections: Array<SectionRecord>;
-  seoMeta: SeoRecord;
-  title?: Maybe<Scalars['String']['output']>;
 };
 
 
-/** Record of type Join us (join) */
-type JoinRecord_allFooterLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Join us (join) */
-type JoinRecord_allHeaderLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Join us (join) */
-type JoinRecord_allSectionsLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Join us (join) */
-type JoinRecord_allSeoMetaLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Join us (join) */
-type JoinRecord_allTitleLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Join us (join) */
-type JoinRecord_seoMetaTagsArgs = {
+/** Block of type Layout (layout) */
+type LayoutRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Join us (join) */
-type JoinRecordfooterArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Join us (join) */
-type JoinRecordheaderArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Join us (join) */
-type JoinRecordsectionsArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Join us (join) */
-type JoinRecordseoMetaArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Join us (join) */
-type JoinRecordtitleArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-/** Specifies how to filter Single-link fields */
-type LinkFilter = {
-  /** Search for records with an exact match. The specified value must be a Record ID */
-  eq?: InputMaybe<Scalars['ItemId']['input']>;
-  /** Filter records with the specified field defined (i.e. with any value) or not */
-  exists?: InputMaybe<Scalars['BooleanType']['input']>;
-  /** Filter records linked to one of the specified records */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ItemId']['input']>>>;
-  /** Exclude records with an exact match. The specified value must be a Record ID */
-  neq?: InputMaybe<Scalars['ItemId']['input']>;
-  /** Filter records not linked to one of the specified records */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ItemId']['input']>>>;
-};
-
-/** Specifies how to filter by locale */
-type LocalesFilter = {
-  /** Filter records that are localized in all the specified locales */
-  allIn?: InputMaybe<Array<SiteLocale>>;
-  /** Filter records that are localized in at least one of the specified locales */
-  anyIn?: InputMaybe<Array<SiteLocale>>;
-  /** Filter records that are not localized in any of the specified locales */
-  notIn?: InputMaybe<Array<SiteLocale>>;
 };
 
 enum MuxThumbnailFormatType {
@@ -2735,140 +2160,6 @@ enum MuxThumbnailFormatType {
   jpg = 'jpg',
   png = 'png'
 }
-
-/** Block of type News (news) */
-type NewsRecord = RecordInterface & {
-  __typename?: 'NewsRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  id: Scalars['ItemId']['output'];
-  text?: Maybe<Scalars['String']['output']>;
-  url: Scalars['String']['output'];
-};
-
-
-/** Block of type News (news) */
-type NewsRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-type NewsRecordListListNonNullMultiLocaleField = {
-  __typename?: 'NewsRecordListListNonNullMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value: Array<NewsRecord>;
-};
-
-/** Record of type Offer (offer) */
-type OfferRecord = RecordInterface & {
-  __typename?: 'OfferRecord';
-  _allFooterLocales?: Maybe<Array<FooterRecordNonNullMultiLocaleField>>;
-  _allHeaderLocales?: Maybe<Array<HeaderRecordNonNullMultiLocaleField>>;
-  _allSectionsLocales?: Maybe<Array<SectionRecordListListNonNullMultiLocaleField>>;
-  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
-  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _locales: Array<SiteLocale>;
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  footer: FooterRecord;
-  header: HeaderRecord;
-  id: Scalars['ItemId']['output'];
-  sections: Array<SectionRecord>;
-  seoMeta: SeoRecord;
-  title?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** Record of type Offer (offer) */
-type OfferRecord_allFooterLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Offer (offer) */
-type OfferRecord_allHeaderLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Offer (offer) */
-type OfferRecord_allSectionsLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Offer (offer) */
-type OfferRecord_allSeoMetaLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Offer (offer) */
-type OfferRecord_allTitleLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Offer (offer) */
-type OfferRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Offer (offer) */
-type OfferRecordfooterArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Offer (offer) */
-type OfferRecordheaderArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Offer (offer) */
-type OfferRecordsectionsArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Offer (offer) */
-type OfferRecordseoMetaArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Offer (offer) */
-type OfferRecordtitleArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
 
 /** Specifies how to filter by image orientation */
 type OrientationFilter = {
@@ -2878,105 +2169,21 @@ type OrientationFilter = {
   neq?: InputMaybe<UploadOrientation>;
 };
 
-/** Specifies how to filter by position (sorted and tree-like collections) */
-type PositionFilter = {
-  /** Search for records with an exact match */
-  eq?: InputMaybe<Scalars['IntType']['input']>;
-  /** Filter records with a value that's strictly greater than the one specified */
-  gt?: InputMaybe<Scalars['IntType']['input']>;
-  /** Filter records with a value that's greater than or equal to the one specified */
-  gte?: InputMaybe<Scalars['IntType']['input']>;
-  /** Filter records with a value that's less than the one specified */
-  lt?: InputMaybe<Scalars['IntType']['input']>;
-  /** Filter records with a value that's less or equal than the one specified */
-  lte?: InputMaybe<Scalars['IntType']['input']>;
-  /** Exclude records with an exact match */
-  neq?: InputMaybe<Scalars['IntType']['input']>;
-};
-
-/** Record of type Selected Projects Footer (project_footer) */
-type ProjectFooterRecord = RecordInterface & {
-  __typename?: 'ProjectFooterRecord';
-  _allFooterLocales?: Maybe<Array<FooterRecordNonNullMultiLocaleField>>;
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _locales: Array<SiteLocale>;
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  footer: FooterRecord;
-  id: Scalars['ItemId']['output'];
-};
-
-
-/** Record of type Selected Projects Footer (project_footer) */
-type ProjectFooterRecord_allFooterLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Selected Projects Footer (project_footer) */
-type ProjectFooterRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Selected Projects Footer (project_footer) */
-type ProjectFooterRecordfooterArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-type ProjectModelFilter = {
-  AND?: InputMaybe<Array<InputMaybe<ProjectModelFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<ProjectModelFilter>>>;
+type ProductModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ProductModelFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ProductModelFilter>>>;
   _createdAt?: InputMaybe<CreatedAtFilter>;
   _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
   _isValid?: InputMaybe<BooleanFilter>;
-  _locales?: InputMaybe<LocalesFilter>;
   _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
   _publishedAt?: InputMaybe<PublishedAtFilter>;
   _status?: InputMaybe<StatusFilter>;
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
-  client?: InputMaybe<LinkFilter>;
-  headline?: InputMaybe<StructuredTextFilter>;
   id?: InputMaybe<ItemIdFilter>;
-  image?: InputMaybe<FileFilter>;
-  position?: InputMaybe<PositionFilter>;
-  result?: InputMaybe<StructuredTextFilter>;
-  slug?: InputMaybe<SlugFilter>;
-  text?: InputMaybe<StructuredTextFilter>;
-  thumbHeadline?: InputMaybe<StringFilter>;
-  thumbText?: InputMaybe<StructuredTextFilter>;
-  title?: InputMaybe<StringFilter>;
-  what?: InputMaybe<StructuredTextFilter>;
-  why?: InputMaybe<StructuredTextFilter>;
 };
 
-type ProjectModelHeadlineField = {
-  __typename?: 'ProjectModelHeadlineField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type ProjectModelHeadlineFieldMultiLocaleField = {
-  __typename?: 'ProjectModelHeadlineFieldMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<ProjectModelHeadlineField>;
-};
-
-enum ProjectModelOrderBy {
+enum ProductModelOrderBy {
   _createdAt_ASC = '_createdAt_ASC',
   _createdAt_DESC = '_createdAt_DESC',
   _firstPublishedAt_ASC = '_firstPublishedAt_ASC',
@@ -2994,104 +2201,17 @@ enum ProjectModelOrderBy {
   _updatedAt_ASC = '_updatedAt_ASC',
   _updatedAt_DESC = '_updatedAt_DESC',
   id_ASC = 'id_ASC',
-  id_DESC = 'id_DESC',
-  position_ASC = 'position_ASC',
-  position_DESC = 'position_DESC',
-  thumbHeadline_ASC = 'thumbHeadline_ASC',
-  thumbHeadline_DESC = 'thumbHeadline_DESC',
-  title_ASC = 'title_ASC',
-  title_DESC = 'title_DESC'
+  id_DESC = 'id_DESC'
 }
 
-type ProjectModelResultField = {
-  __typename?: 'ProjectModelResultField';
-  blocks: Array<ImageGalleryRecord>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type ProjectModelResultFieldMultiLocaleField = {
-  __typename?: 'ProjectModelResultFieldMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<ProjectModelResultField>;
-};
-
-type ProjectModelTextField = {
-  __typename?: 'ProjectModelTextField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type ProjectModelTextFieldMultiLocaleField = {
-  __typename?: 'ProjectModelTextFieldMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<ProjectModelTextField>;
-};
-
-type ProjectModelThumbTextField = {
-  __typename?: 'ProjectModelThumbTextField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type ProjectModelThumbTextFieldMultiLocaleField = {
-  __typename?: 'ProjectModelThumbTextFieldMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<ProjectModelThumbTextField>;
-};
-
-type ProjectModelWhatField = {
-  __typename?: 'ProjectModelWhatField';
-  blocks: Array<ImageGalleryRecord>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type ProjectModelWhatFieldMultiLocaleField = {
-  __typename?: 'ProjectModelWhatFieldMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<ProjectModelWhatField>;
-};
-
-type ProjectModelWhyField = {
-  __typename?: 'ProjectModelWhyField';
-  blocks: Array<ImageGalleryRecord>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type ProjectModelWhyFieldMultiLocaleField = {
-  __typename?: 'ProjectModelWhyFieldMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<ProjectModelWhyField>;
-};
-
-/** Record of type Project (project) */
-type ProjectRecord = RecordInterface & {
-  __typename?: 'ProjectRecord';
-  _allHeadlineLocales?: Maybe<Array<ProjectModelHeadlineFieldMultiLocaleField>>;
-  _allResultLocales?: Maybe<Array<ProjectModelResultFieldMultiLocaleField>>;
-  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
-  _allSlugLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
-  _allTextLocales?: Maybe<Array<ProjectModelTextFieldMultiLocaleField>>;
-  _allThumbHeadlineLocales?: Maybe<Array<StringMultiLocaleField>>;
-  _allThumbTextLocales?: Maybe<Array<ProjectModelThumbTextFieldMultiLocaleField>>;
-  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
-  _allWhatLocales?: Maybe<Array<ProjectModelWhatFieldMultiLocaleField>>;
-  _allWhyLocales?: Maybe<Array<ProjectModelWhyFieldMultiLocaleField>>;
+/** Record of type Produkt (product) */
+type ProductRecord = RecordInterface & {
+  __typename?: 'ProductRecord';
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
   _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
-  _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _publishedAt: Scalars['DateTime']['output'];
@@ -3100,155 +2220,12 @@ type ProjectRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  client?: Maybe<ClientRecord>;
-  headline?: Maybe<ProjectModelHeadlineField>;
   id: Scalars['ItemId']['output'];
-  image?: Maybe<FileField>;
-  position?: Maybe<Scalars['IntType']['output']>;
-  result?: Maybe<ProjectModelResultField>;
-  seoMeta: SeoRecord;
-  slug: Scalars['String']['output'];
-  text?: Maybe<ProjectModelTextField>;
-  thumbHeadline?: Maybe<Scalars['String']['output']>;
-  thumbText?: Maybe<ProjectModelThumbTextField>;
-  title?: Maybe<Scalars['String']['output']>;
-  what?: Maybe<ProjectModelWhatField>;
-  why?: Maybe<ProjectModelWhyField>;
 };
 
 
-/** Record of type Project (project) */
-type ProjectRecord_allHeadlineLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecord_allResultLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecord_allSeoMetaLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecord_allSlugLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecord_allTextLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecord_allThumbHeadlineLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecord_allThumbTextLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecord_allTitleLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecord_allWhatLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecord_allWhyLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecordheadlineArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecordresultArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecordseoMetaArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecordslugArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecordtextArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecordthumbHeadlineArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecordthumbTextArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecordtitleArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecordwhatArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Project (project) */
-type ProjectRecordwhyArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+/** Record of type Produkt (product) */
+type ProductRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -3274,67 +2251,29 @@ type PublishedAtFilter = {
 type Query = {
   __typename?: 'Query';
   /** Returns meta information regarding a record collection */
-  _allClientsMeta: CollectionMetadata;
-  /** Returns meta information regarding a record collection */
-  _allProjectsMeta: CollectionMetadata;
-  /** Returns meta information regarding a record collection */
-  _allStaffsMeta: CollectionMetadata;
+  _allProductsMeta: CollectionMetadata;
   /** Returns meta information regarding an assets collection */
   _allUploadsMeta: CollectionMetadata;
   /** Returns the single instance record */
   _site: Site;
-  /** Returns the single instance record */
-  about?: Maybe<AboutRecord>;
   /** Returns a collection of records */
-  allClients: Array<ClientRecord>;
-  /** Returns a collection of records */
-  allProjects: Array<ProjectRecord>;
-  /** Returns a collection of records */
-  allStaffs: Array<StaffRecord>;
+  allProducts: Array<ProductRecord>;
   /** Returns a collection of assets */
   allUploads: Array<FileField>;
+  /** Returns the single instance record */
+  footer?: Maybe<FooterRecord>;
   /** Returns a specific record */
-  client?: Maybe<ClientRecord>;
-  /** Returns the single instance record */
-  contact?: Maybe<ContactRecord>;
-  /** Returns the single instance record */
-  join?: Maybe<JoinRecord>;
-  /** Returns the single instance record */
-  offer?: Maybe<OfferRecord>;
-  /** Returns a specific record */
-  project?: Maybe<ProjectRecord>;
-  /** Returns the single instance record */
-  projectFooter?: Maybe<ProjectFooterRecord>;
-  /** Returns the single instance record */
-  showcase?: Maybe<ShowcaseRecord>;
-  /** Returns a specific record */
-  staff?: Maybe<StaffRecord>;
+  product?: Maybe<ProductRecord>;
   /** Returns the single instance record */
   start?: Maybe<StartRecord>;
-  /** Returns the single instance record */
-  test?: Maybe<TestRecord>;
   /** Returns a specific asset */
   upload?: Maybe<FileField>;
 };
 
 
 /** The query root for this schema */
-type Query_allClientsMetaArgs = {
-  filter?: InputMaybe<ClientModelFilter>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** The query root for this schema */
-type Query_allProjectsMetaArgs = {
-  filter?: InputMaybe<ProjectModelFilter>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** The query root for this schema */
-type Query_allStaffsMetaArgs = {
-  filter?: InputMaybe<StaffModelFilter>;
+type Query_allProductsMetaArgs = {
+  filter?: InputMaybe<ProductModelFilter>;
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -3354,41 +2293,12 @@ type Query_siteArgs = {
 
 
 /** The query root for this schema */
-type QueryaboutArgs = {
+type QueryallProductsArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** The query root for this schema */
-type QueryallClientsArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<ClientModelFilter>;
+  filter?: InputMaybe<ProductModelFilter>;
   first?: InputMaybe<Scalars['IntType']['input']>;
   locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<ClientModelOrderBy>>>;
-  skip?: InputMaybe<Scalars['IntType']['input']>;
-};
-
-
-/** The query root for this schema */
-type QueryallProjectsArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<ProjectModelFilter>;
-  first?: InputMaybe<Scalars['IntType']['input']>;
-  locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<ProjectModelOrderBy>>>;
-  skip?: InputMaybe<Scalars['IntType']['input']>;
-};
-
-
-/** The query root for this schema */
-type QueryallStaffsArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<StaffModelFilter>;
-  first?: InputMaybe<Scalars['IntType']['input']>;
-  locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<StaffModelOrderBy>>>;
+  orderBy?: InputMaybe<Array<InputMaybe<ProductModelOrderBy>>>;
   skip?: InputMaybe<Scalars['IntType']['input']>;
 };
 
@@ -3405,76 +2315,23 @@ type QueryallUploadsArgs = {
 
 
 /** The query root for this schema */
-type QueryclientArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<ClientModelFilter>;
-  locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<ClientModelOrderBy>>>;
-};
-
-
-/** The query root for this schema */
-type QuerycontactArgs = {
+type QueryfooterArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
 
 
 /** The query root for this schema */
-type QueryjoinArgs = {
+type QueryproductArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ProductModelFilter>;
   locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** The query root for this schema */
-type QueryofferArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** The query root for this schema */
-type QueryprojectArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<ProjectModelFilter>;
-  locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<ProjectModelOrderBy>>>;
-};
-
-
-/** The query root for this schema */
-type QueryprojectFooterArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** The query root for this schema */
-type QueryshowcaseArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** The query root for this schema */
-type QuerystaffArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<StaffModelFilter>;
-  locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<StaffModelOrderBy>>>;
+  orderBy?: InputMaybe<Array<InputMaybe<ProductModelOrderBy>>>;
 };
 
 
 /** The query root for this schema */
 type QuerystartArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** The query root for this schema */
-type QuerytestArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
@@ -3544,60 +2401,6 @@ type ResponsiveImage = {
   width: Scalars['IntType']['output'];
 };
 
-type SectionModelHeadlineField = {
-  __typename?: 'SectionModelHeadlineField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type SectionModelTextBlocksField = ButtonRecord | ExpandableListRecord | ImageGalleryRecord;
-
-type SectionModelTextField = {
-  __typename?: 'SectionModelTextField';
-  blocks: Array<SectionModelTextBlocksField>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-/** Block of type Section (section) */
-type SectionRecord = RecordInterface & {
-  __typename?: 'SectionRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  headline?: Maybe<SectionModelHeadlineField>;
-  id: Scalars['ItemId']['output'];
-  image?: Maybe<FileField>;
-  referenceProject?: Maybe<ProjectRecord>;
-  sectionId?: Maybe<Scalars['String']['output']>;
-  text?: Maybe<SectionModelTextField>;
-};
-
-
-/** Block of type Section (section) */
-type SectionRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-type SectionRecordListListNonNullMultiLocaleField = {
-  __typename?: 'SectionRecordListListNonNullMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value: Array<SectionRecord>;
-};
-
 type SeoField = {
   __typename?: 'SeoField';
   description?: Maybe<Scalars['String']['output']>;
@@ -3605,199 +2408,6 @@ type SeoField = {
   noIndex?: Maybe<Scalars['BooleanType']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   twitterCard?: Maybe<Scalars['String']['output']>;
-};
-
-/** Block of type SEO (seo) */
-type SeoRecord = RecordInterface & {
-  __typename?: 'SeoRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  description?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ItemId']['output'];
-  title?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** Block of type SEO (seo) */
-type SeoRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Block of type SEO (seo) */
-type SeoRecorddescriptionArgs = {
-  markdown?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-type SeoRecordNonNullMultiLocaleField = {
-  __typename?: 'SeoRecordNonNullMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value: SeoRecord;
-};
-
-type ShortcutModelHeadlineField = {
-  __typename?: 'ShortcutModelHeadlineField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type ShortcutModelTextField = {
-  __typename?: 'ShortcutModelTextField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-/** Block of type Shortcut (shortcut) */
-type ShortcutRecord = RecordInterface & {
-  __typename?: 'ShortcutRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  headline?: Maybe<ShortcutModelHeadlineField>;
-  id: Scalars['ItemId']['output'];
-  image?: Maybe<FileField>;
-  linkText?: Maybe<Scalars['String']['output']>;
-  sectionId?: Maybe<Scalars['String']['output']>;
-  text?: Maybe<ShortcutModelTextField>;
-};
-
-
-/** Block of type Shortcut (shortcut) */
-type ShortcutRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-type ShortcutRecordListListNonNullMultiLocaleField = {
-  __typename?: 'ShortcutRecordListListNonNullMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value: Array<ShortcutRecord>;
-};
-
-/** Record of type Our projects (showcase) */
-type ShowcaseRecord = RecordInterface & {
-  __typename?: 'ShowcaseRecord';
-  _allFooterLocales?: Maybe<Array<FooterRecordMultiLocaleField>>;
-  _allHeaderLocales?: Maybe<Array<HeaderRecordNonNullMultiLocaleField>>;
-  _allSectionsLocales?: Maybe<Array<SectionRecordListListNonNullMultiLocaleField>>;
-  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
-  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _locales: Array<SiteLocale>;
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  footer?: Maybe<FooterRecord>;
-  header: HeaderRecord;
-  id: Scalars['ItemId']['output'];
-  sections: Array<SectionRecord>;
-  selectedProjects: Array<ProjectRecord>;
-  seoMeta: SeoRecord;
-  title?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** Record of type Our projects (showcase) */
-type ShowcaseRecord_allFooterLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Our projects (showcase) */
-type ShowcaseRecord_allHeaderLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Our projects (showcase) */
-type ShowcaseRecord_allSectionsLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Our projects (showcase) */
-type ShowcaseRecord_allSeoMetaLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Our projects (showcase) */
-type ShowcaseRecord_allTitleLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Our projects (showcase) */
-type ShowcaseRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Our projects (showcase) */
-type ShowcaseRecordfooterArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Our projects (showcase) */
-type ShowcaseRecordheaderArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Our projects (showcase) */
-type ShowcaseRecordsectionsArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Our projects (showcase) */
-type ShowcaseRecordseoMetaArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Our projects (showcase) */
-type ShowcaseRecordtitleArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
 };
 
 type Site = {
@@ -3821,203 +2431,17 @@ type SiteglobalSeoArgs = {
 };
 
 enum SiteLocale {
-  en = 'en',
   sv = 'sv'
 }
-
-/** Specifies how to filter Slug fields */
-type SlugFilter = {
-  /** Search for records with an exact match */
-  eq?: InputMaybe<Scalars['String']['input']>;
-  /** Filter records that have one of the specified slugs */
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** Exclude records with an exact match */
-  neq?: InputMaybe<Scalars['String']['input']>;
-  /** Filter records that do have one of the specified slugs */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-type StaffModelFilter = {
-  AND?: InputMaybe<Array<InputMaybe<StaffModelFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<StaffModelFilter>>>;
-  _createdAt?: InputMaybe<CreatedAtFilter>;
-  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
-  _isValid?: InputMaybe<BooleanFilter>;
-  _locales?: InputMaybe<LocalesFilter>;
-  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
-  _publishedAt?: InputMaybe<PublishedAtFilter>;
-  _status?: InputMaybe<StatusFilter>;
-  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
-  _updatedAt?: InputMaybe<UpdatedAtFilter>;
-  email?: InputMaybe<StringFilter>;
-  id?: InputMaybe<ItemIdFilter>;
-  image?: InputMaybe<FileFilter>;
-  name?: InputMaybe<StringFilter>;
-  position?: InputMaybe<PositionFilter>;
-  text?: InputMaybe<StructuredTextFilter>;
-};
-
-enum StaffModelOrderBy {
-  _createdAt_ASC = '_createdAt_ASC',
-  _createdAt_DESC = '_createdAt_DESC',
-  _firstPublishedAt_ASC = '_firstPublishedAt_ASC',
-  _firstPublishedAt_DESC = '_firstPublishedAt_DESC',
-  _isValid_ASC = '_isValid_ASC',
-  _isValid_DESC = '_isValid_DESC',
-  _publicationScheduledAt_ASC = '_publicationScheduledAt_ASC',
-  _publicationScheduledAt_DESC = '_publicationScheduledAt_DESC',
-  _publishedAt_ASC = '_publishedAt_ASC',
-  _publishedAt_DESC = '_publishedAt_DESC',
-  _status_ASC = '_status_ASC',
-  _status_DESC = '_status_DESC',
-  _unpublishingScheduledAt_ASC = '_unpublishingScheduledAt_ASC',
-  _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
-  _updatedAt_ASC = '_updatedAt_ASC',
-  _updatedAt_DESC = '_updatedAt_DESC',
-  email_ASC = 'email_ASC',
-  email_DESC = 'email_DESC',
-  id_ASC = 'id_ASC',
-  id_DESC = 'id_DESC',
-  name_ASC = 'name_ASC',
-  name_DESC = 'name_DESC',
-  position_ASC = 'position_ASC',
-  position_DESC = 'position_DESC'
-}
-
-type StaffModelTextField = {
-  __typename?: 'StaffModelTextField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type StaffModelTextFieldMultiLocaleField = {
-  __typename?: 'StaffModelTextFieldMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<StaffModelTextField>;
-};
-
-/** Record of type Staff (staff) */
-type StaffRecord = RecordInterface & {
-  __typename?: 'StaffRecord';
-  _allTextLocales?: Maybe<Array<StaffModelTextFieldMultiLocaleField>>;
-  _createdAt: Scalars['DateTime']['output'];
-  /** Editing URL */
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt: Scalars['DateTime']['output'];
-  _isValid: Scalars['BooleanType']['output'];
-  _locales: Array<SiteLocale>;
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt: Scalars['DateTime']['output'];
-  /** Generates SEO and Social card meta tags to be used in your frontend */
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  email?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ItemId']['output'];
-  image?: Maybe<FileField>;
-  name?: Maybe<Scalars['String']['output']>;
-  position?: Maybe<Scalars['IntType']['output']>;
-  text?: Maybe<StaffModelTextField>;
-};
-
-
-/** Record of type Staff (staff) */
-type StaffRecord_allTextLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Staff (staff) */
-type StaffRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Staff (staff) */
-type StaffRecordtextArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-type StartModelJobsHeadlineField = {
-  __typename?: 'StartModelJobsHeadlineField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type StartModelJobsHeadlineFieldMultiLocaleField = {
-  __typename?: 'StartModelJobsHeadlineFieldMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<StartModelJobsHeadlineField>;
-};
-
-type StartModelJobsTextField = {
-  __typename?: 'StartModelJobsTextField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type StartModelJobsTextFieldMultiLocaleField = {
-  __typename?: 'StartModelJobsTextFieldMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<StartModelJobsTextField>;
-};
-
-type StartModelTextHeadlineField = {
-  __typename?: 'StartModelTextHeadlineField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type StartModelTextHeadlineFieldMultiLocaleField = {
-  __typename?: 'StartModelTextHeadlineFieldMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<StartModelTextHeadlineField>;
-};
-
-type StartModelTextTextField = {
-  __typename?: 'StartModelTextTextField';
-  blocks: Array<Scalars['String']['output']>;
-  inlineBlocks: Array<Scalars['String']['output']>;
-  links: Array<Scalars['String']['output']>;
-  value: Scalars['JsonField']['output'];
-};
-
-type StartModelTextTextFieldMultiLocaleField = {
-  __typename?: 'StartModelTextTextFieldMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<StartModelTextTextField>;
-};
 
 /** Record of type Start (start) */
 type StartRecord = RecordInterface & {
   __typename?: 'StartRecord';
-  _allFooterLocales?: Maybe<Array<FooterRecordMultiLocaleField>>;
-  _allHeaderLocales?: Maybe<Array<HeaderRecordNonNullMultiLocaleField>>;
-  _allJobsHeadlineLocales?: Maybe<Array<StartModelJobsHeadlineFieldMultiLocaleField>>;
-  _allJobsTextLocales?: Maybe<Array<StartModelJobsTextFieldMultiLocaleField>>;
-  _allNewsHeadlineLocales?: Maybe<Array<StringMultiLocaleField>>;
-  _allNewsLocales?: Maybe<Array<NewsRecordListListNonNullMultiLocaleField>>;
-  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
-  _allShortcutsLocales?: Maybe<Array<ShortcutRecordListListNonNullMultiLocaleField>>;
-  _allTextHeadlineLocales?: Maybe<Array<StartModelTextHeadlineFieldMultiLocaleField>>;
-  _allTextTextLocales?: Maybe<Array<StartModelTextTextFieldMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
   _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
-  _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _publishedAt: Scalars['DateTime']['output'];
@@ -4026,153 +2450,13 @@ type StartRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  footer?: Maybe<FooterRecord>;
-  header: HeaderRecord;
   id: Scalars['ItemId']['output'];
-  jobsHeadline?: Maybe<StartModelJobsHeadlineField>;
-  jobsImage?: Maybe<FileField>;
-  jobsText?: Maybe<StartModelJobsTextField>;
-  news: Array<NewsRecord>;
-  newsHeadline?: Maybe<Scalars['String']['output']>;
-  seoMeta: SeoRecord;
-  shortcuts: Array<ShortcutRecord>;
-  textHeadline?: Maybe<StartModelTextHeadlineField>;
-  textText?: Maybe<StartModelTextTextField>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecord_allFooterLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecord_allHeaderLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecord_allJobsHeadlineLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecord_allJobsTextLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecord_allNewsHeadlineLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecord_allNewsLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecord_allSeoMetaLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecord_allShortcutsLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecord_allTextHeadlineLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecord_allTextTextLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
 /** Record of type Start (start) */
 type StartRecord_seoMetaTagsArgs = {
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecordfooterArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecordheaderArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecordjobsHeadlineArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecordjobsTextArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecordnewsArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecordnewsHeadlineArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecordseoMetaArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecordshortcutsArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecordtextHeadlineArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  locale?: InputMaybe<SiteLocale>;
-};
-
-
-/** Record of type Start (start) */
-type StartRecordtextTextArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -4188,58 +2472,10 @@ type StatusFilter = {
   notIn?: InputMaybe<Array<InputMaybe<ItemStatus>>>;
 };
 
-/** Specifies how to filter Single-line string fields */
-type StringFilter = {
-  /** Search for records with an exact match */
-  eq?: InputMaybe<Scalars['String']['input']>;
-  /** Filter records with the specified field defined (i.e. with any value) or not [DEPRECATED] */
-  exists?: InputMaybe<Scalars['BooleanType']['input']>;
-  /** Filter records that equal one of the specified values */
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** Filter records with the specified field set as blank (null or empty string) */
-  isBlank?: InputMaybe<Scalars['BooleanType']['input']>;
-  /** Filter records with the specified field present (neither null, nor empty string) */
-  isPresent?: InputMaybe<Scalars['BooleanType']['input']>;
-  /** Filter records based on a regular expression */
-  matches?: InputMaybe<StringMatchesFilter>;
-  /** Exclude records with an exact match */
-  neq?: InputMaybe<Scalars['String']['input']>;
-  /** Filter records that do not equal one of the specified values */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** Exclude records based on a regular expression */
-  notMatches?: InputMaybe<StringMatchesFilter>;
-};
-
 type StringMatchesFilter = {
   caseSensitive?: InputMaybe<Scalars['BooleanType']['input']>;
   pattern: Scalars['String']['input'];
   regexp?: InputMaybe<Scalars['BooleanType']['input']>;
-};
-
-type StringMultiLocaleField = {
-  __typename?: 'StringMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value?: Maybe<Scalars['String']['output']>;
-};
-
-type StringNonNullMultiLocaleField = {
-  __typename?: 'StringNonNullMultiLocaleField';
-  locale?: Maybe<SiteLocale>;
-  value: Scalars['String']['output'];
-};
-
-/** Specifies how to filter Structured Text fields values */
-type StructuredTextFilter = {
-  /** Filter records with the specified field defined (i.e. with any value) or not [DEPRECATED] */
-  exists?: InputMaybe<Scalars['BooleanType']['input']>;
-  /** Filter records with the specified field set as blank (null or single empty paragraph) */
-  isBlank?: InputMaybe<Scalars['BooleanType']['input']>;
-  /** Filter records with the specified field present (neither null, nor empty string) */
-  isPresent?: InputMaybe<Scalars['BooleanType']['input']>;
-  /** Filter records based on a regular expression */
-  matches?: InputMaybe<StringMatchesFilter>;
-  /** Exclude records based on a regular expression */
-  notMatches?: InputMaybe<StringMatchesFilter>;
 };
 
 type Tag = {
@@ -4249,16 +2485,22 @@ type Tag = {
   tag: Scalars['String']['output'];
 };
 
-/** Record of type Test (test) */
-type TestRecord = RecordInterface & {
-  __typename?: 'TestRecord';
-  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
+type TextAndImageModelTextField = {
+  __typename?: 'TextAndImageModelTextField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+/** Block of type Text och bild (text_and_image) */
+type TextAndImageRecord = RecordInterface & {
+  __typename?: 'TextAndImageRecord';
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
   _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
-  _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _publishedAt: Scalars['DateTime']['output'];
@@ -4267,27 +2509,41 @@ type TestRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  color?: Maybe<ColorField>;
+  color?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
-  title?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  media: Array<FileField>;
+  text?: Maybe<TextAndImageModelTextField>;
 };
 
 
-/** Record of type Test (test) */
-type TestRecord_allTitleLocalesArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-};
-
-
-/** Record of type Test (test) */
-type TestRecord_seoMetaTagsArgs = {
+/** Block of type Text och bild (text_and_image) */
+type TextAndImageRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
+/** Block of type Två spalter (two_column) */
+type TwoColumnRecord = RecordInterface & {
+  __typename?: 'TwoColumnRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+};
 
-/** Record of type Test (test) */
-type TestRecordtitleArgs = {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+
+/** Block of type Två spalter (two_column) */
+type TwoColumnRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -4690,56 +2946,14 @@ type focalPoint = {
   y: Scalars['FloatType']['output'];
 };
 
-type AboutQueryVariables = Exact<{
+type FooterQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
 }>;
 
 
-type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutRecord', title?: string | null, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, sections: Array<{ __typename?: 'SectionRecord', id: any, sectionId?: string | null, headline?: { __typename?: 'SectionModelHeadlineField', blocks: Array<string>, links: Array<string>, inlineBlocks: Array<string>, value: any } | null, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ExpandableListRecord', id: any, items: Array<{ __typename?: 'ExpandableListItemRecord', id: any, title?: string | null, text?: { __typename?: 'ExpandableListItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, referenceProject?: { __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null }>, footer: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null }, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } } | null, allStaffs: Array<{ __typename?: 'StaffRecord', id: any, name?: string | null, email?: string | null, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, text?: { __typename?: 'StaffModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> };
-
-type ClientQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type ClientQuery = { __typename?: 'Query', client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null };
-
-type AllClientsQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['IntType']['input']>;
-  skip?: InputMaybe<Scalars['IntType']['input']>;
-}>;
-
-
-type AllClientsQuery = { __typename?: 'Query', allClients: Array<{ __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }>, _allClientsMeta: { __typename?: 'CollectionMetadata', count: any } };
-
-type ClientFragment = { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null };
-
-type ClientLightFragment = { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null };
-
-type ContactQueryVariables = Exact<{
-  locale?: InputMaybe<SiteLocale>;
-}>;
-
-
-type ContactQuery = { __typename?: 'Query', contact?: { __typename?: 'ContactRecord', title?: string | null, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, sections: Array<{ __typename?: 'SectionRecord', id: any, sectionId?: string | null, headline?: { __typename?: 'SectionModelHeadlineField', blocks: Array<string>, links: Array<string>, inlineBlocks: Array<string>, value: any } | null, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ExpandableListRecord', id: any, items: Array<{ __typename?: 'ExpandableListItemRecord', id: any, title?: string | null, text?: { __typename?: 'ExpandableListItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, referenceProject?: { __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null }>, footer: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null }, seoMeta: { __typename?: 'SeoRecord', id: any, title?: string | null, description?: string | null } } | null };
-
-type FileFragment = { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string };
-
-type FooterFragment = { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null };
-
-type HeaderFragment = { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null };
+type FooterQuery = { __typename?: 'Query', footer?: { __typename?: 'FooterRecord', text?: string | null } | null };
 
 type ImageFragment = { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null };
-
-type ImageSquareFragment = { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null };
-
-type ImageThumbnailFragment = { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null };
-
-type ImageWideFragment = { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null };
-
-type MediaFragment = { __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null };
-
-type SectionFragment = { __typename?: 'SectionRecord', id: any, sectionId?: string | null, headline?: { __typename?: 'SectionModelHeadlineField', blocks: Array<string>, links: Array<string>, inlineBlocks: Array<string>, value: any } | null, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ExpandableListRecord', id: any, items: Array<{ __typename?: 'ExpandableListItemRecord', id: any, title?: string | null, text?: { __typename?: 'ExpandableListItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, referenceProject?: { __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null };
-
-type ShortcutFragment = { __typename?: 'ShortcutRecord', id: any, linkText?: string | null, sectionId?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, headline?: { __typename?: 'ShortcutModelHeadlineField', value: any, blocks: Array<string>, links: Array<string> } | null, text?: { __typename?: 'ShortcutModelTextField', value: any, blocks: Array<string>, links: Array<string> } | null };
 
 type SiteFragment = { __typename?: 'Site', locales: Array<SiteLocale>, faviconMetaTags: Array<{ __typename?: 'Tag', attributes?: any | null, content?: string | null, tag: string }>, globalSeo?: { __typename?: 'GlobalSeoField', facebookPageUrl?: string | null, siteName?: string | null, titleSuffix?: string | null, twitterAccount?: string | null, fallbackSeo?: { __typename?: 'SeoField', description?: string | null, title?: string | null, twitterCard?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null };
 
@@ -4750,108 +2964,9 @@ type GlobalQueryVariables = Exact<{
 
 type GlobalQuery = { __typename?: 'Query', site: { __typename?: 'Site', locales: Array<SiteLocale>, faviconMetaTags: Array<{ __typename?: 'Tag', attributes?: any | null, content?: string | null, tag: string }>, globalSeo?: { __typename?: 'GlobalSeoField', facebookPageUrl?: string | null, siteName?: string | null, titleSuffix?: string | null, twitterAccount?: string | null, fallbackSeo?: { __typename?: 'SeoField', description?: string | null, title?: string | null, twitterCard?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null } };
 
-type JoinQueryVariables = Exact<{
-  locale?: InputMaybe<SiteLocale>;
-}>;
-
-
-type JoinQuery = { __typename?: 'Query', join?: { __typename?: 'JoinRecord', title?: string | null, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, sections: Array<{ __typename?: 'SectionRecord', id: any, sectionId?: string | null, headline?: { __typename?: 'SectionModelHeadlineField', blocks: Array<string>, links: Array<string>, inlineBlocks: Array<string>, value: any } | null, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ExpandableListRecord', id: any, items: Array<{ __typename?: 'ExpandableListItemRecord', id: any, title?: string | null, text?: { __typename?: 'ExpandableListItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, referenceProject?: { __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null }>, footer: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null }, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } } | null };
-
-type JoinFragment = { __typename?: 'JoinRecord', title?: string | null, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, sections: Array<{ __typename?: 'SectionRecord', id: any, sectionId?: string | null, headline?: { __typename?: 'SectionModelHeadlineField', blocks: Array<string>, links: Array<string>, inlineBlocks: Array<string>, value: any } | null, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ExpandableListRecord', id: any, items: Array<{ __typename?: 'ExpandableListItemRecord', id: any, title?: string | null, text?: { __typename?: 'ExpandableListItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, referenceProject?: { __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null }>, footer: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null }, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } };
-
-type OfferQueryVariables = Exact<{
-  locale?: InputMaybe<SiteLocale>;
-}>;
-
-
-type OfferQuery = { __typename?: 'Query', offer?: { __typename?: 'OfferRecord', title?: string | null, footer: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null }, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, sections: Array<{ __typename?: 'SectionRecord', id: any, sectionId?: string | null, headline?: { __typename?: 'SectionModelHeadlineField', blocks: Array<string>, links: Array<string>, inlineBlocks: Array<string>, value: any } | null, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ExpandableListRecord', id: any, items: Array<{ __typename?: 'ExpandableListItemRecord', id: any, title?: string | null, text?: { __typename?: 'ExpandableListItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, referenceProject?: { __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null }>, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } } | null };
-
-type OfferFragment = { __typename?: 'OfferRecord', title?: string | null, footer: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null }, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, sections: Array<{ __typename?: 'SectionRecord', id: any, sectionId?: string | null, headline?: { __typename?: 'SectionModelHeadlineField', blocks: Array<string>, links: Array<string>, inlineBlocks: Array<string>, value: any } | null, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ExpandableListRecord', id: any, items: Array<{ __typename?: 'ExpandableListItemRecord', id: any, title?: string | null, text?: { __typename?: 'ExpandableListItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, referenceProject?: { __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null }>, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } };
-
-type ProjectQueryVariables = Exact<{
-  locale?: InputMaybe<SiteLocale>;
-  slug?: InputMaybe<Scalars['String']['input']>;
-}>;
-
-
-type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'ProjectRecord', title?: string | null, slug: string, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null, what?: { __typename?: 'ProjectModelWhatField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, why?: { __typename?: 'ProjectModelWhyField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, result?: { __typename?: 'ProjectModelResultField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, seoMeta: { __typename?: 'SeoRecord', id: any, title?: string | null, description?: string | null } } | null };
-
-type AllProjectsQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['IntType']['input']>;
-  skip?: InputMaybe<Scalars['IntType']['input']>;
-  locale?: InputMaybe<SiteLocale>;
-}>;
-
-
-type AllProjectsQuery = { __typename?: 'Query', allProjects: Array<{ __typename?: 'ProjectRecord', title?: string | null, slug: string, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null, what?: { __typename?: 'ProjectModelWhatField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, why?: { __typename?: 'ProjectModelWhyField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, result?: { __typename?: 'ProjectModelResultField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, seoMeta: { __typename?: 'SeoRecord', id: any, title?: string | null, description?: string | null } }>, _allProjectsMeta: { __typename?: 'CollectionMetadata', count: any } };
-
-type ProjectFooterQueryVariables = Exact<{
-  locale?: InputMaybe<SiteLocale>;
-}>;
-
-
-type ProjectFooterQuery = { __typename?: 'Query', projectFooter?: { __typename?: 'ProjectFooterRecord', footer: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null } } | null };
-
-type ProjectFragment = { __typename?: 'ProjectRecord', title?: string | null, slug: string, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null, what?: { __typename?: 'ProjectModelWhatField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, why?: { __typename?: 'ProjectModelWhyField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, result?: { __typename?: 'ProjectModelResultField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, seoMeta: { __typename?: 'SeoRecord', id: any, title?: string | null, description?: string | null } };
-
-type ProjectLightFragment = { __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null };
-
-type ShowcaseQueryVariables = Exact<{
-  locale?: InputMaybe<SiteLocale>;
-}>;
-
-
-type ShowcaseQuery = { __typename?: 'Query', showcase?: { __typename?: 'ShowcaseRecord', title?: string | null, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, sections: Array<{ __typename?: 'SectionRecord', id: any, sectionId?: string | null, headline?: { __typename?: 'SectionModelHeadlineField', blocks: Array<string>, links: Array<string>, inlineBlocks: Array<string>, value: any } | null, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ExpandableListRecord', id: any, items: Array<{ __typename?: 'ExpandableListItemRecord', id: any, title?: string | null, text?: { __typename?: 'ExpandableListItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, referenceProject?: { __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null }>, footer?: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null } | null, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } } | null };
-
-type ShowcaseFooterQueryVariables = Exact<{
-  locale?: InputMaybe<SiteLocale>;
-}>;
-
-
-type ShowcaseFooterQuery = { __typename?: 'Query', showcase?: { __typename?: 'ShowcaseRecord', footer?: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null } | null } | null };
-
-type ShowcaseFragment = { __typename?: 'ShowcaseRecord', title?: string | null, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, sections: Array<{ __typename?: 'SectionRecord', id: any, sectionId?: string | null, headline?: { __typename?: 'SectionModelHeadlineField', blocks: Array<string>, links: Array<string>, inlineBlocks: Array<string>, value: any } | null, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ExpandableListRecord', id: any, items: Array<{ __typename?: 'ExpandableListItemRecord', id: any, title?: string | null, text?: { __typename?: 'ExpandableListItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, referenceProject?: { __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null }>, footer?: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null } | null, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } };
-
-type AllShowcaseProjectsQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['IntType']['input']>;
-  skip?: InputMaybe<Scalars['IntType']['input']>;
-  locale?: InputMaybe<SiteLocale>;
-  slug?: InputMaybe<Scalars['String']['input']>;
-}>;
-
-
-type AllShowcaseProjectsQuery = { __typename?: 'Query', allProjects: Array<{ __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null }>, _allProjectsMeta: { __typename?: 'CollectionMetadata', count: any } };
-
-type StaffQueryVariables = Exact<{
-  locale?: InputMaybe<SiteLocale>;
-}>;
-
-
-type StaffQuery = { __typename?: 'Query', staff?: { __typename?: 'StaffRecord', id: any, name?: string | null, email?: string | null, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, text?: { __typename?: 'StaffModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | null };
-
-type AllStaffQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['IntType']['input']>;
-  skip?: InputMaybe<Scalars['IntType']['input']>;
-  locale?: InputMaybe<SiteLocale>;
-}>;
-
-
-type AllStaffQuery = { __typename?: 'Query', allStaffs: Array<{ __typename?: 'StaffRecord', id: any, name?: string | null, email?: string | null, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, text?: { __typename?: 'StaffModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }>, _allStaffsMeta: { __typename?: 'CollectionMetadata', count: any } };
-
-type StaffFragment = { __typename?: 'StaffRecord', id: any, name?: string | null, email?: string | null, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, text?: { __typename?: 'StaffModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null };
-
 type StartQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
 }>;
 
 
-type StartQuery = { __typename?: 'Query', start?: { __typename?: 'StartRecord', newsHeadline?: string | null, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, footer?: { __typename?: 'FooterRecord', buttonText?: string | null, id: any, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null } | null, jobsImage?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, jobsText?: { __typename?: 'StartModelJobsTextField', blocks: Array<string>, links: Array<string>, value: any } | null, jobsHeadline?: { __typename?: 'StartModelJobsHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, shortcuts: Array<{ __typename?: 'ShortcutRecord', id: any, linkText?: string | null, sectionId?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, headline?: { __typename?: 'ShortcutModelHeadlineField', value: any, blocks: Array<string>, links: Array<string> } | null, text?: { __typename?: 'ShortcutModelTextField', value: any, blocks: Array<string>, links: Array<string> } | null }>, textHeadline?: { __typename?: 'StartModelTextHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, textText?: { __typename?: 'StartModelTextTextField', blocks: Array<string>, links: Array<string>, value: any } | null, news: Array<{ __typename?: 'NewsRecord', id: any, text?: string | null, url: string }>, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } } | null };
-
-type StartFragment = { __typename?: 'StartRecord', newsHeadline?: string | null, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, footer?: { __typename?: 'FooterRecord', buttonText?: string | null, id: any, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null } | null, jobsImage?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, jobsText?: { __typename?: 'StartModelJobsTextField', blocks: Array<string>, links: Array<string>, value: any } | null, jobsHeadline?: { __typename?: 'StartModelJobsHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, shortcuts: Array<{ __typename?: 'ShortcutRecord', id: any, linkText?: string | null, sectionId?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, headline?: { __typename?: 'ShortcutModelHeadlineField', value: any, blocks: Array<string>, links: Array<string> } | null, text?: { __typename?: 'ShortcutModelTextField', value: any, blocks: Array<string>, links: Array<string> } | null }>, textHeadline?: { __typename?: 'StartModelTextHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, textText?: { __typename?: 'StartModelTextTextField', blocks: Array<string>, links: Array<string>, value: any } | null, news: Array<{ __typename?: 'NewsRecord', id: any, text?: string | null, url: string }>, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } };
-
-type TestQueryVariables = Exact<{
-  locale: SiteLocale;
-}>;
-
-
-type TestQuery = { __typename?: 'Query', test?: { __typename?: 'TestRecord', title?: string | null, color?: { __typename?: 'ColorField', hex: string } | null } | null };
+type StartQuery = { __typename?: 'Query', start?: { __typename?: 'StartRecord', title?: string | null } | null };

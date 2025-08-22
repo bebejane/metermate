@@ -1,7 +1,7 @@
 import '@/styles/index.scss';
 import s from './layout.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
-import { GlobalDocument } from '@/graphql';
+import { FooterDocument, GlobalDocument } from '@/graphql';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
 import { buildMenu } from '@/lib/menu';
@@ -13,6 +13,7 @@ import { Suspense } from 'react';
 import { getPathname, routing } from '@/i18n/routing';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import FullscreenGallery from '@/components/common/FullscreenGallery';
+import Footer from '@/components/layout/Footer';
 
 export type LayoutProps = {
 	children: React.ReactNode;
@@ -23,6 +24,11 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
+	const { footer } = await apiQuery<FooterQuery, FooterQueryVariables>(FooterDocument, {
+		variables: {
+			locale,
+		},
+	});
 	const menu = await buildMenu(locale);
 
 	return (
@@ -30,17 +36,13 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 			<html lang={locale === 'sv' ? 'se-SE' : 'en-US'}>
 				<body>
 					<NextIntlClientProvider locale={locale}>
-						<Suspense fallback={null}>
-							<Navbar menu={menu} />
-							<NavbarMobile menu={menu} />
-							<main className={s.main}>{children}</main>
-							<FullscreenGallery />
-						</Suspense>
+						<Navbar menu={menu} />
+						<NavbarMobile menu={menu} />
+						<main className={s.main}>{children}</main>
+						<Footer footer={footer} />
 					</NextIntlClientProvider>
-					<div id='page-transition' />
-					<div id='page-fade-transition' />
 				</body>
-				<GoogleAnalytics gaId='G-3YJRN86MF7' />
+				{/*<GoogleAnalytics gaId='G-3YJRN86MF7' />*/}
 			</html>
 		</>
 	);
@@ -115,25 +117,25 @@ export async function buildMetadata({
 			url,
 			images: image
 				? [
-					{
-						url: `${image?.url}?w=1200&h=630&fit=fill&q=80`,
-						width: 800,
-						height: 600,
-						alt: title,
-					},
-					{
-						url: `${image?.url}?w=1600&h=800&fit=fill&q=80`,
-						width: 1600,
-						height: 800,
-						alt: title,
-					},
-					{
-						url: `${image?.url}?w=790&h=627&fit=crop&q=80`,
-						width: 790,
-						height: 627,
-						alt: title,
-					},
-				]
+						{
+							url: `${image?.url}?w=1200&h=630&fit=fill&q=80`,
+							width: 800,
+							height: 600,
+							alt: title,
+						},
+						{
+							url: `${image?.url}?w=1600&h=800&fit=fill&q=80`,
+							width: 1600,
+							height: 800,
+							alt: title,
+						},
+						{
+							url: `${image?.url}?w=790&h=627&fit=crop&q=80`,
+							width: 790,
+							height: 627,
+							alt: title,
+						},
+					]
 				: undefined,
 			locale: locale === 'sv' ? 'sv_SE' : 'en_US',
 			type: 'website',

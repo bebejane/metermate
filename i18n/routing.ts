@@ -11,23 +11,20 @@ export const routing = defineRouting({
 	localeDetection: false,
 	pathnames: {
 		'/': '/',
-		'/erbjudande': {
-			en: '/offer',
+		'/produkter': {
+			en: '/products',
 		},
-		'/kontakt': {
-			en: '/contact',
+		'/referenser': {
+			en: '/references',
 		},
-		'/projekt': {
-			en: '/projects',
+		'/partners': {
+			en: '/partners',
 		},
-		'/projekt/[project]': {
-			en: '/projects/[project]',
+		'/support': {
+			en: '/support',
 		},
-		'/om-oss': {
+		'/om': {
 			en: '/about-us',
-		},
-		'/bli-en-av-oss': {
-			en: '/join-us',
 		},
 	},
 });

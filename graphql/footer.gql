@@ -1,0 +1,5 @@
+query Footer($locale: SiteLocale) {
+	footer(locale: $locale, fallbackLocales: [sv]) {
+		text
+	}
+}

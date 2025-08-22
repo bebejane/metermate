@@ -8,10 +8,11 @@
 	align-items: center;
 	height: var(--navbar-height);
 	padding: var(--outer-margin);
+	background-color: var(--gray);
+	color: var(--white);
 	padding-top: calc(0.5 * var(--outer-margin));
 	padding-bottom: calc(0.5 * var(--outer-margin));
 	z-index: var(--z-navbar);
-	backdrop-filter: var(--blur);
 
 	&.bottom {
 		position: relative;
@@ -37,9 +38,12 @@
 			padding-right: 1.5rem;
 			position: relative;
 
+			a {
+				color: var(--white);
+			}
 			&.active > *,
 			& a:hover {
-				color: var(--red) !important;
+				color: var(--green) !important;
 			}
 		}
 
@@ -54,23 +58,7 @@
 			padding-right: 0.2em;
 		}
 
-		a:hover {
-			color: var(--darkred);
-		}
-
 		li {
-			transition: var(--color-transtion);
-			white-space: nowrap;
-			&::after {
-				position: absolute;
-				content: " ";
-				margin-left: 0.1rem;
-			}
-
-			&:hover,
-			&.active {
-				color: var(--darkred) !important;
-			}
 		}
 	}
 	@include mq($until: desktop) {

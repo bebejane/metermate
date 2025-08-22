@@ -1,24 +1,32 @@
 {
 	"menu": {
-		"offer": {
-			"en": "What we offer",
-			"sv": "Vårt erbjudande"
+		"products": {
+			"en": "Products",
+			"sv": "Produkter"
 		},
-		"projects": {
-			"en": "Projects",
-			"sv": "Projekt"
+		"references": {
+			"en": "References",
+			"sv": "Referenser"
+		},
+		"partners": {
+			"en": "Partners",
+			"sv": "Partner"
+		},
+		"support": {
+			"en": "Support",
+			"sv": "Support"
 		},
 		"about": {
 			"en": "About us",
 			"sv": "Om oss"
 		},
-		"join": {
-			"en": "Join us",
-			"sv": "Bli en av oss"
+		"login": {
+			"en": "Login",
+			"sv": "Logga in"
 		},
-		"contact": {
-			"en": "Contact",
-			"sv": "Kontakt"
+		"language": {
+			"en": "Swedish",
+			"sv": "English"
 		}
 	},
 	"Start": {

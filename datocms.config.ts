@@ -61,62 +61,12 @@ export default {
 	},
 	routes,
 	sitemap: async (locale = 'sv') => {
-		const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(AllProjectsDocument, {
-			all: true,
-			variables: { locale: locale as SiteLocale },
-		});
-
-		return [
-			{
-				url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
-				lastModified: new Date().toISOString(),
-				changeFrequency: 'daily',
-				priority: 1,
-			},
-			{
-				url: `${process.env.NEXT_PUBLIC_SITE_URL}/kontakt`,
-				lastModified: new Date().toISOString(),
-				changeFrequency: 'monthly',
-				priority: 0.7,
-			},
-			{
-				url: `${process.env.NEXT_PUBLIC_SITE_URL}/erbjudande`,
-				lastModified: new Date().toISOString(),
-				changeFrequency: 'weekly',
-				priority: 0.8,
-			},
-			{
-				url: `${process.env.NEXT_PUBLIC_SITE_URL}/om-oss`,
-				lastModified: new Date().toISOString(),
-				changeFrequency: 'weekly',
-				priority: 0.8,
-			},
-			{
-				url: `${process.env.NEXT_PUBLIC_SITE_URL}/bli-en-av-oss`,
-				lastModified: new Date().toISOString(),
-				changeFrequency: 'weekly',
-				priority: 0.8,
-			},
-			{
-				url: `${process.env.NEXT_PUBLIC_SITE_URL}/projekt`,
-				lastModified: new Date().toISOString(),
-				changeFrequency: 'weekly',
-				priority: 0.8,
-			},
-			...allProjects
-				.map(({ slug }) =>
-					getPathname({
-						locale,
-						href: { pathname: `/projekt/[project]`, params: { project: slug } },
-					})
-				)
-				.map((p) => ({
-					url: `${process.env.NEXT_PUBLIC_SITE_URL}${p}`,
-					lastModified: new Date().toISOString(),
-					changeFrequency: 'weekly',
-					priority: 0.8,
-				})),
-		];
+		return ['/projekt'].map((p) => ({
+			url: `${process.env.NEXT_PUBLIC_SITE_URL}${p}`,
+			lastModified: new Date().toISOString(),
+			changeFrequency: 'weekly',
+			priority: 0.8,
+		}));
 	},
 } satisfies DatoCmsConfig;
 
