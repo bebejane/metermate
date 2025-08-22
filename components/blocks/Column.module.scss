@@ -4,6 +4,16 @@
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+
+	&.green {
+		background-color: var(--green);
+		color: var(--white);
+	}
+	&.gray {
+		background-color: var(--gray);
+		color: var(--white);
+	}
+
 	figure {
 		flex: 0 0 50%;
 
