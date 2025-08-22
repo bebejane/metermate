@@ -46,10 +46,10 @@
 	--z-page-transition: 900;
 	--z-fade-transition: 901;
 
-	--body-font: "Jost", Times, Serif;
-	--headline-font: "Montserrat", Arial, Helvetica, Sans-Serif;
-	--label-font: "Montserrat-Medium", Arial, Sans-serif;
-	--sans-font: "Montserrat", Arial, Sans-serif;
+	--body-font: "Jost", Helvetica, Arial, Sans-Serif;
+	--headline-font: --body-font;
+	--label-font: --body-font;
+	--sans-font: --body-font;
 
 	@include mq($until: desktop) {
 		--font-weight-light: "wght" 350;

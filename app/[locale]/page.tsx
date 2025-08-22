@@ -42,14 +42,18 @@ export default async function Home({ params }: PageProps) {
 					</header>
 				</section>
 				<section className={s.appdownload}>
-					<Image data={start.image.responsiveImage} className={s.image} />
+					<figure>
+						<Image data={start.image.responsiveImage} className={s.image} />
+					</figure>
 					<h3>{start.textApp}</h3>
-					<Link href={start.ios}>
-						<img className={s.store} src='/images/icon-appstore.png' alt='App Store' />
-					</Link>
-					<Link href={start.android}>
-						<img className={s.store} src='/images/icon-playstore.png' alt='Google Play' />
-					</Link>
+					<div>
+						<Link href={start.ios}>
+							<img className={s.store} src='/images/icon-appstore.png' alt='App Store' />
+						</Link>
+						<Link href={start.android}>
+							<img className={s.store} src='/images/icon-playstore.png' alt='Google Play' />
+						</Link>
+					</div>
 				</section>
 				<section className={s.products}>
 					<header>

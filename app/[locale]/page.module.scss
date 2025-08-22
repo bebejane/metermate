@@ -1,7 +1,7 @@
 .hero {
 	position: relative;
 	width: 100vw;
-	height: 100vh;
+	height: calc(100vh - 2 * var(--navbar-height));
 	margin-left: calc(-1 * var(--outer-margin));
 	margin-right: calc(-1 * var(--outer-margin));
 	overflow: hidden;
@@ -26,7 +26,7 @@
 		justify-content: center;
 		align-items: center;
 		padding: var(--outer-margin);
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: rgba(0, 0, 0, 0);
 		color: var(--white);
 		.title {
 			font-size: 2rem;
@@ -39,10 +39,19 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
+	height: var(--navbar-height);
+	width: 100%;
 
-	.image {
+	figure {
+		width: 15rem;
+		height: var(--navbar-height);
+		display: flex;
+		img {
+			object-fit: cover;
+		}
 	}
+
 	.store {
 		margin-left: 0.5rem;
 	}
