@@ -62,7 +62,7 @@ fragment StartFragment on StartRecord {
 					}
 					layout {
 						... on TwoColumnRecord {
-							spalter {
+							columns {
 								... on ColumnRecord {
 									color
 									image {

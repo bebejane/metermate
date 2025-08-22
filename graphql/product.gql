@@ -1,5 +1,5 @@
-query Product($locale: SiteLocale) {
-	product(locale: $locale, fallbackLocales: [sv]) {
+query Product($slug: String, $locale: SiteLocale) {
+	product(locale: $locale, fallbackLocales: [sv], filter: { slug: { eq: $slug } }) {
 		...ProductFragment
 	}
 }
@@ -19,8 +19,9 @@ fragment ProductFragment on ProductRecord {
 		...ImageFragment
 	}
 	layout {
+		__typename
 		... on TwoColumnRecord {
-			spalter {
+			columns {
 				... on ColumnRecord {
 					color
 					image {
@@ -36,6 +37,14 @@ fragment ProductFragment on ProductRecord {
 				...MediaFragment
 			}
 		}
+		... on CtaRecord {
+			id
+			text {
+				blocks
+				links
+				value
+			}
+		}
 	}
 	title
 }
@@ -45,8 +54,9 @@ fragment ProductLightFragment on ProductRecord {
 		...ImageFragment
 	}
 	layout {
+		__typename
 		... on TwoColumnRecord {
-			spalter {
+			columns {
 				... on ColumnRecord {
 					color
 					image {

@@ -1,7 +1,9 @@
 export { default as Block } from './Block';
 export { default as Image } from './Image';
-export { default as VideoExternal } from './VideoExternal';
-export { default as VideoInternal } from './VideoInternal';
 export { default as ExpandableList } from './ExpandableList';
 export { default as ImageGallery } from './ImageGallery';
 export { default as Button } from './Button';
+export { default as Shortcut } from './Shortcut';
+export { default as Column } from './Column';
+export { default as TwoColumn } from './TwoColumn';
+export { default as TextAndImage } from './TextAndImage';
