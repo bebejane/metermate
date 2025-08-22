@@ -36,7 +36,7 @@ export default function NewsTicker({ headline, news }: Props) {
 
 	return (
 		<Link className={s.news} target='_blank' rel='noopener noreferrer' href={newsItem?.url}>
-			<h5>{headline}</h5>
+			<h4>{headline}</h4>
 			<AnimatePresence mode={'wait'}>
 				<motion.h3
 					key={index}

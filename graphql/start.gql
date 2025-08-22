@@ -20,17 +20,25 @@ fragment StartFragment on StartRecord {
 	ios
 	news {
 		... on NewsBlockRecord {
-			link
+			url
 			text
 		}
 	}
 	shortcut {
 		... on ShortcutRecord {
+			__typename
+			id
 			color
+			text {
+				blocks
+				links
+				value
+			}
 			image {
 				...ImageFragment
 			}
 			link {
+				__typename
 				... on AboutRecord {
 					image {
 						...ImageFragment

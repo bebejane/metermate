@@ -1,0 +1,20 @@
+.shortcut {
+	flex: 0 0 50%;
+	padding: var(--outer-margin);
+	&.green {
+		background-color: var(--green);
+		h3 {
+			color: var(--gray);
+		}
+	}
+	&.gray {
+		color: var(--white);
+		background-color: var(--gray);
+		h3 {
+			color: var(--green);
+		}
+	}
+	p {
+		color: var(--white);
+	}
+}

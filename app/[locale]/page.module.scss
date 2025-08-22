@@ -40,4 +40,52 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+
+	.image {
+	}
+	.store {
+		margin-left: 0.5rem;
+	}
+}
+
+.products {
+	width: 100vw;
+	background-color: var(--gray-light);
+	margin-left: calc(-1 * var(--outer-margin));
+	margin-right: calc(-1 * var(--outer-margin));
+	header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		> h3 {
+			flex: 1 1 auto;
+		}
+		.private {
+			text-align: center;
+		}
+	}
+	ul {
+		list-style: none;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		//justify-content: center;
+		li {
+			display: flex;
+			flex-direction: column;
+			img {
+				max-height: 40vh;
+			}
+		}
+	}
+}
+
+.shortcuts {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100vw;
+	margin-left: calc(-1 * var(--outer-margin));
+	margin-right: calc(-1 * var(--outer-margin));
 }
