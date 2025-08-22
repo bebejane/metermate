@@ -3702,7 +3702,14 @@ type focalPoint = {
   y: Scalars['FloatType']['output'];
 };
 
-type VideoFragment = { __typename?: 'VideoFileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } };
+type AboutQueryVariables = Exact<{
+  locale?: InputMaybe<SiteLocale>;
+}>;
+
+
+type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutRecord', title?: string | null, url?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'AboutModelTextField', value: any, links: Array<string>, blocks: Array<{ __typename: 'LinkTextRecord', id: any, text?: string | null, url?: string | null }> } | null } | null };
+
+type AboutFragment = { __typename?: 'AboutRecord', title?: string | null, url?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'AboutModelTextField', value: any, links: Array<string>, blocks: Array<{ __typename: 'LinkTextRecord', id: any, text?: string | null, url?: string | null }> } | null };
 
 type FooterQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -3726,6 +3733,8 @@ type ImageThumbnailFragment = { __typename?: 'FileField', alt?: string | null, b
 type MediaFragment = { __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null };
 
 type SiteFragment = { __typename?: 'Site', faviconMetaTags: Array<{ __typename?: 'Tag', attributes?: any | null, content?: string | null, tag: string }>, globalSeo?: { __typename?: 'GlobalSeoField', facebookPageUrl?: string | null, siteName?: string | null, titleSuffix?: string | null, twitterAccount?: string | null, fallbackSeo?: { __typename?: 'SeoField', description?: string | null, title?: string | null, twitterCard?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null };
+
+type VideoFragment = { __typename?: 'VideoFileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } };
 
 type GlobalQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;

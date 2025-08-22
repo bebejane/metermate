@@ -1,0 +1,25 @@
+query About($locale: SiteLocale) {
+	about(locale: $locale, fallbackLocales: [sv]) {
+		...AboutFragment
+	}
+}
+
+fragment AboutFragment on AboutRecord {
+	image {
+		...ImageFragment
+	}
+	text {
+		value
+		links
+		blocks {
+			__typename
+			... on LinkTextRecord {
+				id
+				text
+				url
+			}
+		}
+	}
+	title
+	url
+}
