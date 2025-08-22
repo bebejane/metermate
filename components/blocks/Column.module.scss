@@ -1,0 +1,29 @@
+.column {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex: 0 0 50%;
+
+	figure {
+		flex: 0 0 50%;
+
+		img {
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+	.text {
+		height: 100%;
+		&.green {
+			background-color: var(--green);
+			color: var(--white);
+			h3 {
+				color: var(--gray);
+			}
+		}
+		&.gray {
+			background-color: var(--gray);
+			color: var(--green);
+		}
+	}
+}

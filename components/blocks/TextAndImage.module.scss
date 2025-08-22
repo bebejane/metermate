@@ -1,0 +1,19 @@
+.textandimage {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	figure {
+		flex: 0 0 50%;
+	}
+	&.right {
+		flex-direction: row-reverse;
+	}
+	&.green {
+		background-color: var(--green);
+	}
+	&.gray {
+		background-color: var(--gray);
+	}
+}

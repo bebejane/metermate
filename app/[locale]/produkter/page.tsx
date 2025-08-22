@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
-import { getPathname } from '@/i18n/routing';
+import { getPathname, Link } from '@/i18n/routing';
 import { Image } from 'react-datocms';
 import { Block } from '@/components/blocks';
 import Article from '@/components/layout/Article';
@@ -24,7 +24,17 @@ export default async function Products({ params }: PageProps) {
 	return (
 		<>
 			<Article>
-				<section></section>
+				<section>
+					<ul>
+						{allProducts.map((product) => (
+							<Link href={`/produkter/${product.slug}`} key={product.id}>
+								<li>
+									<h4>{product.title}</h4>
+								</li>
+							</Link>
+						))}
+					</ul>
+				</section>
 			</Article>
 			<DraftMode url={draftUrl} path={`/`} />
 		</>
