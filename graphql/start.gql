@@ -5,5 +5,105 @@ query Start($locale: SiteLocale) {
 }
 
 fragment StartFragment on StartRecord {
+	android
+	film {
+		...VideoFragment
+	}
+	filmText {
+		... on TextRecord {
+			text
+		}
+	}
+	image {
+		...ImageFragment
+	}
+	ios
+	news {
+		... on NewsBlockRecord {
+			link
+			text
+		}
+	}
+	shortcut {
+		... on ShortcutRecord {
+			color
+			image {
+				...ImageFragment
+			}
+			link {
+				... on AboutRecord {
+					image {
+						...ImageFragment
+					}
+					text {
+						value
+						links
+						blocks {
+							... on LinkTextRecord {
+								text
+								url
+							}
+						}
+					}
+					title
+					url
+				}
+				... on ProductRecord {
+					image {
+						...ImageFragment
+					}
+					layout {
+						... on TwoColumnRecord {
+							spalter {
+								... on ColumnRecord {
+									color
+									image {
+										...ImageFragment
+									}
+								}
+							}
+						}
+						... on TextAndImageRecord {
+							color
+							layout
+							media {
+								...MediaFragment
+							}
+						}
+					}
+					title
+				}
+				... on SupportStartRecord {
+					title
+				}
+				... on PartnerRecord {
+					example {
+						... on PartnerBlockRecord {
+							logo {
+								...ImageFragment
+							}
+						}
+					}
+					title
+				}
+				... on ReferenceRecord {
+					example {
+						... on ReferenceBlockRecord {
+							image {
+								...ImageFragment
+							}
+							link
+							logo {
+								...ImageFragment
+							}
+							title
+						}
+					}
+					title
+				}
+			}
+		}
+	}
+	textApp
 	title
 }

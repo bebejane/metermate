@@ -10,7 +10,6 @@ import Header from '@/components/layout/Header';
 
 export type ArticleProps = {
 	title?: string;
-	header?: HeaderRecord;
 	intro?: any;
 	content?: any;
 	markdown?: boolean;
@@ -22,10 +21,9 @@ export type ArticleProps = {
 	children?: React.ReactNode | React.ReactNode[];
 };
 
-export default function Article({ title, header, intro, content, link, className, children }: ArticleProps) {
+export default function Article({ title, intro, content, link, className, children }: ArticleProps) {
 	return (
 		<article className={cn(s.article, className)}>
-			{header && <Header header={header} />}
 			{content && <Content content={content} className={s.content} />}
 			{children}
 		</article>

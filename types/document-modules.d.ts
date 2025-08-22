@@ -1,4 +1,13 @@
 
+declare module '*/VideoFragment.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const VideoFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/footer.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -100,6 +109,18 @@ declare module '*/start.gql' {
   const defaultDocument: DocumentNode;
   export const Start: DocumentNode;
 export const StartFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/support.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Support: DocumentNode;
+export const AllSupports: DocumentNode;
+export const SupportFragment: DocumentNode;
+export const SupportLightFragment: DocumentNode;
 
   export default defaultDocument;
 }
