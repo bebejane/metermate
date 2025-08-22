@@ -2843,6 +2843,7 @@ type SectionRecord = RecordInterface & {
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
+  slug: Scalars['String']['output'];
   text?: Maybe<SectionModelTextField>;
   title?: Maybe<Scalars['String']['output']>;
 };
@@ -3037,6 +3038,7 @@ type SupportModelFilter = {
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
   id?: InputMaybe<ItemIdFilter>;
+  slug?: InputMaybe<SlugFilter>;
   title?: InputMaybe<StringFilter>;
 };
 
@@ -3080,7 +3082,8 @@ type SupportRecord = RecordInterface & {
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  section: Array<SectionRecord>;
+  sections: Array<SectionRecord>;
+  slug: Scalars['String']['output'];
   title?: Maybe<Scalars['String']['output']>;
 };
 
@@ -3784,7 +3787,7 @@ type SupportQueryVariables = Exact<{
 }>;
 
 
-type SupportQuery = { __typename?: 'Query', support?: { __typename?: 'SupportRecord', title?: string | null, section: Array<{ __typename?: 'SectionRecord', title?: string | null }> } | null };
+type SupportQuery = { __typename?: 'Query', support?: { __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | null };
 
 type AllSupportsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']['input']>;
@@ -3793,11 +3796,11 @@ type AllSupportsQueryVariables = Exact<{
 }>;
 
 
-type AllSupportsQuery = { __typename?: 'Query', allSupports: Array<{ __typename?: 'SupportRecord', title?: string | null, section: Array<{ __typename?: 'SectionRecord', title?: string | null }> }>, _allSupportsMeta: { __typename?: 'CollectionMetadata', count: any } };
+type AllSupportsQuery = { __typename?: 'Query', allSupports: Array<{ __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> }>, _allSupportsMeta: { __typename?: 'CollectionMetadata', count: any } };
 
-type SupportFragment = { __typename?: 'SupportRecord', title?: string | null, section: Array<{ __typename?: 'SectionRecord', title?: string | null }> };
+type SupportFragment = { __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> };
 
-type SupportLightFragment = { __typename?: 'SupportRecord', title?: string | null, section: Array<{ __typename?: 'SectionRecord', title?: string | null }> };
+type SupportLightFragment = { __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> };
 
 type SupportStartQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;

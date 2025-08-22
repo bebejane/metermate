@@ -14,19 +14,37 @@ query AllSupports($first: IntType = 500, $skip: IntType = 0, $locale: SiteLocale
 }
 
 fragment SupportFragment on SupportRecord {
-	section {
+	sections {
 		... on SectionRecord {
+			id
 			title
+			text {
+				blocks
+				links
+				value
+			}
+			slug
 		}
 	}
+	id
 	title
+	slug
 }
 
 fragment SupportLightFragment on SupportRecord {
-	section {
+	sections {
 		... on SectionRecord {
+			id
 			title
+			text {
+				blocks
+				links
+				value
+			}
+			slug
 		}
 	}
+	id
 	title
+	slug
 }
