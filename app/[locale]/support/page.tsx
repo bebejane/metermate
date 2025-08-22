@@ -8,6 +8,7 @@ import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 import Article from '@/components/layout/Article';
 import Content from '@/components/common/Content';
+import React from 'react';
 
 export default async function Support({ params }: PageProps) {
 	const { locale } = await params;
@@ -47,9 +48,9 @@ export default async function Support({ params }: PageProps) {
 					</ul>
 					<div className={s.items}>
 						{allSupports.map(({ id, title, sections }) => (
-							<>
+							<React.Fragment key={id}>
 								<h3>{title}</h3>
-								<ul key={id} className={s.sections}>
+								<ul className={s.sections}>
 									{sections.map(({ id, text, title }) => (
 										<li key={id}>
 											<h5>{title}</h5>
@@ -57,7 +58,7 @@ export default async function Support({ params }: PageProps) {
 										</li>
 									))}
 								</ul>
-							</>
+							</React.Fragment>
 						))}
 					</div>
 				</section>
