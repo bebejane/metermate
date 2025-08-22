@@ -36,7 +36,7 @@ export default async function Products({ params }: PageProps) {
 					</ul>
 				</section>
 			</Article>
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode url={draftUrl} path={`/produkter`} />
 		</>
 	);
 }

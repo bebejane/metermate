@@ -40,7 +40,7 @@ export default async function References({ params }: PageProps) {
 					</section>
 				))}
 			</Article>
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode url={draftUrl} path={`/referenser`} />
 		</>
 	);
 }

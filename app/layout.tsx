@@ -14,6 +14,9 @@ import { getPathname, routing } from '@/i18n/routing';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import FullscreenGallery from '@/components/common/FullscreenGallery';
 import Footer from '@/components/layout/Footer';
+import { Jost } from 'next/font/google';
+
+const jost = Jost({});
 
 export type LayoutProps = {
 	children: React.ReactNode;
@@ -33,7 +36,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 
 	return (
 		<>
-			<html lang={locale === 'sv' ? 'se-SE' : 'en-US'}>
+			<html lang={locale === 'sv' ? 'se-SE' : 'en-US'} className={jost.className}>
 				<body>
 					<NextIntlClientProvider locale={locale}>
 						<Suspense fallback={null}>

@@ -30,7 +30,7 @@ export default async function Products({ params }: PageProps) {
 					<Block key={idx} data={data} />
 				))}
 			</Article>
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode url={draftUrl} path={`/produkter/${slug}`} />
 		</>
 	);
 }

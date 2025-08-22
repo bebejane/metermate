@@ -2,12 +2,10 @@ import s from './page.module.scss';
 import { AllSupportsDocument, SupportStartDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
-import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
-import { Image } from 'react-datocms';
 import Article from '@/components/layout/Article';
 import Content from '@/components/common/Content';
 
