@@ -1,0 +1,66 @@
+query Product($locale: SiteLocale) {
+	product(locale: $locale, fallbackLocales: [sv]) {
+		...ProductFragment
+	}
+}
+
+query AllProducts($first: IntType = 500, $skip: IntType = 0) {
+	allProducts(first: $first, skip: $skip) {
+		...ProductFragment
+	}
+	_allProductsMeta {
+		count
+	}
+}
+
+fragment ProductFragment on ProductRecord {
+	image {
+		...ImageFragment
+	}
+	layout {
+		... on TwoColumnRecord {
+			spalter {
+				... on ColumnRecord {
+					color
+					image {
+						...ImageFragment
+					}
+				}
+			}
+		}
+		... on TextAndImageRecord {
+			color
+			layout
+			media {
+				...MediaFragment
+			}
+		}
+	}
+	title
+}
+
+fragment ProductLightFragment on ProductRecord {
+	image {
+		...ImageFragment
+	}
+	layout {
+		... on TwoColumnRecord {
+			spalter {
+				... on ColumnRecord {
+					color
+					image {
+						...ImageFragment
+					}
+				}
+			}
+		}
+		... on TextAndImageRecord {
+			color
+			layout
+			media {
+				...MediaFragment
+			}
+		}
+	}
+	title
+}

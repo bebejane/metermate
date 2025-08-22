@@ -1,0 +1,21 @@
+query Reference($locale: SiteLocale) {
+	reference(locale: $locale, fallbackLocales: [sv]) {
+		...ReferenceFragment
+	}
+}
+
+fragment ReferenceFragment on ReferenceRecord {
+	example {
+		... on ReferenceBlockRecord {
+			image {
+				...ImageFragment
+			}
+			link
+			logo {
+				...ImageFragment
+			}
+			title
+		}
+	}
+	title
+}

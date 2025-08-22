@@ -1,0 +1,16 @@
+query Partner($locale: SiteLocale) {
+	partner(locale: $locale, fallbackLocales: [sv]) {
+		...PartnerFragment
+	}
+}
+
+fragment PartnerFragment on PartnerRecord {
+	example {
+		... on PartnerBlockRecord {
+			logo {
+				...ImageFragment
+			}
+		}
+	}
+	title
+}

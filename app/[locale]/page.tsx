@@ -38,8 +38,6 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 	});
 
 	return await buildMetadata({
-		title: 'hej',
-		description: '',
 		pathname: getPathname({ locale, href: '/' }),
 		locale,
 	});

@@ -276,6 +276,20 @@ type FileFieldInterfaceurlArgs = {
   imgixParams?: InputMaybe<ImgixParams>;
 };
 
+/** Specifies how to filter Single-file/image fields */
+type FileFilter = {
+  /** Search for records with an exact match. The specified value must be an Upload ID */
+  eq?: InputMaybe<Scalars['UploadId']['input']>;
+  /** Filter records with the specified field defined (i.e. with any value) or not */
+  exists?: InputMaybe<Scalars['BooleanType']['input']>;
+  /** Filter records that have one of the specified uploads */
+  in?: InputMaybe<Array<InputMaybe<Scalars['UploadId']['input']>>>;
+  /** Exclude records with an exact match. The specified value must be an Upload ID */
+  neq?: InputMaybe<Scalars['UploadId']['input']>;
+  /** Filter records that do not have one of the specified uploads */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['UploadId']['input']>>>;
+};
+
 /** Record of type Footer (footer) */
 type FooterRecord = RecordInterface & {
   __typename?: 'FooterRecord';
@@ -2169,6 +2183,77 @@ type OrientationFilter = {
   neq?: InputMaybe<UploadOrientation>;
 };
 
+type PartnerBlockModelTextField = {
+  __typename?: 'PartnerBlockModelTextField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+/** Block of type Partner (partner_block) */
+type PartnerBlockRecord = RecordInterface & {
+  __typename?: 'PartnerBlockRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  logo?: Maybe<FileField>;
+  text?: Maybe<PartnerBlockModelTextField>;
+};
+
+
+/** Block of type Partner (partner_block) */
+type PartnerBlockRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+type PartnerModelIntroField = {
+  __typename?: 'PartnerModelIntroField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+/** Record of type Partners (partner) */
+type PartnerRecord = RecordInterface & {
+  __typename?: 'PartnerRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  example: Array<PartnerBlockRecord>;
+  id: Scalars['ItemId']['output'];
+  intro?: Maybe<PartnerModelIntroField>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Record of type Partners (partner) */
+type PartnerRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
 type ProductModelFilter = {
   AND?: InputMaybe<Array<InputMaybe<ProductModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ProductModelFilter>>>;
@@ -2181,7 +2266,20 @@ type ProductModelFilter = {
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
   id?: InputMaybe<ItemIdFilter>;
+  image?: InputMaybe<FileFilter>;
+  intro?: InputMaybe<StructuredTextFilter>;
+  title?: InputMaybe<StringFilter>;
 };
+
+type ProductModelIntroField = {
+  __typename?: 'ProductModelIntroField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+type ProductModelLayoutField = TextAndImageRecord | TwoColumnRecord;
 
 enum ProductModelOrderBy {
   _createdAt_ASC = '_createdAt_ASC',
@@ -2201,7 +2299,9 @@ enum ProductModelOrderBy {
   _updatedAt_ASC = '_updatedAt_ASC',
   _updatedAt_DESC = '_updatedAt_DESC',
   id_ASC = 'id_ASC',
-  id_DESC = 'id_DESC'
+  id_DESC = 'id_DESC',
+  title_ASC = 'title_ASC',
+  title_DESC = 'title_DESC'
 }
 
 /** Record of type Produkt (product) */
@@ -2221,6 +2321,10 @@ type ProductRecord = RecordInterface & {
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
+  image?: Maybe<FileField>;
+  intro?: Maybe<ProductModelIntroField>;
+  layout: Array<ProductModelLayoutField>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -2252,20 +2356,32 @@ type Query = {
   __typename?: 'Query';
   /** Returns meta information regarding a record collection */
   _allProductsMeta: CollectionMetadata;
+  /** Returns meta information regarding a record collection */
+  _allSupportsMeta: CollectionMetadata;
   /** Returns meta information regarding an assets collection */
   _allUploadsMeta: CollectionMetadata;
   /** Returns the single instance record */
   _site: Site;
   /** Returns a collection of records */
   allProducts: Array<ProductRecord>;
+  /** Returns a collection of records */
+  allSupports: Array<SupportRecord>;
   /** Returns a collection of assets */
   allUploads: Array<FileField>;
   /** Returns the single instance record */
   footer?: Maybe<FooterRecord>;
+  /** Returns the single instance record */
+  partner?: Maybe<PartnerRecord>;
   /** Returns a specific record */
   product?: Maybe<ProductRecord>;
   /** Returns the single instance record */
+  reference?: Maybe<ReferenceRecord>;
+  /** Returns the single instance record */
   start?: Maybe<StartRecord>;
+  /** Returns a specific record */
+  support?: Maybe<SupportRecord>;
+  /** Returns the single instance record */
+  supportStart?: Maybe<SupportStartRecord>;
   /** Returns a specific asset */
   upload?: Maybe<FileField>;
 };
@@ -2274,6 +2390,13 @@ type Query = {
 /** The query root for this schema */
 type Query_allProductsMetaArgs = {
   filter?: InputMaybe<ProductModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
+type Query_allSupportsMetaArgs = {
+  filter?: InputMaybe<SupportModelFilter>;
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -2304,6 +2427,17 @@ type QueryallProductsArgs = {
 
 
 /** The query root for this schema */
+type QueryallSupportsArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<SupportModelFilter>;
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<SupportModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+};
+
+
+/** The query root for this schema */
 type QueryallUploadsArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   filter?: InputMaybe<UploadFilter>;
@@ -2322,6 +2456,13 @@ type QueryfooterArgs = {
 
 
 /** The query root for this schema */
+type QuerypartnerArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
 type QueryproductArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   filter?: InputMaybe<ProductModelFilter>;
@@ -2331,7 +2472,30 @@ type QueryproductArgs = {
 
 
 /** The query root for this schema */
+type QueryreferenceArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
 type QuerystartArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
+type QuerysupportArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<SupportModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<SupportModelOrderBy>>>;
+};
+
+
+/** The query root for this schema */
+type QuerysupportStartArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
@@ -2364,6 +2528,80 @@ type RecordInterface = {
 
 
 type RecordInterface_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+type ReferenceBlockModelTextField = {
+  __typename?: 'ReferenceBlockModelTextField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+/** Block of type Referens (reference_block) */
+type ReferenceBlockRecord = RecordInterface & {
+  __typename?: 'ReferenceBlockRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  image?: Maybe<FileField>;
+  link?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<FileField>;
+  text?: Maybe<ReferenceBlockModelTextField>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Block of type Referens (reference_block) */
+type ReferenceBlockRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+type ReferenceModelIntroField = {
+  __typename?: 'ReferenceModelIntroField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+/** Record of type Referenser (reference) */
+type ReferenceRecord = RecordInterface & {
+  __typename?: 'ReferenceRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  example: Array<ReferenceBlockRecord>;
+  id: Scalars['ItemId']['output'];
+  intro?: Maybe<ReferenceModelIntroField>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Record of type Referenser (reference) */
+type ReferenceRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -2472,10 +2710,141 @@ type StatusFilter = {
   notIn?: InputMaybe<Array<InputMaybe<ItemStatus>>>;
 };
 
+/** Specifies how to filter Single-line string fields */
+type StringFilter = {
+  /** Search for records with an exact match */
+  eq?: InputMaybe<Scalars['String']['input']>;
+  /** Filter records with the specified field defined (i.e. with any value) or not [DEPRECATED] */
+  exists?: InputMaybe<Scalars['BooleanType']['input']>;
+  /** Filter records that equal one of the specified values */
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Filter records with the specified field set as blank (null or empty string) */
+  isBlank?: InputMaybe<Scalars['BooleanType']['input']>;
+  /** Filter records with the specified field present (neither null, nor empty string) */
+  isPresent?: InputMaybe<Scalars['BooleanType']['input']>;
+  /** Filter records based on a regular expression */
+  matches?: InputMaybe<StringMatchesFilter>;
+  /** Exclude records with an exact match */
+  neq?: InputMaybe<Scalars['String']['input']>;
+  /** Filter records that do not equal one of the specified values */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Exclude records based on a regular expression */
+  notMatches?: InputMaybe<StringMatchesFilter>;
+};
+
 type StringMatchesFilter = {
   caseSensitive?: InputMaybe<Scalars['BooleanType']['input']>;
   pattern: Scalars['String']['input'];
   regexp?: InputMaybe<Scalars['BooleanType']['input']>;
+};
+
+/** Specifies how to filter Structured Text fields values */
+type StructuredTextFilter = {
+  /** Filter records with the specified field defined (i.e. with any value) or not [DEPRECATED] */
+  exists?: InputMaybe<Scalars['BooleanType']['input']>;
+  /** Filter records with the specified field set as blank (null or single empty paragraph) */
+  isBlank?: InputMaybe<Scalars['BooleanType']['input']>;
+  /** Filter records with the specified field present (neither null, nor empty string) */
+  isPresent?: InputMaybe<Scalars['BooleanType']['input']>;
+  /** Filter records based on a regular expression */
+  matches?: InputMaybe<StringMatchesFilter>;
+  /** Exclude records based on a regular expression */
+  notMatches?: InputMaybe<StringMatchesFilter>;
+};
+
+type SupportModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<SupportModelFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<SupportModelFilter>>>;
+  _createdAt?: InputMaybe<CreatedAtFilter>;
+  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
+  _isValid?: InputMaybe<BooleanFilter>;
+  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _publishedAt?: InputMaybe<PublishedAtFilter>;
+  _status?: InputMaybe<StatusFilter>;
+  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  id?: InputMaybe<ItemIdFilter>;
+};
+
+enum SupportModelOrderBy {
+  _createdAt_ASC = '_createdAt_ASC',
+  _createdAt_DESC = '_createdAt_DESC',
+  _firstPublishedAt_ASC = '_firstPublishedAt_ASC',
+  _firstPublishedAt_DESC = '_firstPublishedAt_DESC',
+  _isValid_ASC = '_isValid_ASC',
+  _isValid_DESC = '_isValid_DESC',
+  _publicationScheduledAt_ASC = '_publicationScheduledAt_ASC',
+  _publicationScheduledAt_DESC = '_publicationScheduledAt_DESC',
+  _publishedAt_ASC = '_publishedAt_ASC',
+  _publishedAt_DESC = '_publishedAt_DESC',
+  _status_ASC = '_status_ASC',
+  _status_DESC = '_status_DESC',
+  _unpublishingScheduledAt_ASC = '_unpublishingScheduledAt_ASC',
+  _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
+  _updatedAt_ASC = '_updatedAt_ASC',
+  _updatedAt_DESC = '_updatedAt_DESC',
+  id_ASC = 'id_ASC',
+  id_DESC = 'id_DESC'
+}
+
+/** Record of type Support (support) */
+type SupportRecord = RecordInterface & {
+  __typename?: 'SupportRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+};
+
+
+/** Record of type Support (support) */
+type SupportRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+type SupportStartModelIntroField = {
+  __typename?: 'SupportStartModelIntroField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+/** Record of type Support start (support_start) */
+type SupportStartRecord = RecordInterface & {
+  __typename?: 'SupportStartRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  intro?: Maybe<SupportStartModelIntroField>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Record of type Support start (support_start) */
+type SupportStartRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
 };
 
 type Tag = {
@@ -2539,6 +2908,7 @@ type TwoColumnRecord = RecordInterface & {
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
+  spalter: Array<ColumnRecord>;
 };
 
 
@@ -2953,16 +3323,61 @@ type FooterQueryVariables = Exact<{
 
 type FooterQuery = { __typename?: 'Query', footer?: { __typename?: 'FooterRecord', text?: string | null } | null };
 
+type FooterFragment = { __typename?: 'FooterRecord', text?: string | null };
+
+type FileFragment = { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string };
+
 type ImageFragment = { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null };
 
-type SiteFragment = { __typename?: 'Site', locales: Array<SiteLocale>, faviconMetaTags: Array<{ __typename?: 'Tag', attributes?: any | null, content?: string | null, tag: string }>, globalSeo?: { __typename?: 'GlobalSeoField', facebookPageUrl?: string | null, siteName?: string | null, titleSuffix?: string | null, twitterAccount?: string | null, fallbackSeo?: { __typename?: 'SeoField', description?: string | null, title?: string | null, twitterCard?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null };
+type ImageThumbnailFragment = { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null };
+
+type MediaFragment = { __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null };
+
+type SiteFragment = { __typename?: 'Site', faviconMetaTags: Array<{ __typename?: 'Tag', attributes?: any | null, content?: string | null, tag: string }>, globalSeo?: { __typename?: 'GlobalSeoField', facebookPageUrl?: string | null, siteName?: string | null, titleSuffix?: string | null, twitterAccount?: string | null, fallbackSeo?: { __typename?: 'SeoField', description?: string | null, title?: string | null, twitterCard?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null };
 
 type GlobalQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
 }>;
 
 
-type GlobalQuery = { __typename?: 'Query', site: { __typename?: 'Site', locales: Array<SiteLocale>, faviconMetaTags: Array<{ __typename?: 'Tag', attributes?: any | null, content?: string | null, tag: string }>, globalSeo?: { __typename?: 'GlobalSeoField', facebookPageUrl?: string | null, siteName?: string | null, titleSuffix?: string | null, twitterAccount?: string | null, fallbackSeo?: { __typename?: 'SeoField', description?: string | null, title?: string | null, twitterCard?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null } };
+type GlobalQuery = { __typename?: 'Query', site: { __typename?: 'Site', faviconMetaTags: Array<{ __typename?: 'Tag', attributes?: any | null, content?: string | null, tag: string }>, globalSeo?: { __typename?: 'GlobalSeoField', facebookPageUrl?: string | null, siteName?: string | null, titleSuffix?: string | null, twitterAccount?: string | null, fallbackSeo?: { __typename?: 'SeoField', description?: string | null, title?: string | null, twitterCard?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null } };
+
+type PartnerQueryVariables = Exact<{
+  locale?: InputMaybe<SiteLocale>;
+}>;
+
+
+type PartnerQuery = { __typename?: 'Query', partner?: { __typename?: 'PartnerRecord', title?: string | null, example: Array<{ __typename?: 'PartnerBlockRecord', logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }> } | null };
+
+type PartnerFragment = { __typename?: 'PartnerRecord', title?: string | null, example: Array<{ __typename?: 'PartnerBlockRecord', logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }> };
+
+type ProductQueryVariables = Exact<{
+  locale?: InputMaybe<SiteLocale>;
+}>;
+
+
+type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'ProductRecord', title?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, layout: Array<{ __typename?: 'TextAndImageRecord', color?: string | null, layout?: string | null, media: Array<{ __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null }> } | { __typename?: 'TwoColumnRecord', spalter: Array<{ __typename?: 'ColumnRecord', color?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }> }> } | null };
+
+type AllProductsQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+}>;
+
+
+type AllProductsQuery = { __typename?: 'Query', allProducts: Array<{ __typename?: 'ProductRecord', title?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, layout: Array<{ __typename?: 'TextAndImageRecord', color?: string | null, layout?: string | null, media: Array<{ __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null }> } | { __typename?: 'TwoColumnRecord', spalter: Array<{ __typename?: 'ColumnRecord', color?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }> }> }>, _allProductsMeta: { __typename?: 'CollectionMetadata', count: any } };
+
+type ProductFragment = { __typename?: 'ProductRecord', title?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, layout: Array<{ __typename?: 'TextAndImageRecord', color?: string | null, layout?: string | null, media: Array<{ __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null }> } | { __typename?: 'TwoColumnRecord', spalter: Array<{ __typename?: 'ColumnRecord', color?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }> }> };
+
+type ProductLightFragment = { __typename?: 'ProductRecord', title?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, layout: Array<{ __typename?: 'TextAndImageRecord', color?: string | null, layout?: string | null, media: Array<{ __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null }> } | { __typename?: 'TwoColumnRecord', spalter: Array<{ __typename?: 'ColumnRecord', color?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }> }> };
+
+type ReferenceQueryVariables = Exact<{
+  locale?: InputMaybe<SiteLocale>;
+}>;
+
+
+type ReferenceQuery = { __typename?: 'Query', reference?: { __typename?: 'ReferenceRecord', title?: string | null, example: Array<{ __typename?: 'ReferenceBlockRecord', link?: string | null, title?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }> } | null };
+
+type ReferenceFragment = { __typename?: 'ReferenceRecord', title?: string | null, example: Array<{ __typename?: 'ReferenceBlockRecord', link?: string | null, title?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }> };
 
 type StartQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
@@ -2970,3 +3385,14 @@ type StartQueryVariables = Exact<{
 
 
 type StartQuery = { __typename?: 'Query', start?: { __typename?: 'StartRecord', title?: string | null } | null };
+
+type StartFragment = { __typename?: 'StartRecord', title?: string | null };
+
+type SupportStartQueryVariables = Exact<{
+  locale?: InputMaybe<SiteLocale>;
+}>;
+
+
+type SupportStartQuery = { __typename?: 'Query', supportStart?: { __typename?: 'SupportStartRecord', title?: string | null } | null };
+
+type SupportStartFragment = { __typename?: 'SupportStartRecord', title?: string | null };

@@ -1,0 +1,9 @@
+query SupportStart($locale: SiteLocale) {
+	supportStart(locale: $locale, fallbackLocales: [sv]) {
+		...SupportStartFragment
+	}
+}
+
+fragment SupportStartFragment on SupportStartRecord {
+	title
+}

@@ -1,5 +1,9 @@
 query Footer($locale: SiteLocale) {
 	footer(locale: $locale, fallbackLocales: [sv]) {
-		text
+		...FooterFragment
 	}
+}
+
+fragment FooterFragment on FooterRecord {
+	text
 }
