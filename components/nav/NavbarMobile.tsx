@@ -3,7 +3,7 @@
 import s from './NavbarMobile.module.scss';
 import cn from 'classnames';
 import { usePathname, useSearchParams } from 'next/navigation';
-import Link from '@/components/nav/Link';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
 import Hamburger from './Hamburger';
@@ -37,12 +37,7 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 					</Link>
 				</figure>
 				<div className={s.hamburger}>
-					<Hamburger
-						toggled={open}
-						color={open ? 'white' : 'black'}
-						size={36}
-						onToggle={(state) => setOpen(state)}
-					/>
+					<Hamburger toggled={open} color={open ? 'white' : 'black'} size={36} onToggle={(state) => setOpen(state)} />
 				</div>
 			</div>
 			<nav className={cn(s.navbarMobile, open && s.open)}>
@@ -53,7 +48,7 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 							className={cn(sub && s.dropdown, pathname.startsWith(slug) && s.active)}
 							onClick={() => setSelected(selected === id ? null : id)}
 						>
-							<Link href={slug ?? href}>{title}</Link>
+							{slug ? <Link href={slug}>{title}</Link> : <span>{title}</span>}
 						</li>
 					))}
 				</ul>

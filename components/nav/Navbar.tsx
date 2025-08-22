@@ -3,7 +3,7 @@
 import s from './Navbar.module.scss';
 import cn from 'classnames';
 import { usePathname, useSearchParams } from 'next/navigation';
-import Link from '@/components/nav/Link';
+import Link from 'next/link';
 import { CSSProperties, useEffect, useRef, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
 import { useWindowSize } from 'rooks';
@@ -48,7 +48,7 @@ export default function Navbar({ menu, bottom }: NavbarProps) {
 							className={cn(isSelected(item) && s.active)}
 							onMouseEnter={() => handleEnter(item.sub ? item.id : null)}
 						>
-							<Link href={item.slug ?? item.href}>{item.title}</Link>
+							{item.slug ? <Link href={item.slug}>{item.title}</Link> : <span>{item.title}</span>}
 						</li>
 					))}
 				</ul>

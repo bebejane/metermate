@@ -9,7 +9,7 @@ import { Mousewheel } from 'swiper/modules';
 import { useRef, useState } from 'react';
 import { useInViewRef } from 'rooks';
 import Content from '@/components/common/Content';
-import Link from '@/components/nav/Link';
+import Link from 'next/link';
 
 type Props = {
 	projects: AllShowcaseProjectsQuery['allProjects'];

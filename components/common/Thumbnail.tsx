@@ -2,7 +2,7 @@ import s from './Thumbnail.module.scss';
 import cn from 'classnames';
 import { Image } from 'react-datocms';
 import Content from './Content';
-import Link from '@/components/nav/Link';
+import Link from 'next/link';
 import { Markdown } from 'next-dato-utils/components';
 
 export type ThumbnailProps = {
@@ -19,15 +19,7 @@ export type ThumbnailProps = {
 	markdown?: boolean;
 };
 
-export default function Thumbnail({
-	title,
-	image,
-	text,
-	href,
-	meta,
-	markdown,
-	className,
-}: ThumbnailProps) {
+export default function Thumbnail({ title, image, text, href, meta, markdown, className }: ThumbnailProps) {
 	return (
 		<li className={cn(s.thumbnail, className)}>
 			<div className={s.wrap}>
@@ -41,7 +33,7 @@ export default function Thumbnail({
 					<ul className={s.meta}>
 						{meta.map(({ label, text, href }, idx) => (
 							<li key={idx}>
-								<span className="very-small">{label}</span>
+								<span className='very-small'>{label}</span>
 								{href ? <Link href={href}>{text}</Link> : <span>{text}</span>}
 							</li>
 						))}

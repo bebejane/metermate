@@ -4,7 +4,7 @@ import Content from '@/components/common/Content';
 import s from './Section.module.scss';
 import cn from 'classnames';
 import { Image } from 'react-datocms';
-import Link from '@/components/nav/Link';
+import Link from 'next/link';
 
 type Props = {
 	id?: string;
@@ -17,45 +17,21 @@ type Props = {
 
 export default function Section({ id, headline, text, image, project, className }: Props) {
 	return (
-		<section
-			id={id}
-			className={cn(s.section, className)}
-		>
+		<section id={id} className={cn(s.section, className)}>
 			<div className={s.header}>
-				{typeof headline === 'object' && (
-					<Content
-						content={headline}
-						className={s.headline}
-					/>
-				)}
+				{typeof headline === 'object' && <Content content={headline} className={s.headline} />}
 				{typeof headline === 'string' && <h4 className={s.headline}>{headline}</h4>}
-				{image && (
-					<Image
-						data={image.responsiveImage}
-						imgClassName={s.largeImage}
-					/>
-				)}
+				{image && <Image data={image.responsiveImage} imgClassName={s.largeImage} />}
 			</div>
 			{text && (
 				<div className={s.content}>
-					<Content
-						content={text}
-						className={s.content}
-					/>
+					<Content content={text} className={s.content} />
 				</div>
 			)}
 			{project && (
-				<Link
-					href={`/projekt/${project.slug}`}
-					className={s.project}
-				>
+				<Link href={`/projekt/${project.slug}`} className={s.project}>
 					<div className={s.imageWrap}>
-						{project.image && (
-							<Image
-								data={project.image.responsiveImage}
-								imgClassName={s.image}
-							/>
-						)}
+						{project.image && <Image data={project.image.responsiveImage} imgClassName={s.image} />}
 					</div>
 					<div className={s.projectInfo}>
 						<h6>UPPDRAG</h6>

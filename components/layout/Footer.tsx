@@ -2,7 +2,7 @@
 
 import s from './Footer.module.scss';
 import cn from 'classnames';
-import Link from '@/components/nav/Link';
+import Link from 'next/link';
 import Content from '@/components/common/Content';
 import classNames from 'classnames';
 import { useScrollInfo } from 'next-dato-utils/hooks';
@@ -18,5 +18,15 @@ type FooterProps = {
 export default function Footer({ footer }: FooterProps) {
 	if (!footer) return null;
 
-	return <footer className={cn(s.footer)}>{footer.text}</footer>;
+	return (
+		<footer className={cn(s.footer)}>
+			<div className={s.logo}>
+				<Link href={'/'}>
+					<img src='/images/logo.svg' alt='Logo' />
+				</Link>
+			</div>
+			<div className={s.text}>{footer.text}</div>
+			<div className={s.copyright}>© Jemac Sweden AB 2025</div>
+		</footer>
+	);
 }

@@ -36,10 +36,12 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 			<html lang={locale === 'sv' ? 'se-SE' : 'en-US'}>
 				<body>
 					<NextIntlClientProvider locale={locale}>
-						<Navbar menu={menu} />
-						<NavbarMobile menu={menu} />
-						<main className={s.main}>{children}</main>
-						<Footer footer={footer} />
+						<Suspense fallback={null}>
+							<Navbar menu={menu} />
+							<NavbarMobile menu={menu} />
+							<main className={s.main}>{children}</main>
+							<Footer footer={footer} />
+						</Suspense>
 					</NextIntlClientProvider>
 				</body>
 				{/*<GoogleAnalytics gaId='G-3YJRN86MF7' />*/}
