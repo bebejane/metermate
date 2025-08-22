@@ -2764,6 +2764,8 @@ type SupportModelFilter = {
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
   id?: InputMaybe<ItemIdFilter>;
+  text?: InputMaybe<StructuredTextFilter>;
+  title?: InputMaybe<StringFilter>;
 };
 
 enum SupportModelOrderBy {
@@ -2784,8 +2786,18 @@ enum SupportModelOrderBy {
   _updatedAt_ASC = '_updatedAt_ASC',
   _updatedAt_DESC = '_updatedAt_DESC',
   id_ASC = 'id_ASC',
-  id_DESC = 'id_DESC'
+  id_DESC = 'id_DESC',
+  title_ASC = 'title_ASC',
+  title_DESC = 'title_DESC'
 }
+
+type SupportModelTextField = {
+  __typename?: 'SupportModelTextField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
 
 /** Record of type Support (support) */
 type SupportRecord = RecordInterface & {
@@ -2804,6 +2816,8 @@ type SupportRecord = RecordInterface & {
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
+  text?: Maybe<SupportModelTextField>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 

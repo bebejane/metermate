@@ -1,47 +1,17 @@
 import 'dotenv/config';
 import { DatoCmsConfig } from 'next-dato-utils/config';
 import client from './lib/client';
-import { AllProjectsDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { getPathname, defaultLocale } from '@/i18n/routing';
 
 const routes: DatoCmsConfig['routes'] = {
 	start: async (record, locale) => [getPathname({ locale, href: '/' })],
-	about: async (record, locale) => [getPathname({ locale, href: '/om-oss' })],
-	contact: async (record, locale) => [getPathname({ locale, href: '/kontakt' })],
-	offer: async (record, locale) => [getPathname({ locale, href: '/erbjudande' })],
-	join_us: async (record, locale) => [getPathname({ locale, href: '/bli-en-av-oss' })],
-	join: async (record, locale) => [getPathname({ locale, href: '/bli-en-av-oss' })],
-	showcase: async (record, locale) => [getPathname({ locale, href: '/projekt' })],
-	staff: async (record, locale) => [getPathname({ locale, href: '/om-oss' })],
-	client: async (record, locale) => [getPathname({ locale, href: `/projekt` }), getPathname({ locale, href: '/' })],
-	project: async ({ slug }, locale) => {
-		return [
-			getPathname({
-				locale,
-				href: { pathname: `/projekt/[project]`, params: { project: slug[locale] ?? slug } },
-			}),
-			getPathname({ locale, href: '/projekt' }),
-			getPathname({ locale, href: '/' }),
-		];
-	},
-	project_footer: async (record, locale) => {
-		const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(AllProjectsDocument, {
-			all: true,
-			variables: { locale: locale as SiteLocale },
-		});
-		const paths = allProjects.map(({ slug }) =>
-			getPathname({
-				locale,
-				href: { pathname: `/projekt/[project]`, params: { project: slug } },
-			})
-		);
-		return paths;
-	},
-	upload: async (record, locale) => {
-		console.log(record);
-		return references(record.id, true);
-	},
+	partner: async (record, locale) => [getPathname({ locale, href: '/om' })],
+	product: async (record, locale) => [getPathname({ locale, href: '/produkter' })],
+	reference: async (record, locale) => [getPathname({ locale, href: '/referenser' })],
+	support: async (record, locale) => [getPathname({ locale, href: '/support' })],
+	support_start: async (record, locale) => [getPathname({ locale, href: '/support' })],
+	upload: async (record, locale) => references(record.id, true),
 };
 
 export default {
@@ -53,15 +23,16 @@ export default {
 	},
 	theme: {
 		background: '#efefef',
-		color: '#cd3a00',
+		color: '#349f49',
 	},
 	i18n: {
 		defaultLocale: 'sv',
-		locales: ['sv', 'en'],
+		//locales: ['sv', 'en'],
+		locales: ['sv'],
 	},
 	routes,
 	sitemap: async (locale = 'sv') => {
-		return ['/projekt'].map((p) => ({
+		return ['/om', '/produkter', '/referenser', '/support'].map((p) => ({
 			url: `${process.env.NEXT_PUBLIC_SITE_URL}${p}`,
 			lastModified: new Date().toISOString(),
 			changeFrequency: 'weekly',
