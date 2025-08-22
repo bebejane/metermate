@@ -9,6 +9,7 @@ import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 import { Image } from 'react-datocms';
 import Article from '@/components/layout/Article';
+import Content from '@/components/common/Content';
 
 export default async function Products({ params }: PageProps) {
 	const { locale } = await params;
@@ -21,11 +22,23 @@ export default async function Products({ params }: PageProps) {
 	});
 
 	if (!reference) return notFound();
-
+	const { title, intro, examples } = reference;
 	return (
 		<>
-			<Article title={reference.title} intro={reference.intro}>
-				<section>refrencs</section>
+			<Article title={title} intro={intro}>
+				{examples.map(({ id, image, link, logo, text, title }) => (
+					<section key={id} className={s.example}>
+						<div className={s.wrap}>
+							<img className={s.logo} src={logo.url} alt={logo.alt} />
+							<h3>{title}</h3>
+							<Content content={text} />
+							<a href={link}>Läs mer</a>
+						</div>
+						<figure>
+							<Image data={image.responsiveImage} />
+						</figure>
+					</section>
+				))}
 			</Article>
 			<DraftMode url={draftUrl} path={`/`} />
 		</>
