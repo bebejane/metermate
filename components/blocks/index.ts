@@ -6,5 +6,5 @@ export { default as Shortcut } from './Shortcut';
 export { default as Column } from './Column';
 export { default as TwoColumn } from './TwoColumn';
 export { default as TextAndImage } from './TextAndImage';
-export { default as Cta } from './Cta';
+export { default as Cta2 } from './Cta2';
 export { default as LinkText } from './LinkText';
