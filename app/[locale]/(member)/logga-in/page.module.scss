@@ -1,14 +1,21 @@
-.form {
+.wrap {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	input,
-	div,
-	.grid,
-	form {
-		width: 100%;
+	height: calc(100vh - var(--navbar-height));
+
+	.form {
+		display: flex;
+		flex: 0 0;
+		flex-direction: column;
+		width: 30%;
+		input,
+		div,
+		.grid,
+		form {
+			width: 100%;
+		}
 	}
-	//height: calc(100vh - var(--navbar-height));
 }

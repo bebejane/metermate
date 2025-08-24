@@ -10,7 +10,7 @@ import { getPathname } from '@/i18n/routing';
 import { VideoPlayer } from 'next-dato-utils/components';
 import { Image } from 'react-datocms';
 import Article from '@/components/layout/Article';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Shortcut from '@/components/blocks/Shortcut';
 import NewsTicker from '@/components/common/NewsTicker';
 
@@ -47,25 +47,31 @@ export default async function Home({ params }: PageProps) {
 					</figure>
 					<h3>{start.textApp}</h3>
 					<div>
-						<Link href={start.ios}>
+						<a href={start.ios}>
 							<img className={s.store} src='/images/icon-appstore.png' alt='App Store' />
-						</Link>
-						<Link href={start.android}>
+						</a>
+						<a href={start.android}>
 							<img className={s.store} src='/images/icon-playstore.png' alt='Google Play' />
-						</Link>
+						</a>
 					</div>
 				</section>
 				<section className={s.products}>
-					<header>
+					<div className={s.header}>
 						<h3>Våra produkter</h3>
 						<div className={s.private}>
 							<h3>Är du här som privatperson?</h3>
 							<span>Läs mer om våra produkter här.</span>
 						</div>
-					</header>
+					</div>
 					<ul>
 						{allProducts.map((product) => (
-							<Link href='/produkter' key={product.id}>
+							<Link
+								key={product.id}
+								href={{
+									pathname: '/produkter/[product]',
+									params: { product: product.slug },
+								}}
+							>
 								<li>
 									<Image data={product.image.responsiveImage} />
 									<h4>{product.title}</h4>

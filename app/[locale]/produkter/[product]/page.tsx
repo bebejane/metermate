@@ -25,7 +25,7 @@ export default async function Products({ params }: PageProps) {
 
 	return (
 		<>
-			<Article>
+			<Article className={s.product}>
 				{product.layout.map((data, idx) => (
 					<Block key={idx} data={data} />
 				))}

@@ -7,17 +7,17 @@ export type ColumnProps = {
 	column: ColumnRecord;
 };
 
-export default function Column({ column }: ColumnProps) {
+export default function Column({ column: { image, text, color } }: ColumnProps) {
 	return (
-		<div className={cn(s.column)}>
-			{column.image && (
+		<div className={cn(s.column, s[color])}>
+			<div className={cn(s.text)}>
+				<Content content={text} className={s.text} />
+			</div>
+			{image?.responsiveImage && (
 				<figure>
-					<Image data={column.image.responsiveImage} />
+					<Image data={image.responsiveImage} />
 				</figure>
 			)}
-			<div className={cn(s.text, s[column.color])}>
-				<Content content={column.text} className={s.text} />
-			</div>
 		</div>
 	);
 }
