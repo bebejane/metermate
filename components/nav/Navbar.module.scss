@@ -91,12 +91,27 @@
 		display: flex;
 	}
 
-	.contact {
-		width: 100%;
-		text-align: center;
-		color: var(--white);
-		a {
+	&.contact {
+		background-color: var(--geen);
+		.content {
+			width: 100%;
+			text-align: center;
 			color: var(--white);
+			a {
+				color: var(--white);
+			}
+		}
+	}
+
+	&.products {
+		background-color: var(--gray-light);
+		ul {
+			display: flex;
+			flex-direction: row;
+			list-style: none;
+			img {
+				height: 20vh;
+			}
 		}
 	}
 }

@@ -18,7 +18,6 @@ export const buildMenu = async (locale: SiteLocale): Promise<Menu> => {
 		{
 			id: 'products',
 			title: t('products'),
-			slug: '/produkter',
 			position: 'left',
 		},
 		{

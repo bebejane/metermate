@@ -7,19 +7,20 @@ import { Link } from '@/i18n/routing';
 import { useRef, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
 import Content from '@/components/common/Content';
+import { Image } from 'react-datocms';
 
 export type NavbarProps = {
 	menu: Menu;
 	contact: ContactQuery['contact'];
+	allProducts: AllProductsQuery['allProducts'];
 };
 
-export default function Navbar({ menu, contact }: NavbarProps) {
+export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 	const path = usePathname();
 	const qs = useSearchParams().toString();
 	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
 	const [selected, setSelected] = useState<string | null>(null);
-	const [showContact, setShowContact] = useState(false);
-	const [showProducts, setShowProducts] = useState(false);
+	const [sub, setSub] = useState<'contact' | 'products' | null>(null);
 	const logoRef = useRef<HTMLImageElement>(null);
 
 	const left = menu.filter((item) => item.position === 'left');
@@ -35,14 +36,12 @@ export default function Navbar({ menu, contact }: NavbarProps) {
 
 	function handleLeaveSub() {
 		console.log('leave');
-		setShowContact(false);
-		setShowProducts(false);
+		setSub(null);
 	}
 
 	function handleEnter(id: string) {
 		setSelected(id);
-		setShowContact(id === 'contact');
-		setShowProducts(id === 'products');
+		setSub(id === 'contact' ? 'contact' : id === 'products' ? 'products' : null);
 	}
 
 	return (
@@ -80,9 +79,28 @@ export default function Navbar({ menu, contact }: NavbarProps) {
 					))}
 				</ul>
 			</nav>
-			<div className={cn(s.sub, (showContact || showProducts) && s.show)} onMouseLeave={handleLeaveSub}>
-				{showContact && <Content content={contact.text} className={s.contact} />}
-				{showProducts && <div>products</div>}
+			<div className={cn(s.sub, sub && s.show, s[sub])} onMouseLeave={handleLeaveSub}>
+				{sub === 'contact' && <Content content={contact.text} className={s.content} />}
+				{sub === 'products' && (
+					<div className={s.products}>
+						<ul>
+							{allProducts.map((product) => (
+								<Link
+									key={product.id}
+									href={{
+										pathname: '/produkter/[product]',
+										params: { product: product.slug },
+									}}
+								>
+									<li>
+										<Image data={product.image.responsiveImage} />
+										<h4>{product.title}</h4>
+									</li>
+								</Link>
+							))}
+						</ul>
+					</div>
+				)}
 			</div>
 		</>
 	);

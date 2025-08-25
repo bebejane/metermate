@@ -10,7 +10,9 @@ const routes: DatoCmsConfig['routes'] = {
 	start: async (record, locale) => [getPathname({ locale, href: '/' })],
 	partner: async (record, locale) => [getPathname({ locale, href: '/partners' })],
 	about: async (record, locale) => [getPathname({ locale, href: '/om' })],
-	product: async (record, locale) => [getPathname({ locale, href: '/produkter' })],
+	product: async ({ slug }, locale) => [
+		getPathname({ locale, href: { pathname: '/produkter/[product]', params: { product: slug } } }),
+	],
 	reference: async (record, locale) => [getPathname({ locale, href: '/referenser' })],
 	support: async (record, locale) => [getPathname({ locale, href: '/support' })],
 	support_start: async (record, locale) => [getPathname({ locale, href: '/support' })],
