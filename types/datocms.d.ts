@@ -3739,6 +3739,15 @@ type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutRecord', 
 
 type AboutFragment = { __typename?: 'AboutRecord', title?: string | null, url?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'AboutModelTextField', value: any, links: Array<string>, blocks: Array<{ __typename: 'LinkTextRecord', id: any, text?: string | null, url?: string | null }> } | null };
 
+type ContactQueryVariables = Exact<{
+  locale?: InputMaybe<SiteLocale>;
+}>;
+
+
+type ContactQuery = { __typename?: 'Query', contact?: { __typename?: 'ContactRecord', id: any, text?: { __typename?: 'ContactModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | null };
+
+type ContactFragment = { __typename?: 'ContactRecord', id: any, text?: { __typename?: 'ContactModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null };
+
 type FooterQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
 }>;
@@ -3776,9 +3785,9 @@ type PartnerQueryVariables = Exact<{
 }>;
 
 
-type PartnerQuery = { __typename?: 'Query', partner?: { __typename?: 'PartnerRecord', title?: string | null, examples: Array<{ __typename?: 'PartnerBlockRecord', id: any, text?: { __typename?: 'PartnerBlockModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }> } | null };
+type PartnerQuery = { __typename?: 'Query', partner?: { __typename?: 'PartnerRecord', title?: string | null, examples: Array<{ __typename?: 'PartnerBlockRecord', id: any, url?: string | null, text?: { __typename?: 'PartnerBlockModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }> } | null };
 
-type PartnerFragment = { __typename?: 'PartnerRecord', title?: string | null, examples: Array<{ __typename?: 'PartnerBlockRecord', id: any, text?: { __typename?: 'PartnerBlockModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }> };
+type PartnerFragment = { __typename?: 'PartnerRecord', title?: string | null, examples: Array<{ __typename?: 'PartnerBlockRecord', id: any, url?: string | null, text?: { __typename?: 'PartnerBlockModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }> };
 
 type ProductQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;

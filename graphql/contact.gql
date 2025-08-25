@@ -1,0 +1,13 @@
+query Contact($locale: SiteLocale) {
+	contact(locale: $locale, fallbackLocales: [sv]) {
+		...ContactFragment
+	}
+}
+fragment ContactFragment on ContactRecord {
+	id
+	text {
+		blocks
+		links
+		value
+	}
+}

@@ -28,9 +28,11 @@ export default async function Partners({ params }: PageProps) {
 		<>
 			<Article title={title}>
 				<ul className={s.examples}>
-					{examples.map(({ id, logo, text }) => (
+					{examples.map(({ id, logo, text, url }) => (
 						<li key={id}>
-							<img className={s.logo} src={logo.url} alt={logo.alt} />
+							<a href={url}>
+								<img className={s.logo} src={logo.url} alt={logo.alt} />
+							</a>
 							<Content content={text} />
 						</li>
 					))}

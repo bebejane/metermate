@@ -17,6 +17,7 @@ fragment PartnerFragment on PartnerRecord {
 			logo {
 				...ImageFragment
 			}
+			url
 		}
 	}
 }
