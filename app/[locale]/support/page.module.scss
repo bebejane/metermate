@@ -1,11 +1,14 @@
 .support {
+	display: flex;
+	flex-direction: row;
 	background-color: var(--gray-very-light);
 	margin-left: calc(-1 * var(--outer-margin));
 	margin-right: calc(-1 * var(--outer-margin));
 	padding-bottom: var(--space);
 
-	display: flex;
-	flex-direction: row;
+	* {
+		scroll-margin-top: calc(var(--navbar-height) + 1rem);
+	}
 
 	ul {
 		padding-left: calc(3 * var(--outer-margin));
@@ -19,9 +22,9 @@
 
 	.items {
 		padding-top: var(--space);
-
 		flex: 1 1 auto;
 		padding-right: calc(3 * var(--outer-margin));
+
 		ul {
 			list-style: none;
 			display: flex;
