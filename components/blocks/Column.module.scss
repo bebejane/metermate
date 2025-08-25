@@ -3,6 +3,7 @@
 	flex-direction: row;
 	align-items: center;
 	flex: 0 0 50%;
+	flex: 1;
 
 	&.green {
 		background-color: var(--green);
@@ -15,8 +16,11 @@
 		}
 	}
 	&.gray {
-		background-color: var(--gray-light);
+		background-color: var(--gray);
 		color: var(--green);
+		p {
+			color: var(--white);
+		}
 	}
 
 	.text {
