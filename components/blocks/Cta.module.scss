@@ -1,0 +1,12 @@
+.cta {
+  padding-top: var(--space);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding-bottom: var(--space-small);
+
+  p:hover {
+    color: var(--green);
+    cursor: pointer;
+  }
+}

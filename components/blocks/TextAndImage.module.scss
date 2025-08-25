@@ -1,10 +1,11 @@
 .textandimage {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
 	width: 100%;
-	figure {
+	figure,
+	.text {
 		flex: 0 0 50%;
 	}
 	&.right {
@@ -15,5 +16,9 @@
 	}
 	&.gray {
 		background-color: var(--gray-light);
+	}
+	.text {
+		padding-left: var(--outer-margin);
+		padding-top: var(--space);
 	}
 }

@@ -7,6 +7,9 @@
 	&.green {
 		background-color: var(--green);
 		color: var(--white);
+		p {
+			color: var(--gray-dark);
+		}
 		h3 {
 			color: var(--gray-light);
 		}
@@ -18,9 +21,14 @@
 
 	.text {
 		height: 100%;
+		padding-left: var(--outer-margin);
+		padding-right: var(--outer-margin);
+		padding-top: var(--space);
+		padding-bottom: var(--space);
 	}
 	figure {
-		flex: 0 0 50%;
+		flex: 0 0 25%;
+		margin-right: var(--outer-margin);
 
 		img {
 			width: 100%;

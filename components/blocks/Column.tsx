@@ -11,7 +11,7 @@ export default function Column({ column: { image, text, color } }: ColumnProps) 
 	return (
 		<div className={cn(s.column, s[color])}>
 			<div className={cn(s.text)}>
-				<Content content={text} className={s.text} />
+				<Content content={text} className={s.content} />
 			</div>
 			{image?.responsiveImage && (
 				<figure>

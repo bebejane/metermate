@@ -7,5 +7,5 @@ export type CTAProps = {
 };
 
 export default function Cta({ data: { text } }: CTAProps) {
-	return <section className={cn(s.cta)}>{text && <Content content={text} />}</section>;
+	return <section className={cn(s.cta)}><h2>{text && <Content content={text} />}</h2></section>;
 }

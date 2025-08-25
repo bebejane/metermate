@@ -88,8 +88,12 @@
 		width: 100%;
 		text-align: center;
 		color: var(--white);
+		padding-top: 0.5em;
 		a {
 			color: var(--white);
+			&:hover {
+				color: var(--gray-dark);
+			}
 		}
 	}
 }
