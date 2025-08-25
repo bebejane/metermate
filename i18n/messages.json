@@ -24,6 +24,10 @@
 			"en": "Login",
 			"sv": "Logga in"
 		},
+		"logout": {
+			"en": "Logout",
+			"sv": "Logga ut"
+		},
 		"contact": {
 			"en": "Contact",
 			"sv": "Kontakt"
@@ -31,6 +35,10 @@
 		"language": {
 			"en": "SV",
 			"sv": "EN"
+		},
+		"member": {
+			"en": "Member",
+			"sv": "Medlem"
 		}
 	},
 	"Start": {

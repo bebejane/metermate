@@ -123,13 +123,13 @@ export async function buildMetadata({
 	const url = pathname ? `${process.env.NEXT_PUBLIC_SITE_URL}${pathname}` : undefined;
 
 	return {
-		title,
+		title: title ?? undefined,
 		alternates: {
 			canonical: url,
 		},
 		description,
 		openGraph: {
-			title,
+			title: title ?? undefined,
 			description,
 			url,
 			images: image

@@ -2,6 +2,7 @@ import s from './page.module.scss';
 import Article from '@/components/layout/Article';
 import LogoutForm from './LogoutForm';
 import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
 export default async function Login() {
 	return (
@@ -13,8 +14,10 @@ export default async function Login() {
 	);
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }): Promise<Metadata> {
+	const t = await getTranslations('menu');
+	const title = t('logout');
 	return {
-		title: 'Logga in',
+		title,
 	} as Metadata;
 }

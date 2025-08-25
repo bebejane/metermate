@@ -57,7 +57,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
 	return await buildMetadata({
 		title: product?.title,
-		pathname: getPathname({ locale, href: '/produkter' }),
+		pathname: getPathname({ locale, href: { pathname: '/produkter/[product]', params: { product: slug } } }),
 		locale,
 	});
 }

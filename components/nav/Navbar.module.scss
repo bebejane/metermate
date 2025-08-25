@@ -91,7 +91,7 @@
 		display: flex;
 	}
 
-	.contact {
+	&.contact {
 		width: 100%;
 		text-align: center;
 		color: var(--white);
@@ -100,6 +100,18 @@
 			color: var(--white);
 			&:hover {
 				color: var(--gray-dark);
+			}
+		}
+	}
+
+	&.products {
+		background-color: var(--gray-light);
+		ul {
+			display: flex;
+			flex-direction: row;
+			list-style: none;
+			img {
+				height: 20vh;
 			}
 		}
 	}
