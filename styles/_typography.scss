@@ -69,7 +69,7 @@ h3,
 h3 strong {
 	font-size: 1.1rem;
 	color: var(--green);
-	padding-bottom: 1em;
+	padding-bottom: 0.5em;
 	@include mq($from: desktop) {
 		font-size: 1.1rem;
 	}
