@@ -34,7 +34,13 @@ fragment SupportFragment on SupportRecord {
 			id
 			title
 			text {
-				blocks
+				blocks {
+					id
+					caption
+					video {
+						...FileFragment
+					}
+				}
 				links
 				value
 			}
@@ -52,7 +58,13 @@ fragment SupportLightFragment on SupportRecord {
 			id
 			title
 			text {
-				blocks
+				blocks {
+					id
+					caption
+					video {
+						...FileFragment
+					}
+				}
 				links
 				value
 			}

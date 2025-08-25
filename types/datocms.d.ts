@@ -2369,6 +2369,7 @@ type PartnerBlockRecord = RecordInterface & {
   id: Scalars['ItemId']['output'];
   logo?: Maybe<FileField>;
   text?: Maybe<PartnerBlockModelTextField>;
+  url?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -2820,7 +2821,7 @@ type ResponsiveImage = {
 
 type SectionModelTextField = {
   __typename?: 'SectionModelTextField';
-  blocks: Array<Scalars['String']['output']>;
+  blocks: Array<VideoRecord>;
   inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
@@ -3696,6 +3697,33 @@ enum VideoMp4Res {
   medium = 'medium'
 }
 
+/** Block of type Video (video) */
+type VideoRecord = RecordInterface & {
+  __typename?: 'VideoRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  caption?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ItemId']['output'];
+  video?: Maybe<FileField>;
+};
+
+
+/** Block of type Video (video) */
+type VideoRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
 type focalPoint = {
   __typename?: 'focalPoint';
   x: Scalars['FloatType']['output'];
@@ -3805,7 +3833,7 @@ type SupportQueryVariables = Exact<{
 }>;
 
 
-type SupportQuery = { __typename?: 'Query', support?: { __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | null };
+type SupportQuery = { __typename?: 'Query', support?: { __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename?: 'VideoRecord', id: any, caption?: string | null, video?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string } | null }> } | null }> } | null };
 
 type AllSupportsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']['input']>;
@@ -3814,8 +3842,8 @@ type AllSupportsQueryVariables = Exact<{
 }>;
 
 
-type AllSupportsQuery = { __typename?: 'Query', allSupports: Array<{ __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> }>, _allSupportsMeta: { __typename?: 'CollectionMetadata', count: any } };
+type AllSupportsQuery = { __typename?: 'Query', allSupports: Array<{ __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename?: 'VideoRecord', id: any, caption?: string | null, video?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string } | null }> } | null }> }>, _allSupportsMeta: { __typename?: 'CollectionMetadata', count: any } };
 
-type SupportFragment = { __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> };
+type SupportFragment = { __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename?: 'VideoRecord', id: any, caption?: string | null, video?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string } | null }> } | null }> };
 
-type SupportLightFragment = { __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> };
+type SupportLightFragment = { __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename?: 'VideoRecord', id: any, caption?: string | null, video?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string } | null }> } | null }> };
