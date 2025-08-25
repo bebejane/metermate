@@ -23,7 +23,7 @@ export default async function Products({ params }: PageProps) {
 	});
 
 	if (!about) return notFound();
-	console.log(about);
+
 	return (
 		<>
 			<Article>

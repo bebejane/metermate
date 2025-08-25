@@ -15,11 +15,11 @@ export default function LoginForm() {
 		const url = new URLSearchParams(window.location.search).get('callbackUrl');
 		const callbackUrl = url ?? '/medlem';
 		const formData = new FormData(e.target);
-		console.log(url);
+
 		try {
 			setError(null);
 			setLoading(true);
-			console.log(callbackUrl);
+			//console.log(callbackUrl);
 
 			const res = await signIn('credentials', {
 				callbackUrl,
@@ -44,12 +44,7 @@ export default function LoginForm() {
 		<div className={cn('structured', 'grid')}>
 			<form className={s.form} method='POST' onSubmit={handleSignin}>
 				<input id='email' name='email' type='email' placeholder='E-post' autoComplete='username' />
-				<input
-					name='password'
-					type='password'
-					placeholder='Lösenord'
-					autoComplete='current-password'
-				/>
+				<input name='password' type='password' placeholder='Lösenord' autoComplete='current-password' />
 				<button type='submit' disabled={loading}>
 					{loading ? 'Loggar in...' : 'Logga in'}
 				</button>
