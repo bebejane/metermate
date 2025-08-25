@@ -4,7 +4,7 @@ import s from './Navbar.module.scss';
 import cn from 'classnames';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Link } from '@/i18n/routing';
-import { CSSProperties, useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
 import Content from '@/components/common/Content';
 
