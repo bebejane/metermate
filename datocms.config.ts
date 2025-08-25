@@ -1,16 +1,21 @@
 import 'dotenv/config';
 import { DatoCmsConfig } from 'next-dato-utils/config';
 import client from './lib/client';
-import { apiQuery } from 'next-dato-utils/api';
 import { getPathname, defaultLocale } from '@/i18n/routing';
+import { apiQuery } from 'next-dato-utils/api';
+import { AllProductsDocument } from '@/graphql';
+import { MetadataRoute } from 'next';
 
 const routes: DatoCmsConfig['routes'] = {
 	start: async (record, locale) => [getPathname({ locale, href: '/' })],
-	partner: async (record, locale) => [getPathname({ locale, href: '/om' })],
+	partner: async (record, locale) => [getPathname({ locale, href: '/partners' })],
+	about: async (record, locale) => [getPathname({ locale, href: '/om' })],
 	product: async (record, locale) => [getPathname({ locale, href: '/produkter' })],
 	reference: async (record, locale) => [getPathname({ locale, href: '/referenser' })],
 	support: async (record, locale) => [getPathname({ locale, href: '/support' })],
 	support_start: async (record, locale) => [getPathname({ locale, href: '/support' })],
+	contact: async (record, locale) => [getPathname({ locale, href: '/' })],
+	footer: async (record, locale) => [getPathname({ locale, href: '/' })],
 	upload: async (record, locale) => references(record.id, true),
 };
 
@@ -32,12 +37,27 @@ export default {
 	},
 	routes,
 	sitemap: async (locale = 'sv') => {
-		return ['/om', '/produkter', '/referenser', '/support'].map((p) => ({
-			url: `${process.env.NEXT_PUBLIC_SITE_URL}${p}`,
-			lastModified: new Date().toISOString(),
-			changeFrequency: 'weekly',
-			priority: 0.8,
-		}));
+		const { allProducts } = await apiQuery<AllProductsQuery, AllProductsQueryVariables>(AllProductsDocument, {
+			variables: {
+				locale: locale as SiteLocale,
+			},
+		});
+
+		return ['/om', '/produkter', '/referenser', '/support']
+			.map((p) => ({
+				url: `${process.env.NEXT_PUBLIC_SITE_URL}${p}`,
+				lastModified: new Date().toISOString(),
+				changeFrequency: 'weekly',
+				priority: 0.8,
+			}))
+			.concat(
+				allProducts.map((product) => ({
+					url: `${process.env.NEXT_PUBLIC_SITE_URL}/produkter/${product.slug}`,
+					lastModified: new Date().toISOString(),
+					changeFrequency: 'weekly',
+					priority: 0.8,
+				}))
+			) as MetadataRoute.Sitemap;
 	},
 } satisfies DatoCmsConfig;
 
