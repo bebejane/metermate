@@ -27,7 +27,12 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 	const right = menu.filter((item) => item.position === 'right');
 
 	function isSelected(item: MenuItem) {
-		return pathname.startsWith(item.slug) || pathname === item.slug;
+		return (
+			pathname.startsWith(item.slug) ||
+			pathname === item.slug ||
+			(item.id === 'products' && sub === 'products') ||
+			(item.id === 'contact' && sub === 'contact')
+		);
 	}
 
 	function handleLeave() {
