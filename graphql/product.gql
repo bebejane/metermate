@@ -15,6 +15,11 @@ query AllProducts($first: IntType = 500, $skip: IntType = 0, $locale: SiteLocale
 
 fragment ProductFragment on ProductRecord {
 	id
+	intro {
+		blocks
+		links
+		value
+	}
 	image {
 		...ImageFragment
 	}

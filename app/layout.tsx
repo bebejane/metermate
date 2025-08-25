@@ -1,7 +1,7 @@
 import '@/styles/index.scss';
 import s from './layout.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
-import { FooterDocument, GlobalDocument, ContactDocument } from '@/graphql';
+import { FooterDocument, GlobalDocument, ContactDocument, AllProductsDocument } from '@/graphql';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
 import { buildMenu } from '@/lib/menu';
@@ -38,6 +38,12 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 		},
 	});
 
+	const { allProducts } = await apiQuery<AllProductsQuery, AllProductsQueryVariables>(AllProductsDocument, {
+		variables: {
+			locale,
+		},
+	});
+
 	const menu = await buildMenu(locale);
 
 	return (
@@ -46,8 +52,8 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 				<body>
 					<NextIntlClientProvider locale={locale}>
 						<Suspense fallback={null}>
-							<Navbar menu={menu} contact={contact} />
-							<NavbarMobile menu={menu} contact={contact} />
+							<Navbar menu={menu} contact={contact} allProducts={allProducts} />
+							<NavbarMobile menu={menu} contact={contact} allProducts={allProducts} />
 							<main className={s.main}>{children}</main>
 							<Footer footer={footer} />
 						</Suspense>

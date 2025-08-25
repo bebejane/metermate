@@ -1,9 +1,11 @@
 import { getTranslations } from 'next-intl/server';
+import { routing } from '@/i18n/routing';
+import { RoutingConfig } from 'next-intl/routing';
 
 export type MenuItem = {
 	id: string;
 	title: string;
-	slug?: string;
+	slug?: any;
 	href?: string;
 	sub?: MenuItem[];
 	position?: 'right' | 'left';
@@ -18,7 +20,6 @@ export const buildMenu = async (locale: SiteLocale): Promise<Menu> => {
 		{
 			id: 'products',
 			title: t('products'),
-			slug: '/produkter',
 			position: 'left',
 		},
 		{
