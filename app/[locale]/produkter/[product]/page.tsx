@@ -10,6 +10,7 @@ import { getPathname } from '@/i18n/routing';
 import { Image } from 'react-datocms';
 import { Block } from '@/components/blocks';
 import Article from '@/components/layout/Article';
+import Content from '@/components/common/Content';
 
 export default async function Products({ params }: PageProps) {
 	const { locale, product: slug } = await params;
@@ -26,6 +27,15 @@ export default async function Products({ params }: PageProps) {
 	return (
 		<>
 			<Article className={s.product}>
+				<section className={s.intro}>
+					<div>
+						<h1>{product.title}</h1>
+						<Content content={product.intro} />
+					</div>
+					<figure>
+						<Image data={product.image.responsiveImage} />
+					</figure>
+				</section>
 				{product.layout.map((data, idx) => (
 					<Block key={idx} data={data} />
 				))}

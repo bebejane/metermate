@@ -2,3 +2,25 @@
 	margin-left: calc(-1 * var(--outer-margin));
 	margin-right: calc(-1 * var(--outer-margin));
 }
+
+.intro {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 50vh;
+	background-color: var(--gray-light);
+	> div {
+		flex: 0 0 50%;
+		h1 {
+			color: var(--green);
+		}
+	}
+	figure {
+		height: 100%;
+		img {
+			object-fit: cover;
+			height: 50vh;
+			width: 100%;
+		}
+	}
+}
