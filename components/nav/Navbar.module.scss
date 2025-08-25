@@ -103,4 +103,15 @@
 			}
 		}
 	}
+	&.products {
+		background-color: var(--gray-light);
+		ul {
+			display: flex;
+			flex-direction: row;
+			list-style: none;
+			img {
+				height: 20vh;
+			}
+		}
+	}
 }
