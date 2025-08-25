@@ -57,7 +57,7 @@ export default async function Home({ params }: PageProps) {
 				</section>
 				<section className={s.products}>
 					<div className={s.header}>
-						<h3>Våra produkter</h3>
+						<h2>Våra produkter</h2>
 						<div className={s.private}>
 							<h3>Är du här som privatperson?</h3>
 							<span>Läs mer om våra produkter här.</span>

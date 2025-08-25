@@ -5,8 +5,14 @@
 	color: var(--white);
 	background-color: var(--green);
 	padding: 1rem;
+	padding-left: var(--outer-margin);
+	padding-right: var(--outer-margin);
 	width: 100%;
 	.text {
 		flex: 1 1 auto;
+	}
+
+	.logo {
+		margin-right: 1rem;
 	}
 }

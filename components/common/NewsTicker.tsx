@@ -24,19 +24,19 @@ export default function NewsTicker({ headline, news }: Props) {
 
 	const variants = isDesktop
 		? {
-				initial: { translateY: 0 },
-				exit: { translateY: -100 },
-				animate: { translateY: 0 },
-			}
+			initial: { translateY: 0 },
+			exit: { translateY: -100 },
+			animate: { translateY: 0 },
+		}
 		: {
-				initial: { translateX: `0%` },
-				exit: { translateX: `-100%` },
-				animate: { translateX: 0 },
-			};
+			initial: { translateX: `0%` },
+			exit: { translateX: `-100%` },
+			animate: { translateX: 0 },
+		};
 
 	return (
 		<Link className={s.news} target='_blank' rel='noopener noreferrer' href={newsItem?.url}>
-			<h4>{headline}</h4>
+			<h2>{headline}</h2>
 			<AnimatePresence mode={'wait'}>
 				<motion.h3
 					key={index}

@@ -30,6 +30,8 @@
 		color: var(--white);
 		.title {
 			color: var(--white);
+			padding-top: 0;
+			padding-bottom: 1em;
 		}
 	}
 }
@@ -51,6 +53,10 @@
 		}
 	}
 
+	h3 {
+		padding-bottom: 0;
+	}
+
 	.store {
 		margin-left: 0.5rem;
 	}
@@ -64,8 +70,11 @@
 	.header {
 		display: flex;
 		flex-direction: row;
+		padding-left: var(--outer-margin);
+		padding-right: var(--outer-margin);
+		padding-top: var(--space);
 
-		> h3 {
+		> h2 {
 			flex: 1 1 auto;
 		}
 		.private {
@@ -79,6 +88,11 @@
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
+		padding-left: var(--outer-margin);
+		padding-right: var(--outer-margin);
+		margin-bottom: 0;
+		padding-bottom: var(--space);
+
 		li {
 			display: flex;
 			text-align: center;

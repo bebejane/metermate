@@ -5,7 +5,7 @@
 	padding-left: var(--outer-margin);
 	padding-right: var(--outer-margin);
 	padding-top: var(--space);
-	padding-bottom: var(--space);
+	padding-bottom: calc(0.85 * var(--space));
 	overflow: hidden;
 	display: block;
 
@@ -22,13 +22,14 @@
 	}
 	h3 {
 		flex: 1 1 auto;
+		color: var(--gray);
 		@include mq($until: desktop) {
-			padding-bottom: 0.2em;
+			padding-bottom: 0em;
 		}
 	}
-	h4 {
-		margin-right: 2rem;
-		padding-top: 0.1em;
+	h2 {
+		margin-right: 1rem;
+		padding-top: 0.3em;
 		@include mq($until: desktop) {
 			padding-bottom: 0.5em;
 		}
