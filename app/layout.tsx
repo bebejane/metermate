@@ -14,6 +14,9 @@ import { getPathname, routing } from '@/i18n/routing';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Footer from '@/components/layout/Footer';
 import { Jost } from 'next/font/google';
+import { getServerSession } from 'next-auth';
+import SessionProvider from '@/lib/provider/SessionProvider';
+import { authOptions } from '@/lib/auth';
 
 const jost = Jost({ subsets: ['latin'], weight: ['500'] });
 
@@ -25,6 +28,8 @@ export type LayoutProps = {
 export default async function RootLayout({ children, params }: LayoutProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
+
+	const session = await getServerSession(authOptions);
 
 	const { footer } = await apiQuery<FooterQuery, FooterQueryVariables>(FooterDocument, {
 		variables: {
@@ -51,12 +56,14 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 			<html lang={locale === 'sv' ? 'se-SE' : 'en-US'} className={jost.className}>
 				<body>
 					<NextIntlClientProvider locale={locale}>
-						<Suspense fallback={null}>
-							<Navbar menu={menu} contact={contact} allProducts={allProducts} />
-							<NavbarMobile menu={menu} contact={contact} allProducts={allProducts} />
-							<main className={s.main}>{children}</main>
-							<Footer footer={footer} />
-						</Suspense>
+						<SessionProvider session={session}>
+							<Suspense fallback={null}>
+								<Navbar menu={menu} contact={contact} allProducts={allProducts} />
+								<NavbarMobile menu={menu} contact={contact} allProducts={allProducts} />
+								<main className={s.main}>{children}</main>
+								<Footer footer={footer} />
+							</Suspense>
+						</SessionProvider>
 					</NextIntlClientProvider>
 				</body>
 				{/*<GoogleAnalytics gaId='G-3YJRN86MF7' />*/}

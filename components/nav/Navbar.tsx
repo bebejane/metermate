@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
 import Content from '@/components/common/Content';
 import { Image } from 'react-datocms';
+import { useSession } from 'next-auth/react';
 
 export type NavbarProps = {
 	menu: Menu;
@@ -16,16 +17,21 @@ export type NavbarProps = {
 };
 
 export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
+	const { status } = useSession();
 	const path = usePathname();
 	const qs = useSearchParams().toString();
 	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
 	const [selected, setSelected] = useState<string | null>(null);
 	const [sub, setSub] = useState<'contact' | 'products' | null>(null);
-	const [subHeight, setSubHeight] = useState<number | null>(null);
+
 	const logoRef = useRef<HTMLImageElement>(null);
 	const subRef = useRef<HTMLDivElement>(null);
 	const left = menu.filter((item) => item.position === 'left');
-	const right = menu.filter((item) => item.position === 'right');
+	const right = menu
+		.filter((item) => item.position === 'right')
+		.map((item) =>
+			item.id === 'login' && status === 'authenticated' ? { ...item, title: 'Medlem', slug: '/medlem' } : item
+		);
 
 	function isSelected(item: MenuItem) {
 		return (
