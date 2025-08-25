@@ -89,7 +89,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 				{sub === 'products' && (
 					<div className={s.products}>
 						<ul>
-							{allProducts.map((product) => (
+							{allProducts?.map((product) => (
 								<Link
 									key={product.id}
 									href={{
