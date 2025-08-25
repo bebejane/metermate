@@ -44,10 +44,10 @@
 	flex-direction: column;
 	height: 100vh;
 	width: 100%;
-	background-color: var(--green);
+	background-color: var(--gray);
+	color: var(--white);
 	padding: var(--outer-margin);
 	font-size: 1.5rem;
-	color: var(--white);
 	padding-top: calc(var(--navbar-height) + var(--space));
 	z-index: var(--z-navbar);
 	transform: translateX(-100%);
@@ -65,16 +65,17 @@
 		list-style: none;
 
 		li {
-			padding-bottom: 1em;
-			padding-top: 1em;
+			padding-top: 0.5em;
+			text-align: center;
 
 			&:first-child {
 				padding-top: 0;
 			}
 
 			&.active {
-				* {
-					color: var(--black) !important;
+				> span,
+				> a {
+					color: var(--green) !important;
 				}
 			}
 		}
@@ -83,26 +84,26 @@
 	.menu {
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 		list-style: none;
 		flex: 1 1 auto;
 
 		> li {
 			line-height: 1;
-			border-bottom: 1px solid var(--white);
 			cursor: pointer;
 
 			> ul {
 				display: flex;
 				flex-direction: column;
-				margin-left: 1em;
-				margin-top: 0.5em;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding-bottom: var(--space-small);
 
 				li {
-					padding-top: 0.5em;
-					padding-bottom: 0.5em;
 					&.active {
 						> a {
-							color: var(--gray);
+							color: var(--green);
 						}
 					}
 				}
@@ -110,7 +111,19 @@
 		}
 	}
 
+	.contact {
+		color: var(--white);
+		font-size: 0.7em;
+	}
+
 	@include mq($from: desktop) {
 		display: none;
+	}
+
+	.help {
+		text-align: center;
+		p {
+			color: var(--white);
+		}
 	}
 }
