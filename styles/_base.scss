@@ -10,6 +10,8 @@
 	--black: #000000;
 	--red: #cd3a00;
 	--green: #349f49;
+	--green-darken: color-mix(in srgb, var(--green) 90%, black);
+	--gray-darken: color-mix(in srgb, var(--gray) 90%, black);
 	--background: var(--white);
 	--foreground: var(--black);
 
@@ -158,13 +160,12 @@ button {
 	padding-top: 1em;
 	padding-bottom: 1em;
 	margin-top: 2rem;
-	border-top: 1px solid var(--black);
-	border-bottom: 1px solid var(--black);
-
+	background-color: var(--green);
+	color: var(--white);
 	&[aria-selected="true"],
 	&[data-selected="true"] {
 		color: var(--white) !important;
-		background-color: var(--black) !important;
+		background-color: var(--gray) !important;
 	}
 	&[data-type="icon"] {
 		border-radius: 50% !important;
@@ -177,7 +178,7 @@ button {
 	}
 
 	&:hover:not([disabled]) {
-		background-color: var(--black);
+		background-color: var(--green-darken);
 		color: var(--white);
 	}
 }
@@ -237,6 +238,7 @@ select {
 	color: var(--red);
 	font-size: 0.8em;
 	margin-top: 0.5em;
+	text-align: center;
 }
 
 .page-error {

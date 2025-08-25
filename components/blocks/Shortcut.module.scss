@@ -3,10 +3,14 @@
 	padding: var(--outer-margin);
 	padding-top: var(--space);
 	padding-bottom: var(--space);
+	transition: background-color 0.3s;
 	&.green {
 		background-color: var(--green);
 		h2 {
 			color: var(--gray-dark);
+		}
+		&:hover {
+			background-color: var(--green-darken);
 		}
 	}
 	&.gray {
@@ -14,6 +18,9 @@
 		background-color: var(--gray);
 		h2 {
 			color: var(--green);
+		}
+		&:hover {
+			background-color: var(--gray-darken);
 		}
 	}
 	p {

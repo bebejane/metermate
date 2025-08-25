@@ -78,6 +78,12 @@
 			flex: 1 1 auto;
 		}
 		.private {
+			h3 {
+				padding-bottom: 0;
+			}
+			span {
+				color: var(--gray);
+			}
 			text-align: center;
 		}
 	}
@@ -99,6 +105,15 @@
 			flex-direction: column;
 			img {
 				max-height: 40vh;
+			}
+
+			h4 {
+				padding-top: 1.5em;
+				color: var(--gray);
+			}
+
+			&:hover h4 {
+				color: var(--green);
 			}
 		}
 	}

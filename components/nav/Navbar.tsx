@@ -99,7 +99,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 								>
 									<li>
 										<Image data={product.image.responsiveImage} />
-										<h4>{product.title}</h4>
+										<h5>{product.title}</h5>
 									</li>
 								</Link>
 							))}

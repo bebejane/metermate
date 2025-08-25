@@ -6,6 +6,11 @@
 	width: 100%;
 	height: calc(100vh - var(--navbar-height));
 
+	h1 {
+		color: var(--green);
+		padding-bottom: var(--space);
+	}
+
 	.form {
 		display: flex;
 		flex: 0 0;
@@ -16,6 +21,12 @@
 		.grid,
 		form {
 			width: 100%;
+			font-family: var(--body-font);
+		}
+
+		input {
+			background-color: var(--gray-light);
+			padding: 1em;
 		}
 	}
 }

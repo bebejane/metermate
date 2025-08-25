@@ -6,6 +6,7 @@ body {
 	font-size: 16px;
 	font-weight: normal;
 	font-variation-settings: "wght" 480 !important;
+	color: var(--gray);
 
 	@include mq($from: tablet) {
 		font-size: 20px;
@@ -123,6 +124,10 @@ p {
 	color: var(--gray);
 }
 
+figcaption {
+	color: var(--gray);
+}
+
 p.intro,
 .intro p,
 .intro {
@@ -163,8 +168,7 @@ figcaption,
 
 figcaption {
 	font-family: var(--sans-font);
-	color: var(--darkred);
-	font-size: 0.7rem;
+	font-size: 0.8rem;
 	line-height: var(--line-height);
 }
 

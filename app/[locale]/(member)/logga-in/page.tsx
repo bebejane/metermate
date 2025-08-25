@@ -10,7 +10,7 @@ export default async function Login() {
 	return (
 		<Article>
 			<div className={s.wrap}>
-				<h1>Medlem</h1>
+				<h1>Kundlogin</h1>
 				<div className={s.form}>
 					<LoginForm />
 				</div>

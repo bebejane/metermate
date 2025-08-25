@@ -86,6 +86,7 @@
 	background-color: var(--green);
 	min-height: var(--navbar-height);
 	z-index: var(--z-navbar);
+	box-shadow: rgba(140, 140, 140, 0.2) 0px 8px 20px;
 
 	&.show {
 		display: flex;
@@ -97,21 +98,30 @@
 		color: var(--white);
 		padding-top: 0.5em;
 		a {
-			color: var(--white);
+			color: var(--white) !important;
 			&:hover {
-				color: var(--gray-dark);
+				color: var(--gray-dark) !important;
 			}
+		}
+		p {
+			color: var(--white) !important;
 		}
 	}
 
 	&.products {
 		background-color: var(--gray-light);
+		padding-top: var(--space-small);
+		padding-bottom: var(--space-small);
 		ul {
 			display: flex;
 			flex-direction: row;
 			list-style: none;
 			img {
 				height: 20vh;
+			}
+
+			h5 {
+				text-align: center;
 			}
 		}
 	}
