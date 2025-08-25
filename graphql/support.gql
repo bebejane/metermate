@@ -35,10 +35,13 @@ fragment SupportFragment on SupportRecord {
 			title
 			text {
 				blocks {
+					__typename
 					id
-					caption
-					video {
-						...FileFragment
+					... on VideoRecord {
+						caption
+						video {
+							...VideoFragment
+						}
 					}
 				}
 				links
@@ -59,10 +62,13 @@ fragment SupportLightFragment on SupportRecord {
 			title
 			text {
 				blocks {
+					__typename
 					id
-					caption
-					video {
-						...FileFragment
+					... on VideoRecord {
+						caption
+						video {
+							...VideoFragment
+						}
 					}
 				}
 				links
