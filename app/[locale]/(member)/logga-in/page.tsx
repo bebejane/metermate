@@ -8,9 +8,11 @@ import { Metadata } from 'next';
 export default async function Login() {
 	return (
 		<Article>
-			<h1>Logga in</h1>
-			<div className={s.form}>
-				<LoginForm />
+			<div className={s.wrap}>
+				<h1>Medlem</h1>
+				<div className={s.form}>
+					<LoginForm />
+				</div>
 			</div>
 		</Article>
 	);

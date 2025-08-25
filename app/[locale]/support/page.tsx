@@ -8,6 +8,8 @@ import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 import Article from '@/components/layout/Article';
 import Content from '@/components/common/Content';
+import React from 'react';
+import SupportMenu from '@/app/[locale]/support/SupportMenu';
 
 export default async function Support({ params }: PageProps) {
 	const { locale } = await params;
@@ -29,27 +31,12 @@ export default async function Support({ params }: PageProps) {
 		<>
 			<Article title={supportStart.title} intro={supportStart.intro}>
 				<section className={s.support}>
-					<ul className={s.menu}>
-						{allSupports.map(({ id, title, sections, slug }) => (
-							<li key={id}>
-								<a id={slug} key={id} href={`#${slug}`}>
-									{title}
-								</a>
-								<ul>
-									{sections.map(({ id, title, slug }) => (
-										<li id={slug} key={id}>
-											<a href={`#${slug}`}>{title}</a>
-										</li>
-									))}
-								</ul>
-							</li>
-						))}
-					</ul>
+					<SupportMenu allSupports={allSupports} />
 					<div className={s.items}>
-						{allSupports.map(({ id, title, sections }) => (
-							<>
-								<h3>{title}</h3>
-								<ul key={id} className={s.sections}>
+						{allSupports.map(({ id, slug, title, sections }) => (
+							<React.Fragment key={id}>
+								<h3 id={slug}>{title}</h3>
+								<ul className={s.sections}>
 									{sections.map(({ id, text, title }) => (
 										<li key={id}>
 											<h5>{title}</h5>
@@ -57,7 +44,7 @@ export default async function Support({ params }: PageProps) {
 										</li>
 									))}
 								</ul>
-							</>
+							</React.Fragment>
 						))}
 					</div>
 				</section>

@@ -47,12 +47,13 @@
 	--z-fade-transition: 901;
 
 	--body-font: "Jost", Helvetica, Arial, Sans-Serif;
-	--headline-font: "Jost", Helvetica, Arial, Sans-Serif;
-	--label-font: "Jost", Helvetica, Arial, Sans-Serif;
-	--sans-font: "Jost", Helvetica, Arial, Sans-Serif;
+	--headline-font: var(--body-font);
+	--label-font: var(--body-font);
+	--sans-font: var(--body-font);
 
 	@include mq($until: desktop) {
 		--font-weight-light: "wght" 350;
+
 		--outer-margin: 1.5rem;
 		--margin: var(--outer-margin);
 		--navbar-height: calc(48px + var(--outer-margin));

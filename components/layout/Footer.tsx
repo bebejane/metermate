@@ -22,11 +22,11 @@ export default function Footer({ footer }: FooterProps) {
 		<footer className={cn(s.footer)}>
 			<div className={s.logo}>
 				<Link href={'/'}>
-					<img src='/images/logo.svg' alt='Logo' />
+					<img src='/images/logo-black.svg' alt='Logo' />
 				</Link>
 			</div>
 			<div className={s.text}>{footer.text}</div>
-			<div className={s.copyright}>© Jemac Sweden AB 2025</div>
+			<div className={s.copyright}>© Jemac Sweden AB {new Date().getFullYear()}</div>
 		</footer>
 	);
 }

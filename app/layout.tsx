@@ -8,15 +8,14 @@ import { buildMenu } from '@/lib/menu';
 import Navbar from '@/components/nav/Navbar';
 import NavbarMobile from '@/components/nav/NavbarMobile';
 import { setRequestLocale } from 'next-intl/server';
-import { NextIntlClientProvider, useMessages } from 'next-intl';
+import { NextIntlClientProvider } from 'next-intl';
 import { Suspense } from 'react';
 import { getPathname, routing } from '@/i18n/routing';
 import { GoogleAnalytics } from '@next/third-parties/google';
-import FullscreenGallery from '@/components/common/FullscreenGallery';
 import Footer from '@/components/layout/Footer';
 import { Jost } from 'next/font/google';
 
-const jost = Jost({});
+const jost = Jost({ subsets: ['latin'], weight: ['500'] });
 
 export type LayoutProps = {
 	children: React.ReactNode;
@@ -32,6 +31,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 			locale,
 		},
 	});
+
 	const menu = await buildMenu(locale);
 
 	return (
