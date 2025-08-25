@@ -23,7 +23,6 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
 	const [selected, setSelected] = useState<string | null>(null);
 	const [sub, setSub] = useState<'contact' | 'products' | null>(null);
-
 	const logoRef = useRef<HTMLImageElement>(null);
 	const subRef = useRef<HTMLDivElement>(null);
 	const left = menu.filter((item) => item.position === 'left');
@@ -54,12 +53,6 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 		setSelected(id);
 		setSub(id === 'contact' ? 'contact' : id === 'products' ? 'products' : null);
 	}
-
-	useEffect(() => {
-		if (subRef.current) {
-			setSubHeight(subRef.current.scrollHeight);
-		}
-	}, [sub]);
 
 	return (
 		<>
