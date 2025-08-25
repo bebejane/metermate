@@ -24,10 +24,12 @@ export type ArticleProps = {
 export default function Article({ title, intro, content, link, className, children }: ArticleProps) {
 	return (
 		<article className={cn(s.article, className)}>
-			<header>
-				{title && <h1>{title}</h1>}
-				{intro && <Content content={intro} className={s.intro} />}
-			</header>
+			{title && (
+				<header>
+					{title && <h1>{title}</h1>}
+					{intro && <Content content={intro} className={s.intro} />}
+				</header>
+			)}
 			{content && <Content content={content} className={s.content} />}
 			{children}
 		</article>
