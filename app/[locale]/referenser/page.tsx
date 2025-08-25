@@ -30,7 +30,7 @@ export default async function References({ params }: PageProps) {
 					<section key={id} className={s.example}>
 						<div className={s.wrap}>
 							<img className={s.logo} src={logo.url} alt={logo.alt} />
-							<h3>{title}</h3>
+							<h2>{title}</h2>
 							<Content content={text} />
 							<a href={link}>Läs mer</a>
 						</div>

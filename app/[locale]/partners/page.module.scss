@@ -3,19 +3,27 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	list-style: none;
-	width: 100%;
+	//width: 100%;
+	margin-left: calc(-1 * var(--outer-margin));
+	margin-right: calc(-1 * var(--outer-margin));
 	li {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		flex: 0 0 50%;
+		padding-left: var(--outer-margin);
+		padding-right: var(--outer-margin);
+		padding-top: var(--space);
+		padding-bottom: var(--space);
+		background-color: var(--gray-very-light);
 
 		&:nth-of-type(odd) {
 			background-color: var(--gray-light);
 		}
 
 		.logo {
-			height: 3rem;
+			height: 2.5rem;
+			margin-bottom: 2rem;
 		}
 	}
 }

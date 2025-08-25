@@ -1,16 +1,33 @@
 .support {
+	background-color: var(--gray-very-light);
+	margin-left: calc(-1 * var(--outer-margin));
+	margin-right: calc(-1 * var(--outer-margin));
+	padding-bottom: var(--space);
+
 	display: flex;
 	flex-direction: row;
+
 	ul {
+		padding-left: calc(3 * var(--outer-margin));
+		padding-top: var(--space);
 		list-style: none;
+
+		ul {
+			padding-left: 0rem;
+		}
 	}
 
 	.items {
+		padding-top: var(--space);
+
 		flex: 1 1 auto;
+		padding-right: calc(3 * var(--outer-margin));
 		ul {
 			list-style: none;
 			display: flex;
 			flex-direction: column;
+			padding-left: 0rem;
+			padding-top: 0;
 			li {
 				display: flex;
 				flex-direction: column;

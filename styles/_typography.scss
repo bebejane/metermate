@@ -103,18 +103,11 @@ h4 strong {
 	color: green;
 }
 
-h5,
-h6 {
-	color: var(--blue);
-	letter-spacing: 0.1em;
-	font-size: 0.8rem;
-	text-transform: uppercase;
-	padding-bottom: 0.5em;
-	font-variation-settings: var(--font-weight-bold) !important;
-
-	& strong {
-		color: var(--green);
-	}
+h5 {
+	color: var(--green);
+	padding-top: 0.5em;
+	font-size: 1rem;
+	padding-bottom: 0;
 }
 
 h6 {
