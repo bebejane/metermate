@@ -60,6 +60,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 	const title = t('support');
 
 	return await buildMetadata({
+		title,
 		pathname: getPathname({ locale, href: '/support' }),
 		locale,
 	});

@@ -40,7 +40,6 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 	}
 
 	function handleLeaveSub() {
-		console.log('leave');
 		setSub(null);
 	}
 
@@ -48,7 +47,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 		setSelected(id);
 		setSub(id === 'contact' ? 'contact' : id === 'products' ? 'products' : null);
 	}
-	console.log(sub);
+
 	return (
 		<>
 			<nav className={cn(s.navbar)}>

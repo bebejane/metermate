@@ -13,7 +13,6 @@ export default function SupportMenu({ allSupports }: SupportMenuProps) {
 
 	useEffect(() => {
 		const observer = new IntersectionObserver((entries) => {
-			console.log(entries);
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					setActive(entry.target.getAttribute('data-slug'));

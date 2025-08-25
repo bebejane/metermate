@@ -8,7 +8,7 @@ export type VideoProps = {
 };
 export default function Video({ data }: VideoProps) {
 	if (!data || !data.video) return null;
-	console.log(data);
+
 	return (
 		<div className={s.wrap}>
 			<VideoPlayer data={data.video} className={s.video} />
