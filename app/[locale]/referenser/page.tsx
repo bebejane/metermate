@@ -3,7 +3,7 @@ import { ReferenceDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from 'next/navigation';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
@@ -47,9 +47,12 @@ export default async function References({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
+	const t = await getTranslations('menu');
+	const title = t('references');
 
 	return await buildMetadata({
-		pathname: getPathname({ locale, href: '/produkter' }),
+		title,
+		pathname: getPathname({ locale, href: '/referenser' }),
 		locale,
 	});
 }

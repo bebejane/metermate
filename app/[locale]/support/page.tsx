@@ -2,7 +2,7 @@ import s from './page.module.scss';
 import { AllSupportsDocument, SupportStartDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
@@ -56,9 +56,11 @@ export default async function Support({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
+	const t = await getTranslations('menu');
+	const title = t('support');
 
 	return await buildMetadata({
-		pathname: getPathname({ locale, href: '/produkter' }),
+		pathname: getPathname({ locale, href: '/support' }),
 		locale,
 	});
 }

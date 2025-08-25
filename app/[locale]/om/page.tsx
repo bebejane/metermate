@@ -8,6 +8,7 @@ import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 import { Image } from 'react-datocms';
+import { getTranslations } from 'next-intl/server';
 import Article from '@/components/layout/Article';
 import Content from '@/components/common/Content';
 
@@ -43,9 +44,12 @@ export default async function Products({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
+	const t = await getTranslations('menu');
+	const title = t('about');
 
 	return await buildMetadata({
-		pathname: getPathname({ locale, href: '/produkter' }),
+		title,
+		pathname: getPathname({ locale, href: '/om' }),
 		locale,
 	});
 }
