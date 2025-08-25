@@ -10,6 +10,7 @@ import Hamburger from './Hamburger';
 
 export type NavbarMobileProps = {
 	menu: Menu;
+	contact: ContactQuery['contact'];
 };
 
 export default function NavbarMobile({ menu }: NavbarMobileProps) {

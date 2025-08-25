@@ -24,9 +24,13 @@
 			"en": "Login",
 			"sv": "Logga in"
 		},
+		"contact": {
+			"en": "Contact",
+			"sv": "Kontakt"
+		},
 		"language": {
-			"en": "Swedish",
-			"sv": "English"
+			"en": "SV",
+			"sv": "EN"
 		}
 	},
 	"Start": {
