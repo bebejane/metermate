@@ -80,23 +80,27 @@
 	left: 0;
 	top: var(--navbar-height);
 	width: 100%;
-	display: none;
+	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: var(--green);
-	min-height: var(--navbar-height);
-	z-index: var(--z-navbar);
 	box-shadow: rgba(140, 140, 140, 0.2) 0px 8px 20px;
 
+	transform: translateY(calc(-1 * var(--navbar-height)));
+	z-index: var(--z-navbar-sub);
+	transition: transform 0.3s ease-out;
+
 	&.show {
-		display: flex;
+		transform: translateY(0%);
 	}
 
 	&.contact {
 		width: 100%;
 		text-align: center;
 		color: var(--white);
-		padding-top: 0.5em;
+		line-height: 1;
+		background-color: var(--green);
+
 		a {
 			color: var(--white) !important;
 			&:hover {

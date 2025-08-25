@@ -7,12 +7,12 @@ import { setRequestLocale } from 'next-intl/server';
 import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
-import { VideoPlayer } from 'next-dato-utils/components';
 import { Image } from 'react-datocms';
 import Article from '@/components/layout/Article';
 import { Link } from '@/i18n/routing';
 import Shortcut from '@/components/blocks/Shortcut';
 import NewsTicker from '@/components/common/NewsTicker';
+import Hero from './Hero';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
@@ -35,12 +35,7 @@ export default async function Home({ params }: PageProps) {
 	return (
 		<>
 			<Article>
-				<section className={s.hero}>
-					<VideoPlayer data={start.film} className={s.video} />
-					<header>
-						<h1 className={s.title}>{start.filmText[0]?.text}</h1>
-					</header>
-				</section>
+				<Hero start={start} />
 				<section className={s.appdownload}>
 					<figure>
 						<Image data={start.image.responsiveImage} className={s.image} />
