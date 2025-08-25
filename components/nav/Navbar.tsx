@@ -48,7 +48,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 		setSelected(id);
 		setSub(id === 'contact' ? 'contact' : id === 'products' ? 'products' : null);
 	}
-
+	console.log(sub);
 	return (
 		<>
 			<nav className={cn(s.navbar)}>
