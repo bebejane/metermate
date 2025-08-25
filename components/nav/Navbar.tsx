@@ -4,7 +4,7 @@ import s from './Navbar.module.scss';
 import cn from 'classnames';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Link } from '@/i18n/routing';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
 import Content from '@/components/common/Content';
 import { Image } from 'react-datocms';
@@ -22,7 +22,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 	const qs = useSearchParams().toString();
 	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
 	const [selected, setSelected] = useState<string | null>(null);
-	const [sub, setSub] = useState<'contact' | 'products' | null>(null);
+	const [sub, setSub] = useState<string | null>(null);
 	const logoRef = useRef<HTMLImageElement>(null);
 	const subRef = useRef<HTMLDivElement>(null);
 	const left = menu.filter((item) => item.position === 'left');
@@ -51,7 +51,10 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 
 	function handleEnter(id: string) {
 		setSelected(id);
-		setSub(id === 'contact' ? 'contact' : id === 'products' ? 'products' : null);
+	}
+
+	function handleClick(id: string) {
+		setSub(sub === id ? null : id);
 	}
 
 	return (
@@ -71,7 +74,11 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 							className={cn(isSelected(item) && s.active)}
 							onMouseEnter={() => handleEnter(item.id ?? null)}
 						>
-							{item.slug ? <Link href={item.slug}>{item.title}</Link> : <span>{item.title}</span>}
+							{item.slug ? (
+								<Link href={item.slug}>{item.title}</Link>
+							) : (
+								<span onClick={() => handleClick(item.id ?? null)}>{item.title}</span>
+							)}
 						</li>
 					))}
 				</ul>
@@ -84,7 +91,11 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 							className={cn(isSelected(item) && s.active)}
 							onMouseEnter={() => handleEnter(item.id ?? null)}
 						>
-							{item.slug ? <Link href={item.slug}>{item.title}</Link> : <span>{item.title}</span>}
+							{item.slug ? (
+								<Link href={item.slug}>{item.title}</Link>
+							) : (
+								<span onClick={() => handleClick(item.id ?? null)}>{item.title}</span>
+							)}
 						</li>
 					))}
 				</ul>
