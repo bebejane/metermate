@@ -3,9 +3,9 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	list-style: none;
-	//width: 100%;
 	margin-left: calc(-1 * var(--outer-margin));
 	margin-right: calc(-1 * var(--outer-margin));
+
 	li {
 		display: flex;
 		flex-direction: column;
@@ -17,7 +17,9 @@
 		padding-bottom: var(--space);
 		background-color: var(--gray-very-light);
 
-		&:nth-of-type(odd) {
+		&:first-child,
+		&:nth-child(4n),
+		&:nth-child(4n + 1) {
 			background-color: var(--gray-light);
 		}
 
