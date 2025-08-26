@@ -18,6 +18,7 @@ const authMiddleware = withAuth(
 		},
 		pages: {
 			signIn: '/logga-in',
+			signOut: '/logga-ut',
 		},
 	}
 );

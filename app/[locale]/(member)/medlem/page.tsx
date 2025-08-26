@@ -6,7 +6,7 @@ import { apiQuery } from 'next-dato-utils/api';
 import { getTranslations } from 'next-intl/server';
 import { redirect } from 'next/navigation';
 
-export default async function AllCourses() {
+export default async function MemberPage() {
 	try {
 		await getSession();
 	} catch (e) {

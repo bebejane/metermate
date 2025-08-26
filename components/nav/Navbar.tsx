@@ -65,7 +65,9 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 					{left.map((item, idx) => (
 						<li id={`${item.id}-menu`} key={`${item.id}-menu`} className={cn(isSelected(item) && s.active)}>
 							{item.slug ? (
-								<Link href={item.slug}>{item.title}</Link>
+								<Link href={item.slug} prefetch={true}>
+									{item.title}
+								</Link>
 							) : (
 								<span onClick={() => handleClick(item.id ?? null)}>{item.title}</span>
 							)}
@@ -94,6 +96,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 						{allProducts?.map((product) => (
 							<Link
 								key={product.id}
+								prefetch={true}
 								href={{
 									pathname: '/produkter/[product]',
 									params: { product: product.slug },
