@@ -47,6 +47,7 @@
 			justify-content: flex-end;
 			width: auto;
 		}
+
 		li {
 			cursor: pointer;
 			padding-right: 1.5rem;
@@ -56,7 +57,8 @@
 				color: var(--white);
 			}
 			&.active > *,
-			& a:hover {
+			a:hover,
+			span:hover {
 				color: var(--green) !important;
 			}
 			span {
@@ -85,11 +87,9 @@
 	justify-content: center;
 	background-color: var(--green);
 	box-shadow: rgba(140, 140, 140, 0.2) 0px 8px 20px;
-
-	transform: translateY(calc(-1 * var(--navbar-height)));
 	z-index: var(--z-navbar-sub);
-	transition: transform 0.3s ease-out;
-
+	transition: transform 0.2s ease-out;
+	transform: translateY(-100%);
 	&.show {
 		transform: translateY(0%);
 	}

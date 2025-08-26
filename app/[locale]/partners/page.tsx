@@ -3,11 +3,10 @@ import { PartnerDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from 'next/navigation';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
-import { Image } from 'react-datocms';
 import Article from '@/components/layout/Article';
 import Content from '@/components/common/Content';
 
@@ -45,8 +44,11 @@ export default async function Partners({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
+	const t = await getTranslations('menu');
+	const title = t('partners');
 
 	return await buildMetadata({
+		title,
 		pathname: getPathname({ locale, href: '/partners' }),
 		locale,
 	});

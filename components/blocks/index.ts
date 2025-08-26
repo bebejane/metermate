@@ -1,7 +1,4 @@
 export { default as Block } from './Block';
-export { default as Image } from './Image';
-export { default as ExpandableList } from './ExpandableList';
-export { default as ImageGallery } from './ImageGallery';
 export { default as Shortcut } from './Shortcut';
 export { default as Column } from './Column';
 export { default as TwoColumn } from './TwoColumn';
