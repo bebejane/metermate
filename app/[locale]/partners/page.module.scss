@@ -16,10 +16,24 @@
 		padding-bottom: var(--space);
 		background-color: var(--gray-very-light);
 
-		&:first-child,
-		&:nth-child(4n),
-		&:nth-child(4n + 1) {
-			background-color: var(--gray-light);
+		@include mq($until: desktop) {
+			&:nth-child(odd) {
+				background-color: var(--gray-light);
+			}
+		}
+
+		@include mq($from: desktop) {
+			flex: 0 0 50%;
+
+			&:nth-child(4n + 1),
+			&:nth-child(4n + 4) {
+				background-color: var(--gray-light);
+			}
+
+			&:nth-child(4n + 2),
+			&:nth-child(4n + 3) {
+				background-color: var(--gray-very-light);
+			}
 		}
 
 		.logo {
