@@ -21,10 +21,8 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 	const path = usePathname();
 	const qs = useSearchParams().toString();
 	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
-	const [selected, setSelected] = useState<string | null>(null);
 	const [sub, setSub] = useState<string | null>(null);
 	const logoRef = useRef<HTMLImageElement>(null);
-	const subRef = useRef<HTMLDivElement>(null);
 	const left = menu.filter((item) => item.position === 'left');
 	const right = menu
 		.filter((item) => item.position === 'right')
@@ -41,16 +39,8 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 		);
 	}
 
-	function handleLeave() {
-		setSelected(null);
-	}
-
 	function handleLeaveSub() {
 		setSub(null);
-	}
-
-	function handleEnter(id: string) {
-		setSelected(id);
 	}
 
 	function handleClick(id: string) {
@@ -66,14 +56,9 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 					</Link>
 				</figure>
 
-				<ul className={s.menu} onMouseLeave={handleLeave}>
+				<ul className={s.menu}>
 					{left.map((item, idx) => (
-						<li
-							id={`${item.id}-menu`}
-							key={`${item.id}-menu`}
-							className={cn(isSelected(item) && s.active)}
-							onMouseEnter={() => handleEnter(item.id ?? null)}
-						>
+						<li id={`${item.id}-menu`} key={`${item.id}-menu`} className={cn(isSelected(item) && s.active)}>
 							{item.slug ? (
 								<Link href={item.slug}>{item.title}</Link>
 							) : (
@@ -85,12 +70,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 
 				<ul className={cn(s.menu, s.right)}>
 					{right.map((item, idx) => (
-						<li
-							id={`${item.id}-menu`}
-							key={`${item.id}-menu`}
-							className={cn(isSelected(item) && s.active)}
-							onMouseEnter={() => handleEnter(item.id ?? null)}
-						>
+						<li id={`${item.id}-menu`} key={`${item.id}-menu`} className={cn(isSelected(item) && s.active)}>
 							{item.slug ? (
 								<Link href={item.slug}>{item.title}</Link>
 							) : (
@@ -100,28 +80,28 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 					))}
 				</ul>
 			</nav>
-			<div className={cn(s.sub, sub && s.show, s[sub])} onMouseLeave={handleLeaveSub}>
-				{sub === 'contact' && <Content content={contact.text} className={s.content} />}
-				{sub === 'products' && (
-					<div className={s.products}>
-						<ul>
-							{allProducts?.map((product) => (
-								<Link
-									key={product.id}
-									href={{
-										pathname: '/produkter/[product]',
-										params: { product: product.slug },
-									}}
-								>
-									<li>
-										<Image data={product.image.responsiveImage} />
-										<h5>{product.title}</h5>
-									</li>
-								</Link>
-							))}
-						</ul>
-					</div>
-				)}
+			<div className={cn(s.sub, sub === 'contact' && s.show, s.contact)} onMouseLeave={handleLeaveSub}>
+				<Content content={contact.text} className={s.content} />
+			</div>
+			<div className={cn(s.sub, sub === 'products' && s.show, s.products)} onMouseLeave={handleLeaveSub}>
+				<div className={s.products}>
+					<ul>
+						{allProducts?.map((product) => (
+							<Link
+								key={product.id}
+								href={{
+									pathname: '/produkter/[product]',
+									params: { product: product.slug },
+								}}
+							>
+								<li>
+									<Image data={product.image.responsiveImage} />
+									<h5>{product.title}</h5>
+								</li>
+							</Link>
+						))}
+					</ul>
+				</div>
 			</div>
 		</>
 	);
