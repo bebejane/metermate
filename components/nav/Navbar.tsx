@@ -4,11 +4,12 @@ import s from './Navbar.module.scss';
 import cn from 'classnames';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Link } from '@/i18n/routing';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
 import Content from '@/components/common/Content';
 import { Image } from 'react-datocms';
 import { useSession } from 'next-auth/react';
+import { useStore, useShallow } from '@/lib/store';
 
 export type NavbarProps = {
 	menu: Menu;
@@ -21,7 +22,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 	const path = usePathname();
 	const qs = useSearchParams().toString();
 	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
-	const [sub, setSub] = useState<string | null>(null);
+	const [subMenu, setSubMenu] = useStore(useShallow((state) => [state.subMenu, state.setSubMenu]));
 	const logoRef = useRef<HTMLImageElement>(null);
 	const left = menu.filter((item) => item.position === 'left');
 	const right = menu
@@ -34,18 +35,22 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 		return (
 			pathname.startsWith(item.slug) ||
 			pathname === item.slug ||
-			(item.id === 'products' && sub === 'products') ||
-			(item.id === 'contact' && sub === 'contact')
+			(item.id === 'products' && subMenu === 'products') ||
+			(item.id === 'contact' && subMenu === 'contact')
 		);
 	}
 
 	function handleLeaveSub() {
-		setSub(null);
+		setSubMenu(null);
 	}
 
-	function handleClick(id: string) {
-		setSub(sub === id ? null : id);
+	function handleClick(id: any) {
+		setSubMenu(subMenu === id ? null : id);
 	}
+
+	useEffect(() => {
+		setSubMenu(null);
+	}, [pathname]);
 
 	return (
 		<>
@@ -80,10 +85,10 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 					))}
 				</ul>
 			</nav>
-			<div className={cn(s.sub, sub === 'contact' && s.show, s.contact)} onMouseLeave={handleLeaveSub}>
+			<div className={cn(s.sub, subMenu === 'contact' && s.show, s.contact)} onMouseLeave={handleLeaveSub}>
 				<Content content={contact.text} className={s.content} />
 			</div>
-			<div className={cn(s.sub, sub === 'products' && s.show, s.products)} onMouseLeave={handleLeaveSub}>
+			<div className={cn(s.sub, subMenu === 'products' && s.show, s.products)} onMouseLeave={handleLeaveSub}>
 				<div className={s.products}>
 					<ul>
 						{allProducts?.map((product) => (

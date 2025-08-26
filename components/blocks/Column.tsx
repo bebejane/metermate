@@ -1,3 +1,5 @@
+'use client';
+
 import s from './Column.module.scss';
 import cn from 'classnames';
 import Content from '@/components/common/Content';
