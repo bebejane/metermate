@@ -3,8 +3,11 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	height: var(--navbar-height);
 	width: 100%;
+
+	@include mq($from: desktop) {
+		height: var(--navbar-height);
+	}
 
 	figure {
 		width: 15rem;
@@ -17,6 +20,16 @@
 
 	h3 {
 		padding-bottom: 0;
+	}
+
+	.download {
+		@include mq($until: desktop) {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			padding-top: var(--space-small);
+			padding-bottom: var(--space-small);
+		}
 	}
 
 	.store {

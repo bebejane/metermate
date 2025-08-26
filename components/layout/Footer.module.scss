@@ -1,15 +1,23 @@
 .footer {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
 	color: var(--white);
+	align-items: center;
+	justify-content: space-between;
 	background-color: var(--green);
 	padding: 1rem;
 	padding-left: var(--outer-margin);
 	padding-right: var(--outer-margin);
 	width: 100%;
 	height: var(--navbar-height);
+
+	@include mq($from: desktop) {
+	}
+
 	.text {
+		@include mq($until: desktop) {
+			display: none;
+		}
 		flex: 1 1 auto;
 	}
 

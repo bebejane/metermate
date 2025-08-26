@@ -10,15 +10,30 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		flex: 0 0 50%;
 		padding-left: var(--outer-margin);
 		padding-right: var(--outer-margin);
 		padding-top: var(--space);
 		padding-bottom: var(--space);
 		background-color: var(--gray-very-light);
 
-		&:nth-of-type(odd) {
-			background-color: var(--gray-light);
+		@include mq($until: desktop) {
+			&:nth-child(odd) {
+				background-color: var(--gray-light);
+			}
+		}
+
+		@include mq($from: desktop) {
+			flex: 0 0 50%;
+
+			&:nth-child(4n + 1),
+			&:nth-child(4n + 4) {
+				background-color: var(--gray-light);
+			}
+
+			&:nth-child(4n + 2),
+			&:nth-child(4n + 3) {
+				background-color: var(--gray-very-light);
+			}
 		}
 
 		.logo {

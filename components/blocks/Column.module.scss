@@ -31,6 +31,9 @@
 		padding-bottom: var(--space);
 	}
 	figure {
+		@include mq($until: desktop) {
+			display: none;
+		}
 		flex: 0 0 25%;
 		margin-right: var(--outer-margin);
 

@@ -41,7 +41,7 @@ export default async function Home({ params }: PageProps) {
 						<Image data={start.image.responsiveImage} className={s.image} />
 					</figure>
 					<h3>{start.textApp}</h3>
-					<div>
+					<div className={s.download}>
 						<a href={start.ios}>
 							<img className={s.store} src='/images/icon-appstore.png' alt='App Store' />
 						</a>

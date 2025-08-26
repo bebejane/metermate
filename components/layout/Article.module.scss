@@ -13,5 +13,11 @@
 			padding-top: 1.5em;
 			padding-bottom: 0.5em;
 		}
+
+		p {
+			@include mq($until: desktop) {
+				text-align: center;
+			}
+		}
 	}
 }

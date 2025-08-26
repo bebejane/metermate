@@ -5,15 +5,25 @@
 
 .intro {
 	display: flex;
-	flex-direction: row;
-	height: 50vh;
+	flex-direction: column-reverse;
 	background-color: var(--gray-light);
 
+	@include mq($from: desktop) {
+		flex-direction: row;
+	}
+
 	> div {
-		flex: 0 0 50%;
 		padding-top: var(--space);
 		padding-left: var(--outer-margin);
 		padding-right: var(--outer-margin);
+		padding-bottom: var(--space);
+
+		flex: 0 0 100%;
+
+		@include mq($from: desktop) {
+			flex: 0 0 50%;
+		}
+
 		h1 {
 			color: var(--green);
 			padding-bottom: 0.5em;
