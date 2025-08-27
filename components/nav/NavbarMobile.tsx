@@ -6,10 +6,10 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { Link } from '@/i18n/routing';
 import { useEffect, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
-import { Image } from 'react-datocms';
 import Hamburger from './Hamburger';
 import { useSession } from 'next-auth/react';
 import Content from '@/components/common/Content';
+import { useShallow, useStore } from '@/lib/store';
 
 export type NavbarMobileProps = {
 	menu: Menu;
@@ -24,7 +24,7 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
 	const [selected, setSelected] = useState<string | null>(null);
 	const [open, setOpen] = useState(false);
-	const [sub, setSub] = useState<'contact' | 'products' | null>(null);
+	const [subMenu, setSubMenu] = useStore(useShallow((state) => [state.subMenu, state.setSubMenu]));
 	const top = menu.filter((item) => item.position === 'left' || item.id === 'contact');
 
 	const bottom = menu
@@ -35,13 +35,16 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 
 	function handleClick(id: string) {
 		setSelected(id);
-		setSub(id === 'contact' ? 'contact' : id === 'products' ? 'products' : null);
+		setSubMenu(id === 'contact' ? 'contact' : id === 'products' ? 'products' : null);
 	}
 	function isSelected(item: MenuItem) {
-		if (sub) return sub === item.id;
-		return pathname === item.slug;
+		return (
+			pathname.startsWith(item.slug) ||
+			pathname === item.slug ||
+			(item.id === 'products' && subMenu === 'products') ||
+			(item.id === 'contact' && subMenu === 'contact')
+		);
 	}
-
 	useEffect(() => {
 		setOpen(false);
 	}, [path, qs]);
@@ -63,11 +66,11 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 					{top.map((item) => (
 						<li
 							key={item.id}
-							className={cn(sub && s.dropdown, isSelected(item) && s.active)}
+							className={cn(subMenu && s.dropdown, isSelected(item) && s.active)}
 							onClick={() => handleClick(selected === item.id ? null : item.id)}
 						>
 							{item.slug && !item.sub ? <Link href={item.slug}>{item.title}</Link> : <span>{item.title}</span>}
-							{item.id === 'products' && sub === 'products' && (
+							{item.id === 'products' && subMenu === 'products' && (
 								<ul>
 									{allProducts?.map(({ id, title, image, slug }) => (
 										<li key={id}>
@@ -84,7 +87,9 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 									))}
 								</ul>
 							)}
-							{item.id === 'contact' && sub === 'contact' && <Content content={contact.text} className={s.contact} />}
+							{item.id === 'contact' && subMenu === 'contact' && (
+								<Content content={contact.text} className={s.contact} />
+							)}
 						</li>
 					))}
 				</ul>
