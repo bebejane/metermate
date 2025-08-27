@@ -19,10 +19,11 @@
 	ul {
 		list-style: none;
 		padding-left: calc(1 * var(--outer-margin));
-		padding-top: var(--space);
+		padding-top: var(--space-small);
 
 		@include mq($from: desktop) {
 			padding-left: calc(3 * var(--outer-margin));
+			padding-top: var(--space);
 		}
 
 		ul {
