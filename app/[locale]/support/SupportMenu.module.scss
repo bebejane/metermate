@@ -1,6 +1,9 @@
 .menu {
 	flex: 0 0 33%;
 	margin-bottom: 0;
+	position: sticky;
+	top: calc(1 * var(--navbar-height));
+	color: var(--gray);
 
 	@include mq($until: desktop) {
 		border-top: 1px solid var(--gray);
@@ -8,7 +11,12 @@
 	}
 
 	li {
-		padding-bottom: 0.5em;
+		padding-bottom: 0.8em;
+		color: var(--gray);
+
+		&:hover {
+			color: var(--green) !important;
+		}
 	}
 
 	> li {
@@ -21,6 +29,13 @@
 			display: none;
 			margin-left: 1em;
 			padding-top: 1em;
+
+			a {
+				color: var(--gray);
+				&:hover {
+					color: var(--green) !important;
+				}
+			}
 
 			&.show {
 				display: block;

@@ -1,6 +1,7 @@
 .support {
 	position: relative;
 	display: flex;
+	align-items: flex-start;
 	flex-direction: column;
 	background-color: var(--gray-very-light);
 	margin-left: calc(-1 * var(--outer-margin));
@@ -32,6 +33,7 @@
 	.items {
 		padding-top: var(--space);
 		flex: 1 1 auto;
+		flex: 1;
 
 		@include mq($until: desktop) {
 			padding-left: var(--outer-margin);
