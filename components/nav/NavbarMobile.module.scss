@@ -71,7 +71,9 @@
 			&:first-child {
 				padding-top: 0;
 			}
-
+			&:nth-last-child(2) {
+				margin-top: var(--space);
+			}
 			&.active {
 				> span,
 				> a {

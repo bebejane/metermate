@@ -25,7 +25,7 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 	const [selected, setSelected] = useState<string | null>(null);
 	const [open, setOpen] = useState(false);
 	const [subMenu, setSubMenu] = useStore(useShallow((state) => [state.subMenu, state.setSubMenu]));
-	const top = menu; //.filter((item) => item.position === 'left' || item.id === 'contact');
+	const top = menu.filter((item) => item.position === 'left');
 
 	const bottom = menu
 		.filter((item) => item.position === 'right')
@@ -87,6 +87,15 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 									))}
 								</ul>
 							)}
+						</li>
+					))}
+					{bottom.map((item) => (
+						<li
+							key={item.id}
+							className={cn(subMenu && s.dropdown, isSelected(item) && s.active)}
+							onClick={() => handleClick(selected === item.id ? null : item.id)}
+						>
+							{item.slug && !item.sub ? <Link href={item.slug}>{item.title}</Link> : <span>{item.title}</span>}
 							{item.id === 'contact' && subMenu === 'contact' && (
 								<Content content={contact.text} className={s.contact} />
 							)}
