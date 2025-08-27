@@ -64,7 +64,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 				<ul className={s.menu}>
 					{left.map((item, idx) => (
 						<li id={`${item.id}-menu`} key={`${item.id}-menu`} className={cn(isSelected(item) && s.active)}>
-							{item.slug ? (
+							{item.slug && !item.sub ? (
 								<Link href={item.slug} prefetch={true}>
 									{item.title}
 								</Link>
@@ -78,7 +78,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 				<ul className={cn(s.menu, s.right)}>
 					{right.map((item, idx) => (
 						<li id={`${item.id}-menu`} key={`${item.id}-menu`} className={cn(isSelected(item) && s.active)}>
-							{item.slug ? (
+							{item.slug && !item.sub ? (
 								<Link href={item.slug}>{item.title}</Link>
 							) : (
 								<span onClick={() => handleClick(item.id ?? null)}>{item.title}</span>

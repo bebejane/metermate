@@ -40,9 +40,9 @@ export default function SupportMenu({ allSupports }: SupportMenuProps) {
 						{title}
 					</a>
 					<ul>
-						{sections.map(({ id, title, slug }) => (
-							<li id={slug} key={id}>
-								<a href={`#${slug}`}>{title}</a>
+						{sections.map((item) => (
+							<li id={`${item.slug}`} key={item.id}>
+								<a href={`#${slug}-${item.slug}`}>{item.title}</a>
 							</li>
 						))}
 					</ul>

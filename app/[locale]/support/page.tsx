@@ -37,10 +37,10 @@ export default async function Support({ params }: PageProps) {
 							<React.Fragment key={id}>
 								<h3 id={slug}>{title}</h3>
 								<ul className={s.sections}>
-									{sections.map(({ id, text, title, slug }) => (
-										<li id={slug} key={id}>
-											<h5>{title}</h5>
-											<Content content={text} />
+									{sections.map((item) => (
+										<li id={`${slug}-${item.slug}`} key={item.id}>
+											<h5>{item.title}</h5>
+											<Content content={item.text} />
 										</li>
 									))}
 								</ul>

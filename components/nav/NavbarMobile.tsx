@@ -66,7 +66,7 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 							className={cn(sub && s.dropdown, isSelected(item) && s.active)}
 							onClick={() => handleClick(selected === item.id ? null : item.id)}
 						>
-							{item.slug ? <Link href={item.slug}>{item.title}</Link> : <span>{item.title}</span>}
+							{item.slug && !item.sub ? <Link href={item.slug}>{item.title}</Link> : <span>{item.title}</span>}
 							{item.id === 'products' && sub === 'products' && (
 								<ul>
 									{allProducts?.map(({ id, title, image, slug }) => (

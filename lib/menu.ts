@@ -6,8 +6,7 @@ export type MenuItem = {
 	id: string;
 	title: string;
 	slug?: any;
-	href?: string;
-	sub?: MenuItem[];
+	sub?: boolean;
 	position?: 'right' | 'left';
 };
 
@@ -20,6 +19,8 @@ export const buildMenu = async (locale: SiteLocale): Promise<Menu> => {
 		{
 			id: 'products',
 			title: t('products'),
+			slug: '/produkter',
+			sub: true,
 			position: 'left',
 		},
 		{
@@ -49,6 +50,7 @@ export const buildMenu = async (locale: SiteLocale): Promise<Menu> => {
 		{
 			id: 'contact',
 			title: t('contact'),
+			sub: true,
 			position: 'right',
 		},
 		{
