@@ -6,6 +6,11 @@ query Partner($locale: SiteLocale) {
 
 fragment PartnerFragment on PartnerRecord {
 	title
+	intro {
+		blocks
+		links
+		value
+	}
 	examples {
 		... on PartnerBlockRecord {
 			id

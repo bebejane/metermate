@@ -21,11 +21,11 @@ export default async function Partners({ params }: PageProps) {
 	});
 
 	if (!partner) return notFound();
-	const { title, examples } = partner;
+	const { title, intro, examples } = partner;
 
 	return (
 		<>
-			<Article title={title}>
+			<Article title={title} intro={intro}>
 				<ul className={s.examples}>
 					{examples.map(({ id, logo, text, url }) => (
 						<li key={id}>
