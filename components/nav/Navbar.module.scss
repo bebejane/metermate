@@ -131,4 +131,7 @@
 			}
 		}
 	}
+	@include mq($until: desktop) {
+		display: none;
+	}
 }

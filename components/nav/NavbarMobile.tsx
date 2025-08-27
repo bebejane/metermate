@@ -25,7 +25,7 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 	const [selected, setSelected] = useState<string | null>(null);
 	const [open, setOpen] = useState(false);
 	const [subMenu, setSubMenu] = useStore(useShallow((state) => [state.subMenu, state.setSubMenu]));
-	const top = menu.filter((item) => item.position === 'left' || item.id === 'contact');
+	const top = menu; //.filter((item) => item.position === 'left' || item.id === 'contact');
 
 	const bottom = menu
 		.filter((item) => item.position === 'right')
@@ -93,10 +93,6 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 						</li>
 					))}
 				</ul>
-				<div className={s.help}>
-					<h3>Behöver du hjälp?</h3>
-					<p>Vi har samlat allt du behöver veta för att få igång din MeterMate-dongel här.</p>
-				</div>
 			</nav>
 		</>
 	);
