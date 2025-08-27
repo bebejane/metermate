@@ -12,13 +12,19 @@
 	}
 
 	> li {
-		a.active {
+		cursor: pointer;
+		span.active {
 			color: var(--green);
 		}
 
 		ul {
+			display: none;
 			margin-left: 1em;
 			padding-top: 1em;
+
+			&.show {
+				display: block;
+			}
 		}
 	}
 }

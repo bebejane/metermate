@@ -10,6 +10,7 @@ export type SupportMenuProps = {
 
 export default function SupportMenu({ allSupports }: SupportMenuProps) {
 	const [active, setActive] = useState<string | null>(null);
+	const [toggles, setToggles] = useState<any>({});
 
 	useEffect(() => {
 		const observer = new IntersectionObserver((entries) => {
@@ -36,10 +37,15 @@ export default function SupportMenu({ allSupports }: SupportMenuProps) {
 		<ul className={s.menu}>
 			{allSupports.map(({ id, title, sections, slug }) => (
 				<li key={id}>
-					<a data-slug={slug} className={cn(slug === active && s.active)} key={id} href={`#${slug}`}>
+					<span
+						data-slug={slug}
+						className={cn(toggles[slug] && s.active)}
+						key={id}
+						onClick={() => setToggles((t) => ({ ...t, [slug]: t[slug] ? false : true }))}
+					>
 						{title}
-					</a>
-					<ul>
+					</span>
+					<ul className={cn(toggles[slug] && s.show)}>
 						{sections.map((item) => (
 							<li id={`${item.slug}`} key={item.id}>
 								<a href={`#${slug}-${item.slug}`}>{item.title}</a>
