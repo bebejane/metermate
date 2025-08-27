@@ -50,7 +50,7 @@ export default function NewsTicker({ headline, news }: Props) {
 					{newsItem?.text}
 				</motion.h3>
 			</AnimatePresence>
-			{newsItem?.url && <span className='mid'>Läs mer →</span>}
+			{newsItem?.url && <span className='mid'>Läs mer</span>}
 		</Link>
 	);
 }

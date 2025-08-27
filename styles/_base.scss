@@ -125,6 +125,7 @@ a {
 	color: var(--foreground);
 	transition: var(--color-transtion);
 	transition: color 0.2s;
+	color: var(--gray);
 
 	&:has(> button) {
 		text-decoration: none !important;

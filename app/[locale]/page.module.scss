@@ -19,6 +19,9 @@
 	}
 
 	h3 {
+		@include mq($until: desktop) {
+			display: none;
+		}
 		padding-bottom: 0;
 	}
 

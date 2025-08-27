@@ -22,7 +22,7 @@
 		display: flex;
 		align-items: center;
 		height: var(--navbar-height);
-		padding-left: 1.5rem;
+		padding-left: var(--outer-margin);
 		img {
 			height: 1.7rem;
 		}
@@ -46,11 +46,12 @@
 			right: 0;
 			justify-content: flex-end;
 			width: auto;
+			padding-right: var(--outer-margin);
 		}
 
 		li {
 			cursor: pointer;
-			padding-right: 1.5rem;
+			padding-left: 1.5rem;
 			position: relative;
 
 			a {

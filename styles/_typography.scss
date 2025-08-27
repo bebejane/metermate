@@ -3,7 +3,7 @@
 
 html,
 body {
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: normal;
 	font-variation-settings: "wght" 480 !important;
 	color: var(--gray);
@@ -34,9 +34,13 @@ h6 {
 }
 
 h1 {
-	font-size: 2rem;
+	font-size: 1.6rem;
 	color: var(--blue);
 	line-height: 1.1;
+
+	@include mq($from: desktop) {
+		font-size: 2rem;
+	}
 
 	&.padding {
 		padding-top: 1em;

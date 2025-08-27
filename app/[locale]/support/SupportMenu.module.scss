@@ -1,9 +1,14 @@
 .menu {
-	flex: 0 0 33%;
+	color: var(--gray);
+	width: 100%;
 	margin-bottom: 0;
 	position: sticky;
 	top: calc(1 * var(--navbar-height));
-	color: var(--gray);
+	background-color: var(--gray-very-light);
+
+	@include mq($from: desktop) {
+		flex: 0 0 33%;
+	}
 
 	@include mq($until: desktop) {
 		border-top: 1px solid var(--gray);
@@ -13,6 +18,11 @@
 	li {
 		padding-bottom: 0.8em;
 		color: var(--gray);
+		width: 100%;
+
+		@include mq($until: desktop) {
+			text-align: center;
+		}
 
 		&:hover {
 			color: var(--green) !important;
