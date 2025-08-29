@@ -55,7 +55,7 @@ export default async function Home({ params }: PageProps) {
 						<h2>Våra produkter</h2>
 						<div className={s.private}>
 							<h3>Är du här som privatperson?</h3>
-							<span className="small">Läs mer om våra produkter här.</span>
+							<span className='small'>Läs mer om våra produkter här.</span>
 						</div>
 					</div>
 					<ul>
@@ -96,6 +96,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 	});
 
 	return await buildMetadata({
+		title: { absolute: 'MeterMate' },
 		pathname: getPathname({ locale, href: '/' }),
 		locale,
 	});

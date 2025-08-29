@@ -18,12 +18,12 @@ import { getServerSession } from 'next-auth';
 import SessionProvider from '@/lib/provider/SessionProvider';
 import { authOptions } from '@/lib/auth';
 
-const jost = Jost({ subsets: ['latin'], weight: ['500'] });
-
 export type LayoutProps = {
 	children: React.ReactNode;
 	params: LocaleParams['params'];
 };
+
+const jost = Jost({ subsets: ['latin'], weight: ['500'] });
 
 export default async function RootLayout({ children, params }: LayoutProps) {
 	const { locale } = await params;
@@ -101,7 +101,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 		...(await buildMetadata({
 			title: {
 				template: `${siteName} — %s`,
-				default: siteName ?? '',
+				default: siteName,
 			},
 			description: globalSeo?.fallbackSeo?.description?.substring(0, 157),
 			pathname: getPathname({ locale, href: '/' }),
