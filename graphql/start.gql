@@ -114,4 +114,7 @@ fragment StartFragment on StartRecord {
 	}
 	textApp
 	title
+	logos {
+		...FileFragment
+	}
 }

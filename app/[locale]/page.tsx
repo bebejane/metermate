@@ -13,6 +13,7 @@ import { Link } from '@/i18n/routing';
 import Shortcut from '@/components/blocks/Shortcut';
 import NewsTicker from '@/components/common/NewsTicker';
 import Hero from './Hero';
+import Logos from '@/app/[locale]/Logos';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
@@ -50,6 +51,7 @@ export default async function Home({ params }: PageProps) {
 						</a>
 					</div>
 				</section>
+				<Logos logos={start.logos} />
 				<section className={s.products}>
 					<div className={s.header}>
 						<h2>Våra produkter</h2>

@@ -1,0 +1,28 @@
+.logos {
+	position: relative;
+	overflow: hidden;
+	margin-left: var(--full-bleed-margin);
+	margin-right: var(--full-bleed-margin);
+	background-color: var(--black);
+	height: 100px;
+	.wrapper {
+		position: absolute;
+		display: flex;
+		.images {
+			display: flex;
+			animation: slide 6000ms linear infinite backwards;
+			@keyframes slide {
+				0% {
+					transform: translate(0);
+				}
+
+				100% {
+					transform: translate(-100%);
+				}
+			}
+			img {
+				height: 50px;
+			}
+		}
+	}
+}
