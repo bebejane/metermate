@@ -6,3 +6,4 @@ export { default as TextAndImage } from './TextAndImage';
 export { default as Cta } from './Cta';
 export { default as LinkText } from './LinkText';
 export { default as Video } from './Video';
+export { default as ToggleText } from './ToggleText';

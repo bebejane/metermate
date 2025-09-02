@@ -26,6 +26,7 @@ fragment ProductFragment on ProductRecord {
 	layout {
 		__typename
 		... on TwoColumnRecord {
+			id
 			columns {
 				... on ColumnRecord {
 					color
@@ -41,19 +42,40 @@ fragment ProductFragment on ProductRecord {
 			}
 		}
 		... on TextAndImageRecord {
+			id
 			color
 			layout
 			media {
 				...MediaFragment
 			}
-			text {
-				blocks
+			content {
+				blocks {
+					__typename
+					... on ToggleTextRecord {
+						id
+						headline
+						text {
+							blocks
+							links
+							value
+						}
+					}
+				}
 				links
 				value
 			}
 		}
 		... on CtaRecord {
 			id
+			text {
+				blocks
+				links
+				value
+			}
+		}
+		... on ToggleTextRecord {
+			id
+			headline
 			text {
 				blocks
 				links
@@ -92,8 +114,18 @@ fragment ProductLightFragment on ProductRecord {
 			media {
 				...MediaFragment
 			}
-			text {
-				blocks
+			content {
+				blocks {
+					... on ToggleTextRecord {
+						id
+						headline
+						text {
+							blocks
+							links
+							value
+						}
+					}
+				}
 				links
 				value
 			}

@@ -7,11 +7,11 @@ export type TextAndImageProps = {
 	data: TextAndImageRecord;
 };
 
-export default function TextAndImage({ data: { media, text, layout, color } }: TextAndImageProps) {
+export default function TextAndImage({ data: { media, content, layout, color } }: TextAndImageProps) {
 	return (
 		<section className={cn(s.textandimage, s[layout], s[color])}>
 			<div className={s.text}>
-				<Content content={text} />
+				<Content content={content} />
 			</div>
 			<figure>{media[0]?.responsiveImage && <Image data={media[0].responsiveImage} />}</figure>
 		</section>
