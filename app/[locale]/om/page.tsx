@@ -33,7 +33,7 @@ export default async function Products({ params }: PageProps) {
 						<Content content={about.text} />
 					</div>
 					<figure>
-						<Image data={about.image.responsiveImage} />
+						<Image data={about.image.responsiveImage} placeholderClassName={s.placeholder} />
 					</figure>
 				</section>
 			</Article>

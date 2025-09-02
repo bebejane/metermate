@@ -11,7 +11,7 @@ export default function Video({ data }: VideoProps) {
 
 	return (
 		<div className={s.wrap}>
-			<VideoPlayer data={data.video} className={s.video} />
+			<VideoPlayer data={data.video} className={s.video} videoClassName={s.video} autoPlay={false} controls={true} />
 			<figcaption>{data.caption}</figcaption>
 		</div>
 	);
