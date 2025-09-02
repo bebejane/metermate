@@ -3,14 +3,18 @@
 	overflow: hidden;
 	margin-left: var(--full-bleed-margin);
 	margin-right: var(--full-bleed-margin);
-	background-color: var(--black);
-	height: 100px;
+	background-color: var(--gray);
+	height: var(--navbar-height);
+	max-width: 100vw;
+	display: flex;
+	align-items: center;
+
 	.wrapper {
 		position: absolute;
 		display: flex;
 		.images {
 			display: flex;
-			animation: slide 6000ms linear infinite backwards;
+			animation: slide 12000ms linear infinite backwards;
 			@keyframes slide {
 				0% {
 					transform: translate(0);
@@ -21,7 +25,8 @@
 				}
 			}
 			img {
-				height: 50px;
+				height: 1.5rem;
+				margin-right: 3rem;
 			}
 		}
 	}

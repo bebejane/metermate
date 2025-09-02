@@ -1,5 +1,6 @@
 .header {
-	width: 100vw;
+	width: calc(100% + 2 * var(--outer-margin));
+
 	margin-right: var(--full-bleed-margin);
 	margin-left: var(--full-bleed-margin);
 	margin-bottom: var(--space);

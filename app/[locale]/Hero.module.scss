@@ -1,6 +1,6 @@
 .hero {
 	position: relative;
-	width: 100vw;
+	width: calc(100% + 2 * var(--outer-margin));
 	height: calc(100vh - 2 * var(--navbar-height));
 	margin-left: calc(-1 * var(--outer-margin));
 	margin-right: calc(-1 * var(--outer-margin));

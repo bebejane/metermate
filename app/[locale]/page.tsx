@@ -82,7 +82,7 @@ export default async function Home({ params }: PageProps) {
 						<Shortcut key={shortcut.id} shortcut={shortcut as ShortcutRecord} locale={locale} />
 					))}
 				</section>
-				<NewsTicker news={start.news} headline='Senaste nyheter' />
+				<NewsTicker news={start.news} headline='Senaste nytt' />
 			</Article>
 			<DraftMode url={draftUrl} path={`/`} />
 		</>
