@@ -30,6 +30,15 @@ export const routing = defineRouting({
 		'/om': {
 			en: '/about-us',
 		},
+		'/logga-in': {
+			en: '/login',
+		},
+		'/logga-ut': {
+			en: '/logout',
+		},
+		'/medlem': {
+			en: '/member',
+		},
 	},
 });
 
