@@ -65,8 +65,8 @@ export default async function Home({ params }: PageProps) {
 							<Link
 								key={product.id}
 								href={{
-									pathname: '/produkter/[product]',
-									params: { product: product.slug },
+									pathname: '/produkter/[category]/[product]',
+									params: { product: product.slug, category: product.category?.slug },
 								}}
 							>
 								<li>

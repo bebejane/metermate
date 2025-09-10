@@ -1,5 +1,5 @@
 import s from './page.module.scss';
-import { StartDocument, AllProductsDocument, ProductDocument } from '@/graphql';
+import { ProductDocument, AllProductsDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from 'next/navigation';
@@ -13,7 +13,7 @@ import Article from '@/components/layout/Article';
 import Content from '@/components/common/Content';
 
 export default async function Products({ params }: PageProps) {
-	const { locale, product: slug } = await params;
+	const { locale, product: slug, category } = await params;
 	setRequestLocale(locale);
 
 	const { product, draftUrl } = await apiQuery<ProductQuery, ProductQueryVariables>(ProductDocument, {
@@ -40,13 +40,21 @@ export default async function Products({ params }: PageProps) {
 					<Block key={idx} data={data} />
 				))}
 			</Article>
-			<DraftMode url={draftUrl} path={`/produkter/${slug}`} />
+			<DraftMode url={draftUrl} path={`/produkter/${category}/${slug}`} />
 		</>
 	);
 }
 
+export async function generateStaticParams() {
+	const { allProducts } = await apiQuery<AllProductsQuery, AllProductsQueryVariables>(AllProductsDocument, {
+		all: true,
+		tags: ['product'],
+	});
+	return allProducts.map(({ slug: product, category }) => ({ product, category: category.slug }));
+}
+
 export async function generateMetadata({ params }): Promise<Metadata> {
-	const { locale, product: slug } = await params;
+	const { locale, product: slug, category } = await params;
 	setRequestLocale(locale);
 
 	const { product, draftUrl } = await apiQuery<ProductQuery, ProductQueryVariables>(ProductDocument, {
@@ -57,7 +65,10 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
 	return await buildMetadata({
 		title: product?.title,
-		pathname: getPathname({ locale, href: { pathname: '/produkter/[product]', params: { product: slug } } }),
+		pathname: getPathname({
+			locale,
+			href: { pathname: '/produkter/[category]/[product]', params: { category: category.slug, product: slug } },
+		}),
 		locale,
 	});
 }

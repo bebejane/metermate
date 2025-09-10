@@ -15,8 +15,8 @@ export const routing = defineRouting({
 		'/produkter': {
 			en: '/products',
 		},
-		'/produkter/[product]': {
-			en: '/products/[product]',
+		'/produkter/[category]/[product]': {
+			en: '/products/[category]/[product]',
 		},
 		'/referenser': {
 			en: '/references',

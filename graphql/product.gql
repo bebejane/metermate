@@ -23,6 +23,9 @@ fragment ProductFragment on ProductRecord {
 	image {
 		...ImageFragment
 	}
+	category {
+		...ProductCategoryFragment
+	}
 	layout {
 		__typename
 		... on TwoColumnRecord {

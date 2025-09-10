@@ -102,6 +102,16 @@ export const PartnerFragment: DocumentNode;
 }
     
 
+declare module '*/product-cagtegory.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AllProductCategories: DocumentNode;
+export const ProductCategoryFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/product.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
