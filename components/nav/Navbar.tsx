@@ -103,7 +103,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 								}}
 							>
 								<li>
-									<Image data={product.image.responsiveImage} />
+									{product.image?.responsiveImage && <Image data={product.image.responsiveImage} />}
 									<h5>{product.title}</h5>
 								</li>
 							</Link>

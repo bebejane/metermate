@@ -70,7 +70,7 @@ export default async function Home({ params }: PageProps) {
 								}}
 							>
 								<li>
-									<Image data={product.image.responsiveImage} />
+									{product.image?.responsiveImage && <Image data={product.image.responsiveImage} />}
 									<h4>{product.title}</h4>
 								</li>
 							</Link>
