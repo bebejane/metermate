@@ -61,17 +61,21 @@ export default async function Home({ params }: PageProps) {
 						</div>
 					</div>
 					<ul>
-						{allProducts.map((product) => (
+						{allProducts.map(({ id, slug, category, productType, image, title }) => (
 							<Link
-								key={product.id}
+								key={id}
 								href={{
-									pathname: '/produkter/[category]/[product]',
-									params: { product: product.slug, category: product.category?.slug },
+									pathname: '/produkter/[category]/[productType]/[product]',
+									params: {
+										product: slug,
+										category: category?.slug,
+										productType: productType?.slug,
+									},
 								}}
 							>
 								<li>
-									{product.image?.responsiveImage && <Image data={product.image.responsiveImage} />}
-									<h4>{product.title}</h4>
+									{image?.responsiveImage && <Image data={image.responsiveImage} />}
+									<h4>{title}</h4>
 								</li>
 							</Link>
 						))}

@@ -51,7 +51,11 @@ export async function generateStaticParams() {
 		all: true,
 		tags: ['product'],
 	});
-	return allProducts.map(({ slug: product, category }) => ({ product, category: category.slug }));
+	return allProducts.map(({ slug: product, category, productType }) => ({
+		product,
+		category: category.slug,
+		productType: productType?.slug,
+	}));
 }
 
 export async function generateMetadata({ params }): Promise<Metadata> {
@@ -69,7 +73,14 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 		title: product?.title,
 		pathname: getPathname({
 			locale,
-			href: { pathname: '/produkter/[category]/[product]', params: { category: category.slug, product: slug } },
+			href: {
+				pathname: '/produkter/[category]/[productType]/[product]',
+				params: {
+					product: slug,
+					category: category?.slug,
+					productType: product.productType?.slug,
+				},
+			},
 		}),
 		locale,
 	});

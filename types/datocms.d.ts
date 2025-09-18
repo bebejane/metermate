@@ -2525,8 +2525,10 @@ type ProductModelFilter = {
   id?: InputMaybe<ItemIdFilter>;
   image?: InputMaybe<FileFilter>;
   intro?: InputMaybe<StructuredTextFilter>;
+  productType?: InputMaybe<LinkFilter>;
   slug?: InputMaybe<SlugFilter>;
   title?: InputMaybe<StringFilter>;
+  variant?: InputMaybe<LinkFilter>;
 };
 
 type ProductModelIntroField = {
@@ -2583,13 +2585,147 @@ type ProductRecord = RecordInterface & {
   image?: Maybe<FileField>;
   intro?: Maybe<ProductModelIntroField>;
   layout: Array<ProductModelLayoutField>;
+  productType: ProductTypeRecord;
   slug: Scalars['String']['output'];
   title?: Maybe<Scalars['String']['output']>;
+  variant?: Maybe<ProductVariantRecord>;
 };
 
 
 /** Record of type Produkt (product) */
 type ProductRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+type ProductTypeModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ProductTypeModelFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ProductTypeModelFilter>>>;
+  _createdAt?: InputMaybe<CreatedAtFilter>;
+  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
+  _isValid?: InputMaybe<BooleanFilter>;
+  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _publishedAt?: InputMaybe<PublishedAtFilter>;
+  _status?: InputMaybe<StatusFilter>;
+  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  id?: InputMaybe<ItemIdFilter>;
+  slug?: InputMaybe<SlugFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+enum ProductTypeModelOrderBy {
+  _createdAt_ASC = '_createdAt_ASC',
+  _createdAt_DESC = '_createdAt_DESC',
+  _firstPublishedAt_ASC = '_firstPublishedAt_ASC',
+  _firstPublishedAt_DESC = '_firstPublishedAt_DESC',
+  _isValid_ASC = '_isValid_ASC',
+  _isValid_DESC = '_isValid_DESC',
+  _publicationScheduledAt_ASC = '_publicationScheduledAt_ASC',
+  _publicationScheduledAt_DESC = '_publicationScheduledAt_DESC',
+  _publishedAt_ASC = '_publishedAt_ASC',
+  _publishedAt_DESC = '_publishedAt_DESC',
+  _status_ASC = '_status_ASC',
+  _status_DESC = '_status_DESC',
+  _unpublishingScheduledAt_ASC = '_unpublishingScheduledAt_ASC',
+  _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
+  _updatedAt_ASC = '_updatedAt_ASC',
+  _updatedAt_DESC = '_updatedAt_DESC',
+  id_ASC = 'id_ASC',
+  id_DESC = 'id_DESC',
+  title_ASC = 'title_ASC',
+  title_DESC = 'title_DESC'
+}
+
+/** Record of type Typ (product_type) */
+type ProductTypeRecord = RecordInterface & {
+  __typename?: 'ProductTypeRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  slug: Scalars['String']['output'];
+  title: Scalars['String']['output'];
+};
+
+
+/** Record of type Typ (product_type) */
+type ProductTypeRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+type ProductVariantModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ProductVariantModelFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ProductVariantModelFilter>>>;
+  _createdAt?: InputMaybe<CreatedAtFilter>;
+  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
+  _isValid?: InputMaybe<BooleanFilter>;
+  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _publishedAt?: InputMaybe<PublishedAtFilter>;
+  _status?: InputMaybe<StatusFilter>;
+  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  id?: InputMaybe<ItemIdFilter>;
+  slug?: InputMaybe<SlugFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+enum ProductVariantModelOrderBy {
+  _createdAt_ASC = '_createdAt_ASC',
+  _createdAt_DESC = '_createdAt_DESC',
+  _firstPublishedAt_ASC = '_firstPublishedAt_ASC',
+  _firstPublishedAt_DESC = '_firstPublishedAt_DESC',
+  _isValid_ASC = '_isValid_ASC',
+  _isValid_DESC = '_isValid_DESC',
+  _publicationScheduledAt_ASC = '_publicationScheduledAt_ASC',
+  _publicationScheduledAt_DESC = '_publicationScheduledAt_DESC',
+  _publishedAt_ASC = '_publishedAt_ASC',
+  _publishedAt_DESC = '_publishedAt_DESC',
+  _status_ASC = '_status_ASC',
+  _status_DESC = '_status_DESC',
+  _unpublishingScheduledAt_ASC = '_unpublishingScheduledAt_ASC',
+  _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
+  _updatedAt_ASC = '_updatedAt_ASC',
+  _updatedAt_DESC = '_updatedAt_DESC',
+  id_ASC = 'id_ASC',
+  id_DESC = 'id_DESC',
+  title_ASC = 'title_ASC',
+  title_DESC = 'title_DESC'
+}
+
+/** Record of type Variant (product_variant) */
+type ProductVariantRecord = RecordInterface & {
+  __typename?: 'ProductVariantRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  slug: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Record of type Variant (product_variant) */
+type ProductVariantRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -2617,6 +2753,10 @@ type Query = {
   /** Returns meta information regarding a record collection */
   _allProductCategoriesMeta: CollectionMetadata;
   /** Returns meta information regarding a record collection */
+  _allProductTypesMeta: CollectionMetadata;
+  /** Returns meta information regarding a record collection */
+  _allProductVariantsMeta: CollectionMetadata;
+  /** Returns meta information regarding a record collection */
   _allProductsMeta: CollectionMetadata;
   /** Returns meta information regarding a record collection */
   _allSupportsMeta: CollectionMetadata;
@@ -2628,6 +2768,10 @@ type Query = {
   about?: Maybe<AboutRecord>;
   /** Returns a collection of records */
   allProductCategories: Array<ProductCategoryRecord>;
+  /** Returns a collection of records */
+  allProductTypes: Array<ProductTypeRecord>;
+  /** Returns a collection of records */
+  allProductVariants: Array<ProductVariantRecord>;
   /** Returns a collection of records */
   allProducts: Array<ProductRecord>;
   /** Returns a collection of records */
@@ -2644,6 +2788,10 @@ type Query = {
   product?: Maybe<ProductRecord>;
   /** Returns a specific record */
   productCategory?: Maybe<ProductCategoryRecord>;
+  /** Returns a specific record */
+  productType?: Maybe<ProductTypeRecord>;
+  /** Returns a specific record */
+  productVariant?: Maybe<ProductVariantRecord>;
   /** Returns the single instance record */
   reference?: Maybe<ReferenceRecord>;
   /** Returns the single instance record */
@@ -2660,6 +2808,20 @@ type Query = {
 /** The query root for this schema */
 type Query_allProductCategoriesMetaArgs = {
   filter?: InputMaybe<ProductCategoryModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
+type Query_allProductTypesMetaArgs = {
+  filter?: InputMaybe<ProductTypeModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
+type Query_allProductVariantsMetaArgs = {
+  filter?: InputMaybe<ProductVariantModelFilter>;
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -2706,6 +2868,28 @@ type QueryallProductCategoriesArgs = {
   first?: InputMaybe<Scalars['IntType']['input']>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<ProductCategoryModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+};
+
+
+/** The query root for this schema */
+type QueryallProductTypesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ProductTypeModelFilter>;
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<ProductTypeModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+};
+
+
+/** The query root for this schema */
+type QueryallProductVariantsArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ProductVariantModelFilter>;
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<ProductVariantModelOrderBy>>>;
   skip?: InputMaybe<Scalars['IntType']['input']>;
 };
 
@@ -2779,6 +2963,24 @@ type QueryproductCategoryArgs = {
   filter?: InputMaybe<ProductCategoryModelFilter>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<ProductCategoryModelOrderBy>>>;
+};
+
+
+/** The query root for this schema */
+type QueryproductTypeArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ProductTypeModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<ProductTypeModelOrderBy>>>;
+};
+
+
+/** The query root for this schema */
+type QueryproductVariantArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ProductVariantModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<ProductVariantModelOrderBy>>>;
 };
 
 
@@ -3971,13 +4173,24 @@ type AllProductCategoriesQuery = { __typename?: 'Query', allProductCategories: A
 
 type ProductCategoryFragment = { __typename?: 'ProductCategoryRecord', id: any, title?: string | null, slug: string };
 
+type AllProductTypesQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+}>;
+
+
+type AllProductTypesQuery = { __typename?: 'Query', allProductTypes: Array<{ __typename?: 'ProductTypeRecord', id: any, title: string, slug: string }>, _allProductTypesMeta: { __typename?: 'CollectionMetadata', count: any } };
+
+type ProductTypeFragment = { __typename?: 'ProductTypeRecord', id: any, title: string, slug: string };
+
 type ProductQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
   locale?: InputMaybe<SiteLocale>;
 }>;
 
 
-type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'ProductRecord', id: any, title?: string | null, slug: string, intro?: { __typename?: 'ProductModelIntroField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category: { __typename?: 'ProductCategoryRecord', id: any, title?: string | null, slug: string }, layout: Array<{ __typename: 'CtaRecord', id: any, text?: { __typename?: 'CtaModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | { __typename: 'TextAndImageRecord', id: any, color?: string | null, layout?: string | null, media: Array<{ __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null }>, content?: { __typename?: 'TextAndImageModelContentField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | null } | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | { __typename: 'TwoColumnRecord', id: any, columns: Array<{ __typename?: 'ColumnRecord', color?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'ColumnModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> }> } | null };
+type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'ProductRecord', id: any, title?: string | null, slug: string, intro?: { __typename?: 'ProductModelIntroField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category: { __typename?: 'ProductCategoryRecord', id: any, title?: string | null, slug: string }, productType: { __typename?: 'ProductTypeRecord', id: any, title: string, slug: string }, layout: Array<{ __typename: 'CtaRecord', id: any, text?: { __typename?: 'CtaModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | { __typename: 'TextAndImageRecord', id: any, color?: string | null, layout?: string | null, media: Array<{ __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null }>, content?: { __typename?: 'TextAndImageModelContentField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | null } | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | { __typename: 'TwoColumnRecord', id: any, columns: Array<{ __typename?: 'ColumnRecord', color?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'ColumnModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> }> } | null };
 
 type AllProductsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']['input']>;
@@ -3986,11 +4199,11 @@ type AllProductsQueryVariables = Exact<{
 }>;
 
 
-type AllProductsQuery = { __typename?: 'Query', allProducts: Array<{ __typename?: 'ProductRecord', id: any, title?: string | null, slug: string, intro?: { __typename?: 'ProductModelIntroField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category: { __typename?: 'ProductCategoryRecord', id: any, title?: string | null, slug: string }, layout: Array<{ __typename: 'CtaRecord', id: any, text?: { __typename?: 'CtaModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | { __typename: 'TextAndImageRecord', id: any, color?: string | null, layout?: string | null, media: Array<{ __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null }>, content?: { __typename?: 'TextAndImageModelContentField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | null } | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | { __typename: 'TwoColumnRecord', id: any, columns: Array<{ __typename?: 'ColumnRecord', color?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'ColumnModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> }> }>, _allProductsMeta: { __typename?: 'CollectionMetadata', count: any } };
+type AllProductsQuery = { __typename?: 'Query', allProducts: Array<{ __typename?: 'ProductRecord', id: any, title?: string | null, slug: string, intro?: { __typename?: 'ProductModelIntroField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category: { __typename?: 'ProductCategoryRecord', id: any, title?: string | null, slug: string }, productType: { __typename?: 'ProductTypeRecord', id: any, title: string, slug: string }, layout: Array<{ __typename: 'CtaRecord', id: any, text?: { __typename?: 'CtaModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | { __typename: 'TextAndImageRecord', id: any, color?: string | null, layout?: string | null, media: Array<{ __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null }>, content?: { __typename?: 'TextAndImageModelContentField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | null } | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | { __typename: 'TwoColumnRecord', id: any, columns: Array<{ __typename?: 'ColumnRecord', color?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'ColumnModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> }> }>, _allProductsMeta: { __typename?: 'CollectionMetadata', count: any } };
 
-type ProductFragment = { __typename?: 'ProductRecord', id: any, title?: string | null, slug: string, intro?: { __typename?: 'ProductModelIntroField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category: { __typename?: 'ProductCategoryRecord', id: any, title?: string | null, slug: string }, layout: Array<{ __typename: 'CtaRecord', id: any, text?: { __typename?: 'CtaModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | { __typename: 'TextAndImageRecord', id: any, color?: string | null, layout?: string | null, media: Array<{ __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null }>, content?: { __typename?: 'TextAndImageModelContentField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | null } | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | { __typename: 'TwoColumnRecord', id: any, columns: Array<{ __typename?: 'ColumnRecord', color?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'ColumnModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> }> };
+type ProductFragment = { __typename?: 'ProductRecord', id: any, title?: string | null, slug: string, intro?: { __typename?: 'ProductModelIntroField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category: { __typename?: 'ProductCategoryRecord', id: any, title?: string | null, slug: string }, productType: { __typename?: 'ProductTypeRecord', id: any, title: string, slug: string }, layout: Array<{ __typename: 'CtaRecord', id: any, text?: { __typename?: 'CtaModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | { __typename: 'TextAndImageRecord', id: any, color?: string | null, layout?: string | null, media: Array<{ __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null }>, content?: { __typename?: 'TextAndImageModelContentField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | null } | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } | { __typename: 'TwoColumnRecord', id: any, columns: Array<{ __typename?: 'ColumnRecord', color?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'ColumnModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> }> };
 
-type ProductLightFragment = { __typename?: 'ProductRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, layout: Array<{ __typename: 'CtaRecord' } | { __typename: 'TextAndImageRecord', color?: string | null, layout?: string | null, media: Array<{ __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null }>, content?: { __typename?: 'TextAndImageModelContentField', links: Array<string>, value: any, blocks: Array<{ __typename?: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | null } | { __typename: 'ToggleTextRecord' } | { __typename: 'TwoColumnRecord', columns: Array<{ __typename?: 'ColumnRecord', color?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'ColumnModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> }> };
+type ProductLightFragment = { __typename?: 'ProductRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, productType: { __typename?: 'ProductTypeRecord', id: any, title: string, slug: string }, layout: Array<{ __typename: 'CtaRecord' } | { __typename: 'TextAndImageRecord', color?: string | null, layout?: string | null, media: Array<{ __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null }>, content?: { __typename?: 'TextAndImageModelContentField', links: Array<string>, value: any, blocks: Array<{ __typename?: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | null } | { __typename: 'ToggleTextRecord' } | { __typename: 'TwoColumnRecord', columns: Array<{ __typename?: 'ColumnRecord', color?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'ColumnModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> }> };
 
 type ReferenceQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;

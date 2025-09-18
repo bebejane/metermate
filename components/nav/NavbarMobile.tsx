@@ -72,13 +72,17 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 							{item.slug && !item.sub ? <Link href={item.slug}>{item.title}</Link> : <span>{item.title}</span>}
 							{item.id === 'products' && subMenu === 'products' && (
 								<ul>
-									{allProducts?.map(({ id, title, image, slug, category }) => (
+									{allProducts?.map(({ id, title, image, slug, category, productType }) => (
 										<li key={id}>
 											<Link
 												key={id}
 												href={{
-													pathname: '/produkter/[category]/[product]',
-													params: { product: slug, category: category?.slug },
+													pathname: '/produkter/[category]/[productType]/[product]',
+													params: {
+														product: slug,
+														category: category?.slug,
+														productType: productType?.slug,
+													},
 												}}
 											>
 												{title}

@@ -98,8 +98,12 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 								key={product.id}
 								prefetch={true}
 								href={{
-									pathname: '/produkter/[category]/[product]',
-									params: { product: product.slug, category: product.category?.slug },
+									pathname: '/produkter/[category]/[productType]/[product]',
+									params: {
+										product: product.slug,
+										category: product.category?.slug,
+										productType: product.productType?.slug,
+									},
 								}}
 							>
 								<li>

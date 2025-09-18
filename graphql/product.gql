@@ -26,6 +26,11 @@ fragment ProductFragment on ProductRecord {
 	category {
 		...ProductCategoryFragment
 	}
+	productType {
+		id
+		title
+		slug
+	}
 	layout {
 		__typename
 		... on TwoColumnRecord {
@@ -93,6 +98,11 @@ fragment ProductFragment on ProductRecord {
 fragment ProductLightFragment on ProductRecord {
 	image {
 		...ImageFragment
+	}
+	productType {
+		id
+		title
+		slug
 	}
 	layout {
 		__typename

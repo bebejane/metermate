@@ -1,0 +1,14 @@
+query AllProductTypes($first: IntType = 500, $skip: IntType = 0, $locale: SiteLocale) {
+	allProductTypes(first: $first, skip: $skip, locale: $locale, fallbackLocales: [sv]) {
+		...ProductTypeFragment
+	}
+	_allProductTypesMeta {
+		count
+	}
+}
+
+fragment ProductTypeFragment on ProductTypeRecord {
+	id
+	title
+	slug
+}
