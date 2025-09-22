@@ -1,0 +1,83 @@
+query ClientSupportStart($locale: SiteLocale) {
+	clientSupportStart(locale: $locale, fallbackLocales: [sv]) {
+		...ClientSupportStartFragment
+	}
+}
+
+fragment ClientSupportStartFragment on ClientSupportStartRecord {
+	title
+	intro {
+		blocks
+		links
+		value
+	}
+}
+
+query ClientSupport($locale: SiteLocale) {
+	clientSupport(locale: $locale, fallbackLocales: [sv]) {
+		...ClientSupportFragment
+	}
+}
+
+query AllClientSupports($first: IntType = 500, $skip: IntType = 0, $locale: SiteLocale) {
+	allClientSupports(first: $first, skip: $skip, locale: $locale, fallbackLocales: [sv]) {
+		...ClientSupportFragment
+	}
+	_allClientSupportsMeta {
+		count
+	}
+}
+
+fragment ClientSupportFragment on ClientSupportRecord {
+	sections {
+		... on SectionRecord {
+			id
+			title
+			text {
+				blocks {
+					__typename
+					id
+					... on VideoRecord {
+						caption
+						video {
+							...VideoFragment
+						}
+					}
+				}
+				links
+				value
+			}
+			slug
+		}
+	}
+	id
+	title
+	slug
+}
+
+fragment ClientSupportLightFragment on ClientSupportRecord {
+	sections {
+		... on SectionRecord {
+			id
+			title
+			text {
+				blocks {
+					__typename
+					id
+					... on VideoRecord {
+						caption
+						video {
+							...VideoFragment
+						}
+					}
+				}
+				links
+				value
+			}
+			slug
+		}
+	}
+	id
+	title
+	slug
+}

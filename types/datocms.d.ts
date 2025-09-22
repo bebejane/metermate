@@ -66,6 +66,112 @@ type BooleanFilter = {
   eq?: InputMaybe<Scalars['BooleanType']['input']>;
 };
 
+type ClientSupportModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ClientSupportModelFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ClientSupportModelFilter>>>;
+  _createdAt?: InputMaybe<CreatedAtFilter>;
+  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
+  _isValid?: InputMaybe<BooleanFilter>;
+  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _publishedAt?: InputMaybe<PublishedAtFilter>;
+  _status?: InputMaybe<StatusFilter>;
+  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  id?: InputMaybe<ItemIdFilter>;
+  position?: InputMaybe<PositionFilter>;
+  slug?: InputMaybe<SlugFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+enum ClientSupportModelOrderBy {
+  _createdAt_ASC = '_createdAt_ASC',
+  _createdAt_DESC = '_createdAt_DESC',
+  _firstPublishedAt_ASC = '_firstPublishedAt_ASC',
+  _firstPublishedAt_DESC = '_firstPublishedAt_DESC',
+  _isValid_ASC = '_isValid_ASC',
+  _isValid_DESC = '_isValid_DESC',
+  _publicationScheduledAt_ASC = '_publicationScheduledAt_ASC',
+  _publicationScheduledAt_DESC = '_publicationScheduledAt_DESC',
+  _publishedAt_ASC = '_publishedAt_ASC',
+  _publishedAt_DESC = '_publishedAt_DESC',
+  _status_ASC = '_status_ASC',
+  _status_DESC = '_status_DESC',
+  _unpublishingScheduledAt_ASC = '_unpublishingScheduledAt_ASC',
+  _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
+  _updatedAt_ASC = '_updatedAt_ASC',
+  _updatedAt_DESC = '_updatedAt_DESC',
+  id_ASC = 'id_ASC',
+  id_DESC = 'id_DESC',
+  position_ASC = 'position_ASC',
+  position_DESC = 'position_DESC',
+  title_ASC = 'title_ASC',
+  title_DESC = 'title_DESC'
+}
+
+/** Record of type Kund support (client_support) */
+type ClientSupportRecord = RecordInterface & {
+  __typename?: 'ClientSupportRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  position?: Maybe<Scalars['IntType']['output']>;
+  sections: Array<SectionRecord>;
+  slug: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Record of type Kund support (client_support) */
+type ClientSupportRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+type ClientSupportStartModelIntroField = {
+  __typename?: 'ClientSupportStartModelIntroField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+/** Record of type Kund start (client_support_start) */
+type ClientSupportStartRecord = RecordInterface & {
+  __typename?: 'ClientSupportStartRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  intro?: Maybe<ClientSupportStartModelIntroField>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Record of type Kund start (client_support_start) */
+type ClientSupportStartRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
 type CollectionMetadata = {
   __typename?: 'CollectionMetadata';
   count: Scalars['IntType']['output'];
@@ -2755,6 +2861,8 @@ type PublishedAtFilter = {
 type Query = {
   __typename?: 'Query';
   /** Returns meta information regarding a record collection */
+  _allClientSupportsMeta: CollectionMetadata;
+  /** Returns meta information regarding a record collection */
   _allProductCategoriesMeta: CollectionMetadata;
   /** Returns meta information regarding a record collection */
   _allProductTypesMeta: CollectionMetadata;
@@ -2771,6 +2879,8 @@ type Query = {
   /** Returns the single instance record */
   about?: Maybe<AboutRecord>;
   /** Returns a collection of records */
+  allClientSupports: Array<ClientSupportRecord>;
+  /** Returns a collection of records */
   allProductCategories: Array<ProductCategoryRecord>;
   /** Returns a collection of records */
   allProductTypes: Array<ProductTypeRecord>;
@@ -2782,6 +2892,10 @@ type Query = {
   allSupports: Array<SupportRecord>;
   /** Returns a collection of assets */
   allUploads: Array<FileField>;
+  /** Returns a specific record */
+  clientSupport?: Maybe<ClientSupportRecord>;
+  /** Returns the single instance record */
+  clientSupportStart?: Maybe<ClientSupportStartRecord>;
   /** Returns the single instance record */
   contact?: Maybe<ContactRecord>;
   /** Returns the single instance record */
@@ -2806,6 +2920,13 @@ type Query = {
   supportStart?: Maybe<SupportStartRecord>;
   /** Returns a specific asset */
   upload?: Maybe<FileField>;
+};
+
+
+/** The query root for this schema */
+type Query_allClientSupportsMetaArgs = {
+  filter?: InputMaybe<ClientSupportModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
 };
 
 
@@ -2862,6 +2983,17 @@ type Query_siteArgs = {
 type QueryaboutArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
+type QueryallClientSupportsArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ClientSupportModelFilter>;
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<ClientSupportModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
 };
 
 
@@ -2928,6 +3060,22 @@ type QueryallUploadsArgs = {
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<UploadOrderBy>>>;
   skip?: InputMaybe<Scalars['IntType']['input']>;
+};
+
+
+/** The query root for this schema */
+type QueryclientSupportArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ClientSupportModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<ClientSupportModelOrderBy>>>;
+};
+
+
+/** The query root for this schema */
+type QueryclientSupportStartArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
 };
 
 
@@ -4115,6 +4263,35 @@ type AboutQueryVariables = Exact<{
 type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutRecord', title?: string | null, url?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'AboutModelTextField', value: any, links: Array<string>, blocks: Array<{ __typename: 'LinkTextRecord', id: any, text?: string | null, url?: string | null }> } | null } | null };
 
 type AboutFragment = { __typename?: 'AboutRecord', title?: string | null, url?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, text?: { __typename?: 'AboutModelTextField', value: any, links: Array<string>, blocks: Array<{ __typename: 'LinkTextRecord', id: any, text?: string | null, url?: string | null }> } | null };
+
+type ClientSupportStartQueryVariables = Exact<{
+  locale?: InputMaybe<SiteLocale>;
+}>;
+
+
+type ClientSupportStartQuery = { __typename?: 'Query', clientSupportStart?: { __typename?: 'ClientSupportStartRecord', title?: string | null, intro?: { __typename?: 'ClientSupportStartModelIntroField', blocks: Array<string>, links: Array<string>, value: any } | null } | null };
+
+type ClientSupportStartFragment = { __typename?: 'ClientSupportStartRecord', title?: string | null, intro?: { __typename?: 'ClientSupportStartModelIntroField', blocks: Array<string>, links: Array<string>, value: any } | null };
+
+type ClientSupportQueryVariables = Exact<{
+  locale?: InputMaybe<SiteLocale>;
+}>;
+
+
+type ClientSupportQuery = { __typename?: 'Query', clientSupport?: { __typename?: 'ClientSupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'VideoRecord', caption?: string | null, id: any, video?: { __typename?: 'VideoFileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } } | null }> } | null }> } | null };
+
+type AllClientSupportsQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+}>;
+
+
+type AllClientSupportsQuery = { __typename?: 'Query', allClientSupports: Array<{ __typename?: 'ClientSupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'VideoRecord', caption?: string | null, id: any, video?: { __typename?: 'VideoFileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } } | null }> } | null }> }>, _allClientSupportsMeta: { __typename?: 'CollectionMetadata', count: any } };
+
+type ClientSupportFragment = { __typename?: 'ClientSupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'VideoRecord', caption?: string | null, id: any, video?: { __typename?: 'VideoFileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } } | null }> } | null }> };
+
+type ClientSupportLightFragment = { __typename?: 'ClientSupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'VideoRecord', caption?: string | null, id: any, video?: { __typename?: 'VideoFileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } } | null }> } | null }> };
 
 type ContactQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;

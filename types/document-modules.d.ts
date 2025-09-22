@@ -9,6 +9,20 @@ export const AboutFragment: DocumentNode;
 }
     
 
+declare module '*/client_support.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const ClientSupportStart: DocumentNode;
+export const ClientSupportStartFragment: DocumentNode;
+export const ClientSupport: DocumentNode;
+export const AllClientSupports: DocumentNode;
+export const ClientSupportFragment: DocumentNode;
+export const ClientSupportLightFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/contact.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
