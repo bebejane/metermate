@@ -2525,6 +2525,7 @@ type ProductModelFilter = {
   id?: InputMaybe<ItemIdFilter>;
   image?: InputMaybe<FileFilter>;
   intro?: InputMaybe<StructuredTextFilter>;
+  position?: InputMaybe<PositionFilter>;
   productType?: InputMaybe<LinkFilter>;
   slug?: InputMaybe<SlugFilter>;
   title?: InputMaybe<StringFilter>;
@@ -2560,6 +2561,8 @@ enum ProductModelOrderBy {
   _updatedAt_DESC = '_updatedAt_DESC',
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
+  position_ASC = 'position_ASC',
+  position_DESC = 'position_DESC',
   title_ASC = 'title_ASC',
   title_DESC = 'title_DESC'
 }
@@ -2585,6 +2588,7 @@ type ProductRecord = RecordInterface & {
   image?: Maybe<FileField>;
   intro?: Maybe<ProductModelIntroField>;
   layout: Array<ProductModelLayoutField>;
+  position?: Maybe<Scalars['IntType']['output']>;
   productType: ProductTypeRecord;
   slug: Scalars['String']['output'];
   title?: Maybe<Scalars['String']['output']>;

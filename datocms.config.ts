@@ -63,7 +63,7 @@ export default {
 			}))
 			.concat(
 				allProducts.map((product) => ({
-					url: `${process.env.NEXT_PUBLIC_SITE_URL}/produkter/${product.slug}`,
+					url: `${process.env.NEXT_PUBLIC_SITE_URL}/produkter/${product.category?.slug}/${product.productType?.slug}/${product.slug}`,
 					lastModified: new Date().toISOString(),
 					changeFrequency: 'weekly',
 					priority: 0.8,
