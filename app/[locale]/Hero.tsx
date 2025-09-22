@@ -17,7 +17,7 @@ export default function StartHeader({ start }: StartHeaderProps) {
 
 	return (
 		<section className={s.hero}>
-			<VideoPlayer data={start.film} className={s.video} />
+			<VideoPlayer data={start.film} className={s.player} videoClassName={s.video} />
 			<header>
 				<h1 className={s.title} key={index}>
 					{start.filmText[index]?.text}

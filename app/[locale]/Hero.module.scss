@@ -5,7 +5,8 @@
 	margin-left: calc(-1 * var(--outer-margin));
 	margin-right: calc(-1 * var(--outer-margin));
 	overflow: hidden;
-	.video {
+
+	.player {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -13,7 +14,12 @@
 		height: 100%;
 		object-fit: cover;
 		z-index: 0;
+
+		.video {
+			width: 100%;
+		}
 	}
+
 	header {
 		position: absolute;
 		top: 0;
