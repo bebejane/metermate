@@ -48,16 +48,27 @@
 	.header {
 		display: flex;
 		flex-direction: row;
+		justify-content: space-between;
+		align-items: baseline;
 		padding-left: var(--outer-margin);
 		padding-right: var(--outer-margin);
 		padding-top: var(--space);
+		padding-bottom: var(--space);
 
 		> h2 {
 			flex: 1 1 auto;
 		}
+
+		div {
+			width: 33%;
+		}
+
 		.private {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
 			h3 {
-				padding-bottom: 0;
+				padding-bottom: 0.2em;
 			}
 			span {
 				color: var(--gray);
@@ -69,7 +80,7 @@
 		list-style: none;
 		display: flex;
 		flex-direction: row;
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
 		align-items: center;
 		justify-content: center;
 		padding-left: var(--outer-margin);
@@ -90,8 +101,14 @@
 				color: var(--gray);
 			}
 
-			&:hover h4 {
-				color: var(--green);
+			&:hover {
+				h4 {
+					color: var(--green);
+				}
+				figure {
+					transform: translateY(-0.3rem);
+					transition: 0.2s ease-in-out;
+				}
 			}
 		}
 	}

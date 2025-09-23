@@ -54,7 +54,11 @@ export default async function Home({ params }: PageProps) {
 				<Logos logos={start.logos} />
 				<section className={s.products}>
 					<div className={s.header}>
-						<h2>Våra produkter</h2>
+						<div>
+							<h2>Våra produkter</h2>
+						</div>
+						<p>Realtidsmätare för el</p>
+
 						<div className={s.private}>
 							<h3>Är du här som privatperson?</h3>
 							<span className='small'>Läs mer om våra produkter här.</span>
@@ -74,7 +78,9 @@ export default async function Home({ params }: PageProps) {
 								}}
 							>
 								<li>
-									{image?.responsiveImage && <Image data={image.responsiveImage} />}
+									<figure>
+										{image?.responsiveImage && <Image data={image.responsiveImage} />}
+									</figure>
 									<h4>{title}</h4>
 								</li>
 							</Link>

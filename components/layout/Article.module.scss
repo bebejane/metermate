@@ -15,9 +15,8 @@
 		}
 
 		p {
-			@include mq($until: desktop) {
-				text-align: center;
-			}
+			max-width: 1000px;
+			text-align: center;
 		}
 	}
 }

@@ -9,6 +9,10 @@
 		flex-direction: row;
 	}
 
+	figure {
+		background-color: var(--gray-light);
+	}
+
 	figure,
 	.text {
 		width: 100%;
