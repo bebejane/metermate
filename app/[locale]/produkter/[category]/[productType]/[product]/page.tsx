@@ -70,7 +70,8 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 	});
 
 	return await buildMetadata({
-		title: product?.title,
+		title: product?.seo.title,
+		description: product?.seo.description,
 		pathname: getPathname({
 			locale,
 			href: {

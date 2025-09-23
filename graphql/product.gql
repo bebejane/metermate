@@ -23,6 +23,9 @@ fragment ProductFragment on ProductRecord {
 	image {
 		...ImageFragment
 	}
+	thumb {
+		...ImageFragment
+	}
 	category {
 		...ProductCategoryFragment
 	}
@@ -93,10 +96,17 @@ fragment ProductFragment on ProductRecord {
 	}
 	title
 	slug
+	seo {
+		title
+		description
+	}
 }
 
 fragment ProductLightFragment on ProductRecord {
 	image {
+		...ImageFragment
+	}
+	thumb {
 		...ImageFragment
 	}
 	productType {
@@ -146,4 +156,8 @@ fragment ProductLightFragment on ProductRecord {
 	}
 	title
 	slug
+	seo {
+		title
+		description
+	}
 }

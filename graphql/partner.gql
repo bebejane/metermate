@@ -25,4 +25,8 @@ fragment PartnerFragment on PartnerRecord {
 			url
 		}
 	}
+	seo {
+		title
+		description
+	}
 }

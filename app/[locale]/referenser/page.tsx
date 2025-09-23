@@ -47,11 +47,14 @@ export default async function References({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
-	const t = await getTranslations('menu');
-	const title = t('references');
+	const { reference } = await apiQuery<ReferenceQuery, ReferenceQueryVariables>(ReferenceDocument, {
+		variables: {
+			locale,
+		},
+	});
 
 	return await buildMetadata({
-		title,
+		title: reference.seo?.title,
 		pathname: getPathname({ locale, href: '/referenser' }),
 		locale,
 	});

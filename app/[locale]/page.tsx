@@ -65,7 +65,7 @@ export default async function Home({ params }: PageProps) {
 						</div>
 					</div>
 					<ul>
-						{allProducts.map(({ id, slug, category, productType, image, title }) => (
+						{allProducts.map(({ id, slug, category, productType, thumb, title }) => (
 							<Link
 								key={id}
 								href={{
@@ -78,9 +78,7 @@ export default async function Home({ params }: PageProps) {
 								}}
 							>
 								<li>
-									<figure>
-										{image?.responsiveImage && <Image data={image.responsiveImage} />}
-									</figure>
+									<figure>{thumb?.responsiveImage && <Image data={thumb.responsiveImage} />}</figure>
 									<h4>{title}</h4>
 								</li>
 							</Link>
@@ -108,7 +106,8 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 	});
 
 	return await buildMetadata({
-		title: { absolute: 'MeterMate' },
+		title: { absolute: start.seo?.title ?? 'MeterMate' },
+		description: start.seo?.description,
 		pathname: getPathname({ locale, href: '/' }),
 		locale,
 	});

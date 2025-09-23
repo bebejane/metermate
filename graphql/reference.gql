@@ -29,4 +29,8 @@ fragment ReferenceFragment on ReferenceRecord {
 		links
 		value
 	}
+	seo {
+		title
+		description
+	}
 }
