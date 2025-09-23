@@ -96,7 +96,6 @@ export default async function Home({ params }: PageProps) {
 				</section>
 				{individualProduct && (
 					<section className={s.individuals}>
-						<span>Är du privatperson?</span>
 						<Link
 							key={individualProduct.id}
 							href={{
@@ -108,7 +107,8 @@ export default async function Home({ params }: PageProps) {
 								},
 							}}
 						>
-							Läs mer
+							<span>Är du privatperson?</span>
+							<span>Läs mer</span>
 						</Link>
 					</section>
 				)}
