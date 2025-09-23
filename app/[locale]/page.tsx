@@ -31,6 +31,8 @@ export default async function Home({ params }: PageProps) {
 		},
 	});
 
+	const individualProduct = allProducts.find(({ forIndividuals }) => forIndividuals);
+
 	if (!start) return notFound();
 
 	return (
@@ -65,24 +67,26 @@ export default async function Home({ params }: PageProps) {
 						</div>
 					</div>
 					<ul>
-						{allProducts.map(({ id, slug, category, productType, thumb, title }) => (
-							<Link
-								key={id}
-								href={{
-									pathname: '/produkter/[category]/[productType]/[product]',
-									params: {
-										product: slug,
-										category: category?.slug,
-										productType: productType?.slug,
-									},
-								}}
-							>
-								<li>
-									<figure>{thumb?.responsiveImage && <Image data={thumb.responsiveImage} />}</figure>
-									<h4>{title}</h4>
-								</li>
-							</Link>
-						))}
+						{allProducts
+							.filter(({ forIndividuals }) => !forIndividuals)
+							.map(({ id, slug, category, productType, thumb, title }) => (
+								<Link
+									key={id}
+									href={{
+										pathname: '/produkter/[category]/[productType]/[product]',
+										params: {
+											product: slug,
+											category: category?.slug,
+											productType: productType?.slug,
+										},
+									}}
+								>
+									<li>
+										<figure>{thumb?.responsiveImage && <Image data={thumb.responsiveImage} />}</figure>
+										<h4>{title}</h4>
+									</li>
+								</Link>
+							))}
 					</ul>
 				</section>
 				<section className={s.shortcuts}>
@@ -90,6 +94,24 @@ export default async function Home({ params }: PageProps) {
 						<Shortcut key={shortcut.id} shortcut={shortcut as ShortcutRecord} locale={locale} />
 					))}
 				</section>
+				{individualProduct && (
+					<section className={s.individuals}>
+						<span>Är du privatperson?</span>
+						<Link
+							key={individualProduct.id}
+							href={{
+								pathname: '/produkter/[category]/[productType]/[product]',
+								params: {
+									product: individualProduct.slug,
+									category: individualProduct.category?.slug,
+									productType: individualProduct.productType?.slug,
+								},
+							}}
+						>
+							Läs mer
+						</Link>
+					</section>
+				)}
 				<NewsTicker news={start.news} headline='Senaste nytt' />
 			</Article>
 			<DraftMode url={draftUrl} path={`/`} />
