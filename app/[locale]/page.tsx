@@ -61,10 +61,23 @@ export default async function Home({ params }: PageProps) {
 						</div>
 						<p>Realtidsmätare för el</p>
 
-						<div className={s.private}>
-							<h3>Är du här som privatperson?</h3>
-							<span className='small'>Läs mer om våra produkter här.</span>
-						</div>
+						{individualProduct && (
+							<Link
+								className={s.private}
+								key={individualProduct.id}
+								href={{
+									pathname: '/produkter/[category]/[productType]/[product]',
+									params: {
+										product: individualProduct.slug,
+										category: individualProduct.category?.slug,
+										productType: individualProduct.productType?.slug,
+									},
+								}}
+							>
+								<h3>Är du här som privatperson?</h3>
+								<span className='small'>Läs mer om våra produkter här.</span>
+							</Link>
+						)}
 					</div>
 					<ul>
 						{allProducts
@@ -94,24 +107,7 @@ export default async function Home({ params }: PageProps) {
 						<Shortcut key={shortcut.id} shortcut={shortcut as ShortcutRecord} locale={locale} />
 					))}
 				</section>
-				{individualProduct && (
-					<section className={s.individuals}>
-						<Link
-							key={individualProduct.id}
-							href={{
-								pathname: '/produkter/[category]/[productType]/[product]',
-								params: {
-									product: individualProduct.slug,
-									category: individualProduct.category?.slug,
-									productType: individualProduct.productType?.slug,
-								},
-							}}
-						>
-							<span>Är du privatperson?</span>
-							<span>Läs mer</span>
-						</Link>
-					</section>
-				)}
+
 				<NewsTicker news={start.news} headline='Senaste nytt' />
 			</Article>
 			<DraftMode url={draftUrl} path={`/`} />
