@@ -49,6 +49,7 @@ type AboutRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
   image?: Maybe<FileField>;
+  seo?: Maybe<SeoRecord>;
   text?: Maybe<AboutModelTextField>;
   title?: Maybe<Scalars['String']['output']>;
   url?: Maybe<Scalars['String']['output']>;
@@ -2525,6 +2526,7 @@ type PartnerRecord = RecordInterface & {
   examples: Array<PartnerBlockRecord>;
   id: Scalars['ItemId']['output'];
   intro?: Maybe<PartnerModelIntroField>;
+  seo?: Maybe<SeoRecord>;
   title?: Maybe<Scalars['String']['output']>;
 };
 
@@ -2628,12 +2630,14 @@ type ProductModelFilter = {
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
   category?: InputMaybe<LinkFilter>;
+  forIndividuals?: InputMaybe<BooleanFilter>;
   id?: InputMaybe<ItemIdFilter>;
   image?: InputMaybe<FileFilter>;
   intro?: InputMaybe<StructuredTextFilter>;
   position?: InputMaybe<PositionFilter>;
   productType?: InputMaybe<LinkFilter>;
   slug?: InputMaybe<SlugFilter>;
+  thumb?: InputMaybe<FileFilter>;
   title?: InputMaybe<StringFilter>;
   variant?: InputMaybe<LinkFilter>;
 };
@@ -2665,6 +2669,8 @@ enum ProductModelOrderBy {
   _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
   _updatedAt_ASC = '_updatedAt_ASC',
   _updatedAt_DESC = '_updatedAt_DESC',
+  forIndividuals_ASC = 'forIndividuals_ASC',
+  forIndividuals_DESC = 'forIndividuals_DESC',
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
   position_ASC = 'position_ASC',
@@ -2690,13 +2696,16 @@ type ProductRecord = RecordInterface & {
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   category: ProductCategoryRecord;
+  forIndividuals: Scalars['BooleanType']['output'];
   id: Scalars['ItemId']['output'];
   image?: Maybe<FileField>;
   intro?: Maybe<ProductModelIntroField>;
   layout: Array<ProductModelLayoutField>;
   position?: Maybe<Scalars['IntType']['output']>;
   productType: ProductTypeRecord;
+  seo?: Maybe<SeoRecord>;
   slug: Scalars['String']['output'];
+  thumb?: Maybe<FileField>;
   title?: Maybe<Scalars['String']['output']>;
   variant?: Maybe<ProductVariantRecord>;
 };
@@ -3261,6 +3270,7 @@ type ReferenceRecord = RecordInterface & {
   examples: Array<ReferenceBlockRecord>;
   id: Scalars['ItemId']['output'];
   intro?: Maybe<ReferenceModelIntroField>;
+  seo?: Maybe<SeoRecord>;
   title?: Maybe<Scalars['String']['output']>;
 };
 
@@ -3347,6 +3357,33 @@ type SeoField = {
   noIndex?: Maybe<Scalars['BooleanType']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   twitterCard?: Maybe<Scalars['String']['output']>;
+};
+
+/** Block of type SEO (seo) */
+type SeoRecord = RecordInterface & {
+  __typename?: 'SeoRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ItemId']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Block of type SEO (seo) */
+type SeoRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
 };
 
 type ShortcutModelLinkField = AboutRecord | PartnerRecord | ProductRecord | ReferenceRecord | SupportStartRecord;
@@ -3448,6 +3485,8 @@ type StartRecord = RecordInterface & {
   ios?: Maybe<Scalars['String']['output']>;
   logos: Array<FileField>;
   news: Array<NewsBlockRecord>;
+  privatperson?: Maybe<ProductRecord>;
+  seo?: Maybe<SeoRecord>;
   shortcut: Array<ShortcutRecord>;
   textApp?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
@@ -3610,6 +3649,7 @@ type SupportStartRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
   intro?: Maybe<SupportStartModelIntroField>;
+  seo?: Maybe<SeoRecord>;
   title?: Maybe<Scalars['String']['output']>;
 };
 
