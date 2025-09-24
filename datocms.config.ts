@@ -12,15 +12,18 @@ const routes: DatoCmsConfig['routes'] = {
 	start: async (record, locale) => [getPathname({ locale, href: '/' })],
 	partner: async (record, locale) => [getPathname({ locale, href: '/partners' })],
 	about: async (record, locale) => [getPathname({ locale, href: '/om' })],
-	product: async ({ slug, category, product_type }, locale) => [
-		getPathname({
-			locale,
-			href: {
-				pathname: '/produkter/[category]/[productType]/[product]',
-				params: { product: slug, category: category.slug, productType: product_type.slug },
-			},
-		}),
-	],
+	product: async ({ id }, locale) => {
+		const { slug, category, product_type } = await loadRecordWithLinked(id);
+		return [
+			getPathname({
+				locale,
+				href: {
+					pathname: '/produkter/[category]/[productType]/[product]',
+					params: { product: slug, category: category.slug, productType: product_type.slug },
+				},
+			}),
+		];
+	},
 	product_type: async (record, locale) => references(record.id, [locale]),
 	product_category: async (record, locale) => references(record.id, [locale]),
 	product_variant: async (record, locale) => references(record.id, [locale]),
