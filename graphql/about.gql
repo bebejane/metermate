@@ -22,4 +22,8 @@ fragment AboutFragment on AboutRecord {
 	}
 	title
 	url
+	seo {
+		title
+		description
+	}
 }

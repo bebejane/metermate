@@ -11,6 +11,10 @@ fragment SupportStartFragment on SupportStartRecord {
 		links
 		value
 	}
+	seo {
+		title
+		description
+	}
 }
 
 query Support($locale: SiteLocale) {

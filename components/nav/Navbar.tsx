@@ -93,25 +93,27 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 			<div className={cn(s.sub, subMenu === 'products' && s.show, s.products)} onMouseLeave={handleLeaveSub}>
 				<div className={s.products}>
 					<ul>
-						{allProducts?.map((product) => (
-							<Link
-								key={product.id}
-								prefetch={true}
-								href={{
-									pathname: '/produkter/[category]/[productType]/[product]',
-									params: {
-										product: product.slug,
-										category: product.category?.slug,
-										productType: product.productType?.slug,
-									},
-								}}
-							>
-								<li>
-									{product.image?.responsiveImage && <Image data={product.image.responsiveImage} />}
-									<h5>{product.title}</h5>
-								</li>
-							</Link>
-						))}
+						{allProducts
+							?.filter(({ forIndividuals }) => !forIndividuals)
+							.map((product) => (
+								<Link
+									key={product.id}
+									prefetch={true}
+									href={{
+										pathname: '/produkter/[category]/[productType]/[product]',
+										params: {
+											product: product.slug,
+											category: product.category?.slug,
+											productType: product.productType?.slug,
+										},
+									}}
+								>
+									<li>
+										{product.thumb?.responsiveImage && <Image data={product.thumb.responsiveImage} />}
+										<h5>{product.title}</h5>
+									</li>
+								</Link>
+							))}
 					</ul>
 				</div>
 			</div>

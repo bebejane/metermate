@@ -117,4 +117,8 @@ fragment StartFragment on StartRecord {
 	logos {
 		...FileFragment
 	}
+	seo {
+		title
+		description
+	}
 }

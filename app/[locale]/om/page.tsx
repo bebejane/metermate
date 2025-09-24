@@ -45,10 +45,15 @@ export default async function Products({ params }: PageProps) {
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
 	const t = await getTranslations('menu');
-	const title = t('about');
+	const { about } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
+		variables: {
+			locale,
+		},
+	});
 
 	return await buildMetadata({
-		title,
+		title: about.seo?.title ?? t('om'),
+		description: about.seo?.description,
 		pathname: getPathname({ locale, href: '/om' }),
 		locale,
 	});

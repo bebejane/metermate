@@ -122,3 +122,16 @@
 	margin-left: calc(-1 * var(--outer-margin));
 	margin-right: calc(-1 * var(--outer-margin));
 }
+
+.individuals {
+	a {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding-top: var(--space);
+		padding-bottom: var(--space);
+		span:first-child {
+			flex: 1 1 auto;
+		}
+	}
+}

@@ -45,10 +45,15 @@ export default async function Partners({ params }: PageProps) {
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
 	const t = await getTranslations('menu');
-	const title = t('partners');
+	const { partner } = await apiQuery<PartnerQuery, PartnerQueryVariables>(PartnerDocument, {
+		variables: {
+			locale,
+		},
+	});
 
 	return await buildMetadata({
-		title,
+		title: partner?.seo?.title ?? t('partners'),
+		description: partner?.seo?.description,
 		pathname: getPathname({ locale, href: '/partners' }),
 		locale,
 	});
