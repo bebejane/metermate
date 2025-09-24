@@ -29,11 +29,17 @@
 			padding-bottom: 0.5em;
 		}
 	}
+
+	.introText .wrapper {
+		position: sticky;
+		top: calc(var(--navbar-height) + var(--space));
+	}
+
 	figure {
 		height: 100%;
 		img {
 			object-fit: cover;
-			height: 50vh;
+			//height: 50vh;
 			width: 100%;
 		}
 	}

@@ -29,9 +29,11 @@ export default async function Products({ params }: PageProps) {
 		<>
 			<Article className={s.product}>
 				<section className={s.intro}>
-					<div>
-						<h1>{product.title}</h1>
-						<Content content={product.intro} />
+					<div className={s.introText}>
+						<div className={s.wrapper}>
+							<h1>{product.title}</h1>
+							<Content content={product.intro} />
+						</div>
 					</div>
 					<figure>
 						<Image data={product.image.responsiveImage} />
