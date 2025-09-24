@@ -33,6 +33,7 @@
 	.introText .wrapper {
 		position: sticky;
 		top: calc(var(--navbar-height) + var(--space));
+		padding-bottom: var(--space);
 	}
 
 	figure {

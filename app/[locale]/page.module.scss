@@ -59,8 +59,14 @@
 			flex: 1 1 auto;
 		}
 
-		div {
+		div,
+		a,
+		p {
 			width: 33%;
+		}
+
+		p {
+			text-align: center;
 		}
 
 		.private {
