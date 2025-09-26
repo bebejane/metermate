@@ -24,6 +24,21 @@ fragment StartFragment on StartRecord {
 			text
 		}
 	}
+	faqText {
+		blocks {
+			... on ToggleTextRecord {
+				id
+				headline
+				text {
+					blocks
+					links
+					value
+				}
+			}
+		}
+		links
+		value
+	}
 	shortcut {
 		... on ShortcutRecord {
 			__typename

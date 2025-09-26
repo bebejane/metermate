@@ -74,7 +74,7 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 								<ul>
 									{allProducts
 										?.filter(({ forIndividuals }) => !forIndividuals)
-										.map(({ id, title, image, slug, category, productType }) => (
+										.map(({ id, title, variant, slug, category, productType }) => (
 											<li key={id}>
 												<Link
 													key={id}
@@ -87,7 +87,7 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 														},
 													}}
 												>
-													{title}
+													{variant?.title}
 												</Link>
 											</li>
 										))}

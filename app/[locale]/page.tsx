@@ -14,6 +14,7 @@ import Shortcut from '@/components/blocks/Shortcut';
 import NewsTicker from '@/components/common/NewsTicker';
 import Hero from './Hero';
 import Logos from '@/app/[locale]/Logos';
+import Content from '@/components/common/Content';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
@@ -60,7 +61,6 @@ export default async function Home({ params }: PageProps) {
 							<h2>Våra realtidsmätere för el</h2>
 						</div>
 						<p></p>
-
 						{individualProduct && (
 							<Link
 								className={s.private}
@@ -82,7 +82,7 @@ export default async function Home({ params }: PageProps) {
 					<ul>
 						{allProducts
 							.filter(({ forIndividuals }) => !forIndividuals)
-							.map(({ id, slug, category, productType, thumb, title }) => (
+							.map(({ id, slug, category, productType, thumb, variant }) => (
 								<Link
 									key={id}
 									href={{
@@ -96,7 +96,7 @@ export default async function Home({ params }: PageProps) {
 								>
 									<li>
 										<figure>{thumb?.responsiveImage && <Image data={thumb.responsiveImage} />}</figure>
-										<h4>{title}</h4>
+										<h4>{variant?.title}</h4>
 									</li>
 								</Link>
 							))}
@@ -107,7 +107,9 @@ export default async function Home({ params }: PageProps) {
 						<Shortcut key={shortcut.id} shortcut={shortcut as ShortcutRecord} locale={locale} />
 					))}
 				</section>
-
+				<section className={s.faq}>
+					<Content content={start.faqText} className={s.faqText} />
+				</section>
 				<NewsTicker news={start.news} headline='Senaste nytt' />
 			</Article>
 			<DraftMode url={draftUrl} path={`/`} />

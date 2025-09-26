@@ -34,6 +34,11 @@ fragment ProductFragment on ProductRecord {
 		title
 		slug
 	}
+	variant {
+		id
+		slug
+		title
+	}
 	forIndividuals
 	layout {
 		__typename
@@ -114,6 +119,11 @@ fragment ProductLightFragment on ProductRecord {
 		id
 		title
 		slug
+	}
+	variant {
+		id
+		slug
+		title
 	}
 	forIndividuals
 	layout {
