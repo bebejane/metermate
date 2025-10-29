@@ -15,13 +15,13 @@ export default async function Support({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { supportStart } = await apiQuery<SupportStartQuery, SupportStartQueryVariables>(SupportStartDocument, {
+	const { supportStart } = await apiQuery(SupportStartDocument, {
 		variables: {
 			locale,
 		},
 	});
 
-	const { allSupports, draftUrl } = await apiQuery<AllSupportsQuery, AllSupportsQueryVariables>(AllSupportsDocument, {
+	const { allSupports, draftUrl } = await apiQuery(AllSupportsDocument, {
 		variables: {
 			locale,
 		},
@@ -56,7 +56,7 @@ export default async function Support({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
-	const { supportStart } = await apiQuery<SupportStartQuery, SupportStartQueryVariables>(SupportStartDocument, {
+	const { supportStart } = await apiQuery(SupportStartDocument, {
 		variables: {
 			locale,
 		},

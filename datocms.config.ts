@@ -1,139 +1,102 @@
 import 'dotenv/config';
-import { DatoCmsConfig } from 'next-dato-utils/config';
-import client from './lib/client';
-import { getPathname, defaultLocale } from '@/i18n/routing';
+import {
+	DatoCmsConfig,
+	getItemReferenceRoutes,
+	getUploadReferenceRoutes,
+	getItemWithLinked,
+} from 'next-dato-utils/config';
+import { getPathname, defaultLocale, locales } from '@/i18n/routing';
 import { apiQuery } from 'next-dato-utils/api';
 import { AllProductsDocument } from '@/graphql';
 import { MetadataRoute } from 'next';
-import { ApiError } from '@datocms/cma-client';
 import { routing } from '@/i18n/routing';
 
-const routes: DatoCmsConfig['routes'] = {
-	start: async (record, locale) => [getPathname({ locale, href: '/' })],
-	partner: async (record, locale) => [getPathname({ locale, href: '/partners' })],
-	about: async (record, locale) => [getPathname({ locale, href: '/om' })],
-	product: async ({ id }, locale) => {
-		const { slug, category, product_type } = await loadRecordWithLinked(id);
-		return [
-			getPathname({
-				locale,
-				href: {
-					pathname: '/produkter/[category]/[productType]/[product]',
-					params: { product: slug, category: category.slug, productType: product_type.slug },
-				},
-			}),
-		];
-	},
-	product_type: async (record, locale) => references(record.id, [locale]),
-	product_category: async (record, locale) => references(record.id, [locale]),
-	product_variant: async (record, locale) => references(record.id, [locale]),
-	reference: async (record, locale) => [getPathname({ locale, href: '/referenser' })],
-	support: async (record, locale) => [getPathname({ locale, href: '/support' })],
-	support_start: async (record, locale) => [getPathname({ locale, href: '/support' })],
-	contact: async (record, locale) => [getPathname({ locale, href: '/' })],
-	footer: async (record, locale) => [getPathname({ locale, href: '/' })],
-	upload: async (record, locale) => references(record.id, routing.locales, { upload: true }),
-};
-
 const config = {
-	name: 'Metermate',
-	description: 'Metermate',
-	url: {
-		dev: 'http://localhost:3000',
-		public: 'https://metermate.vercel.app',
-	},
-	theme: {
-		background: '#efefef',
-		color: '#349f49',
-	},
 	i18n: {
-		defaultLocale: routing.defaultLocale,
-		locales: routing.locales,
+		defaultLocale,
+		locales,
 	},
-	routes,
-	sitemap: async (locale = 'sv') => {
-		const { allProducts } = await apiQuery<AllProductsQuery, AllProductsQueryVariables>(AllProductsDocument, {
+	routes: {
+		start: async (record, locale) => [getPathname({ locale, href: '/' })],
+		partner: async (record, locale) => [getPathname({ locale, href: '/partners' })],
+		about: async (record, locale) => [getPathname({ locale, href: '/om' })],
+		product: async ({ id }, locale) => {
+			const { slug, category, product_type } = await getItemWithLinked(id);
+			return [
+				getPathname({
+					locale,
+					href: {
+						pathname: '/produkter/[category]/[productType]/[product]',
+						params: { product: slug, category: category.slug, productType: product_type.slug },
+					},
+				}),
+			];
+		},
+		product_type: async ({ id }, locale) => getItemReferenceRoutes(id, locales),
+		product_category: async ({ id }, locale) => getItemReferenceRoutes(id, locales),
+		product_variant: async ({ id }, locale) => getItemReferenceRoutes(id, locales),
+		reference: async (record, locale) => [getPathname({ locale, href: '/referenser' })],
+		support: async (record, locale) => [getPathname({ locale, href: '/support' })],
+		support_start: async (record, locale) => [getPathname({ locale, href: '/support' })],
+		contact: async (record, locale) => [getPathname({ locale, href: '/' })],
+		footer: async (record, locale) => [getPathname({ locale, href: '/' })],
+		client_support: async () => ['/'],
+		client_support_start: async () => ['/'],
+		upload: async ({ id }, locale) => getUploadReferenceRoutes(id),
+	},
+	sitemap: async () => {
+		const locale = defaultLocale;
+		const { allProducts } = await apiQuery(AllProductsDocument, {
 			variables: {
 				locale: locale as SiteLocale,
 			},
 		});
 
-		return ['/om', '/produkter', '/referenser', '/support']
-			.map((p) => ({
-				url: `${process.env.NEXT_PUBLIC_SITE_URL}${p}`,
+		const staticRoutes = Object.keys(routing.pathnames)
+			.filter((p) => !p.includes('['))
+			.map((pathname) => ({
+				url: `${process.env.NEXT_PUBLIC_SITE_URL}${pathname}`,
 				lastModified: new Date().toISOString(),
-				changeFrequency: 'weekly',
-				priority: 0.8,
-			}))
-			.concat(
-				allProducts.map((product) => ({
-					url: `${process.env.NEXT_PUBLIC_SITE_URL}/produkter/${product.category?.slug}/${product.productType?.slug}/${product.slug}`,
-					lastModified: new Date().toISOString(),
-					changeFrequency: 'weekly',
-					priority: 0.8,
-				}))
-			) as MetadataRoute.Sitemap;
+				changeFrequency: pathname === '/' ? 'weekly' : 'monthly',
+				priority: pathname === '/' ? 1 : 0.8,
+			}));
+
+		const productRoutes = allProducts.map((product) => ({
+			url: `${process.env.NEXT_PUBLIC_SITE_URL}/produkter/${product.category?.slug}/${product.productType?.slug}/${product.slug}`,
+			lastModified: new Date().toISOString(),
+			changeFrequency: 'weekly',
+			priority: 0.8,
+		}));
+
+		return [...staticRoutes, ...productRoutes] as MetadataRoute.Sitemap;
+	},
+	manifest: async () => {
+		return {
+			name: 'MeterMate',
+			short_name: 'MeterMate',
+			description: 'MeterMate website',
+			start_url: '/',
+			display: 'standalone',
+			background_color: '#ffffff',
+			theme_color: '#000000',
+			icons: [
+				{
+					src: '/favicon.ico',
+					sizes: 'any',
+					type: 'image/x-icon',
+				},
+			],
+		} satisfies MetadataRoute.Manifest;
+	},
+	robots: async () => {
+		return {
+			rules: {
+				userAgent: '*',
+				allow: '/',
+				disallow: '/medlem/',
+			},
+		};
 	},
 } satisfies DatoCmsConfig;
 
 export default config;
-
-async function references(itemId: string, locales: string[], opt = { upload: false }): Promise<string[] | null> {
-	if (!itemId) throw new Error('datocms.config: Missing reference: itemId');
-	const paths: string[] = [];
-
-	try {
-		const itemTypes = await client.itemTypes.list();
-		const items = await client[opt.upload ? 'uploads' : 'items'].references(itemId, {
-			version: 'published',
-			limit: 500,
-			nested: true,
-		});
-
-		for (const item of items) {
-			const itemType = itemTypes.find(({ id }) => id === item.item_type.id);
-			if (!itemType) continue;
-			const record = await loadRecordWithLinked(item.id);
-			for (const locale of locales) {
-				const p = await routes[itemType.api_key]?.(record, locale);
-				p && paths.push.apply(paths, p);
-			}
-		}
-	} catch (e) {
-		console.error((e as ApiError).message);
-		throw e.message;
-	}
-	return paths;
-}
-
-export async function loadRecordWithLinked(id: string): Promise<any> {
-	// 1) Get the record, expand blocks if you need them
-	const record = await client.items.find(id, { nested: true, version: 'current' });
-
-	// 2) Discover link fields for this model
-	const itemTypeId = record.item_type.id;
-	const fields = await client.fields.list(itemTypeId);
-	const linkFields = fields.filter((f) => f.field_type === 'link' || f.field_type === 'links');
-
-	// 3) Collect referenced IDs from those fields
-	const ids = new Set<string>();
-	for (const f of linkFields) {
-		const value = (record as any)[f.api_key];
-		if (!value) continue;
-		if (Array.isArray(value)) value.forEach((v) => ids.add(v));
-		else ids.add(value);
-	}
-
-	// 4) Bulk fetch linked records, if any
-	const linkedRecords = ids.size
-		? await client.items.list({
-				filter: { ids: Array.from(ids).join(',') },
-				version: 'current',
-			})
-		: [];
-
-	Object.keys(record).forEach((key) => {
-		record[key] = linkedRecords.find((r) => r.id === record[key]) ?? record[key];
-	});
-	return record;
-}

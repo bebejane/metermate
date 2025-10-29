@@ -31,19 +31,19 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 
 	const session = await getServerSession(authOptions);
 
-	const { footer } = await apiQuery<FooterQuery, FooterQueryVariables>(FooterDocument, {
+	const { footer } = await apiQuery(FooterDocument, {
 		variables: {
 			locale,
 		},
 	});
 
-	const { contact } = await apiQuery<ContactQuery, ContactQueryVariables>(ContactDocument, {
+	const { contact } = await apiQuery(ContactDocument, {
 		variables: {
 			locale,
 		},
 	});
 
-	const { allProducts } = await apiQuery<AllProductsQuery, AllProductsQueryVariables>(AllProductsDocument, {
+	const { allProducts } = await apiQuery(AllProductsDocument, {
 		variables: {
 			locale,
 		},
@@ -80,7 +80,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
 	const {
 		site: { globalSeo, faviconMetaTags },
-	} = await apiQuery<GlobalQuery, GlobalQueryVariables>(GlobalDocument, {
+	} = await apiQuery(GlobalDocument, {
 		variables: { locale },
 		revalidate: 60 * 60,
 	});

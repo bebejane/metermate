@@ -16,7 +16,7 @@ export default async function Products({ params }: PageProps) {
 	const { locale, product: slug, category } = await params;
 	setRequestLocale(locale);
 
-	const { product, draftUrl } = await apiQuery<ProductQuery, ProductQueryVariables>(ProductDocument, {
+	const { product, draftUrl } = await apiQuery(ProductDocument, {
 		variables: {
 			slug,
 			locale,
@@ -49,7 +49,7 @@ export default async function Products({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-	const { allProducts } = await apiQuery<AllProductsQuery, AllProductsQueryVariables>(AllProductsDocument, {
+	const { allProducts } = await apiQuery(AllProductsDocument, {
 		all: true,
 		tags: ['product'],
 	});
@@ -64,7 +64,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale, product: slug, category } = await params;
 	setRequestLocale(locale);
 
-	const { product } = await apiQuery<ProductQuery, ProductQueryVariables>(ProductDocument, {
+	const { product } = await apiQuery(ProductDocument, {
 		variables: {
 			slug,
 			locale,

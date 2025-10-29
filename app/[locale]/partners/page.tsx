@@ -14,7 +14,7 @@ export default async function Partners({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { partner, draftUrl } = await apiQuery<PartnerQuery, PartnerQueryVariables>(PartnerDocument, {
+	const { partner, draftUrl } = await apiQuery(PartnerDocument, {
 		variables: {
 			locale,
 		},
@@ -45,7 +45,7 @@ export default async function Partners({ params }: PageProps) {
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
 	const t = await getTranslations('menu');
-	const { partner } = await apiQuery<PartnerQuery, PartnerQueryVariables>(PartnerDocument, {
+	const { partner } = await apiQuery(PartnerDocument, {
 		variables: {
 			locale,
 		},

@@ -15,23 +15,17 @@ export default async function ClientSupport({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { clientSupportStart } = await apiQuery<ClientSupportStartQuery, ClientSupportStartQueryVariables>(
-		ClientSupportStartDocument,
-		{
-			variables: {
-				locale,
-			},
-		}
-	);
+	const { clientSupportStart } = await apiQuery(ClientSupportStartDocument, {
+		variables: {
+			locale,
+		},
+	});
 
-	const { allClientSupports, draftUrl } = await apiQuery<AllClientSupportsQuery, AllClientSupportsQueryVariables>(
-		AllClientSupportsDocument,
-		{
-			variables: {
-				locale,
-			},
-		}
-	);
+	const { allClientSupports, draftUrl } = await apiQuery(AllClientSupportsDocument, {
+		variables: {
+			locale,
+		},
+	});
 
 	return (
 		<>

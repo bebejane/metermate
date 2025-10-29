@@ -15,7 +15,7 @@ export default async function References({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { reference, draftUrl } = await apiQuery<ReferenceQuery, ReferenceQueryVariables>(ReferenceDocument, {
+	const { reference, draftUrl } = await apiQuery(ReferenceDocument, {
 		variables: {
 			locale,
 		},
@@ -47,7 +47,7 @@ export default async function References({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
-	const { reference } = await apiQuery<ReferenceQuery, ReferenceQueryVariables>(ReferenceDocument, {
+	const { reference } = await apiQuery(ReferenceDocument, {
 		variables: {
 			locale,
 		},

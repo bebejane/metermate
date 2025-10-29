@@ -20,13 +20,13 @@ export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { start, draftUrl } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument, {
+	const { start, draftUrl } = await apiQuery(StartDocument, {
 		variables: {
 			locale,
 		},
 	});
 
-	const { allProducts } = await apiQuery<AllProductsQuery, AllProductsQueryVariables>(AllProductsDocument, {
+	const { allProducts } = await apiQuery(AllProductsDocument, {
 		variables: {
 			locale,
 		},
@@ -119,7 +119,7 @@ export default async function Home({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
-	const { start } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument, {
+	const { start } = await apiQuery(StartDocument, {
 		variables: {
 			locale,
 		},
