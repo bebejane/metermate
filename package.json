@@ -23,7 +23,7 @@
 		"google": "link:@next/third-parties/google",
 		"graphql": "^16.11.0",
 		"motion": "^12.16.0",
-		"next": "16.0.10",
+		"next": "15.5.9",
 		"next-auth": "4.24.11",
 		"next-dato-utils": "github:bebejane/next-dato-utils#v2.0.85",
 		"next-intl": "^4.3.5",
