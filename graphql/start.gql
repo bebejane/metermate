@@ -26,6 +26,7 @@ fragment StartFragment on StartRecord {
 	}
 	faqText {
 		blocks {
+			__typename
 			... on ToggleTextRecord {
 				id
 				headline

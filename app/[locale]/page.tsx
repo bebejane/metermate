@@ -108,7 +108,9 @@ export default async function Home({ params }: PageProps) {
 					))}
 				</section>
 				<section className={s.faq}>
-					<Content content={start.faqText} className={s.faqText} />
+					<div>
+						<Content content={start.faqText} className={s.faqText} />
+					</div>
 				</section>
 				<NewsTicker news={start.news} headline='Senaste nytt' />
 			</Article>

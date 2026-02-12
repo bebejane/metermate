@@ -26,7 +26,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 	const logoRef = useRef<HTMLImageElement>(null);
 	const left = menu.filter((item) => item.position === 'left');
 	const right = menu
-		.filter((item) => item.position === 'right')
+		.filter((item) => item.position === 'right' && item.id !== 'language')
 		.map((item) =>
 			item.id === 'login' && status === 'authenticated' ? { ...item, title: 'Medlem', slug: '/medlem' } : item
 		);

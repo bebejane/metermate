@@ -128,3 +128,12 @@
 	margin-left: calc(-1 * var(--outer-margin));
 	margin-right: calc(-1 * var(--outer-margin));
 }
+
+.faq {
+	margin-left: calc(-1 * var(--outer-margin));
+	margin-right: calc(-1 * var(--outer-margin));
+	background-color: var(--gray-light);
+	div {
+		padding: var(--outer-margin);
+	}
+}

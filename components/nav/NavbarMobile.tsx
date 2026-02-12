@@ -28,7 +28,7 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 	const top = menu.filter((item) => item.position === 'left');
 
 	const bottom = menu
-		.filter((item) => item.position === 'right')
+		.filter((item) => item.position === 'right' && item.id !== 'language')
 		.map((item) =>
 			item.id === 'login' && status === 'authenticated' ? { ...item, title: 'Medlem', slug: '/medlem' } : item
 		);
