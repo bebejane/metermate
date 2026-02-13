@@ -110,21 +110,6 @@ fragment StartFragment on StartRecord {
 					}
 					title
 				}
-				... on ReferenceRecord {
-					examples {
-						... on ReferenceBlockRecord {
-							image {
-								...ImageFragment
-							}
-							link
-							logo {
-								...ImageFragment
-							}
-							title
-						}
-					}
-					title
-				}
 			}
 		}
 	}

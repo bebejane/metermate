@@ -11,7 +11,7 @@ export type ToggleTextProps = {
 
 export default function ToggleText({ data }: ToggleTextProps) {
 	const [openToggleTextId, setOpenToggleTextId] = useStore(
-		useShallow((state) => [state.openToggleTextId, state.setOpenToggleTextId])
+		useShallow((state) => [state.openToggleTextId, state.setOpenToggleTextId]),
 	);
 
 	const headline = data?.headline;
