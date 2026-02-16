@@ -6,6 +6,11 @@
 	margin-right: calc(-1 * var(--outer-margin));
 	overflow: hidden;
 
+	@include mq($until: desktop) {
+		width: calc(100% + 2 * var(--outer-margin));
+		height: calc(70vh - 2 * var(--navbar-height));
+	}
+
 	.player {
 		position: absolute;
 		top: 0;

@@ -111,9 +111,14 @@ export default async function Home({ params }: PageProps) {
 					<div>
 						<Content content={start.faqText} className={s.faqText} />
 					</div>
+					{start.faqImage?.responsiveImage && (
+						<div className={s.img}>
+							<Image data={start.faqImage.responsiveImage} />
+						</div>
+					)}
 				</section>
 				<NewsTicker news={start.news} headline='Senaste nytt' />
-			</Article>
+			</Article >
 			<DraftMode url={draftUrl} path={`/`} />
 		</>
 	);

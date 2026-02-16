@@ -40,6 +40,9 @@ fragment StartFragment on StartRecord {
 		links
 		value
 	}
+	faqImage {
+		...ImageFragment
+	}
 	shortcut {
 		... on ShortcutRecord {
 			__typename
