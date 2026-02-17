@@ -10,9 +10,12 @@ export type CTAProps = {
 };
 
 export default function Cta({ data: { text } }: CTAProps) {
-	const [setSubMenu] = useStore(useShallow((state) => [state.setSubMenu]));
+	const [setSubMenu, setOpenMobileMenu] = useStore(useShallow((state) => [state.setSubMenu, state.setOpenMobileMenu]));
 	return (
-		<section className={cn(s.cta)} onClick={() => setSubMenu('contact')}>
+		<section className={cn(s.cta)} onClick={() => {
+			setSubMenu('contact');
+			setOpenMobileMenu(true);
+		}}>
 			<h2>{text && <Content content={text} />}</h2>
 		</section>
 	);

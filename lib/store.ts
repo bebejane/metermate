@@ -6,6 +6,8 @@ export interface StoreState {
 	setSubMenu: (subMenu: 'products' | 'contact' | null) => void;
 	openToggleTextId: string | null;
 	setOpenToggleTextId: (id: string | null) => void;
+	openMobileMenu: boolean;
+	setOpenMobileMenu: (open: boolean) => void;
 }
 
 const useStore = create<StoreState>((set) => ({
@@ -13,6 +15,8 @@ const useStore = create<StoreState>((set) => ({
 	setSubMenu: (subMenu) => set({ subMenu }),
 	openToggleTextId: null,
 	setOpenToggleTextId: (id) => set({ openToggleTextId: id }),
+	openMobileMenu: false,
+	setOpenMobileMenu: (open) => set({ openMobileMenu: open }),
 }));
 
 export { shallow, useStore, useShallow };

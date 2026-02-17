@@ -25,6 +25,14 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 	const [selected, setSelected] = useState<string | null>(null);
 	const [open, setOpen] = useState(false);
 	const [subMenu, setSubMenu] = useStore(useShallow((state) => [state.subMenu, state.setSubMenu]));
+	const [openMobileMenu, setOpenMobileMenu] = useStore(useShallow((state) => [state.openMobileMenu, state.setOpenMobileMenu]));
+
+	useEffect(() => {
+		if (openMobileMenu) {
+			setOpen(true);
+			setOpenMobileMenu(false);
+		}
+	}, [openMobileMenu, setOpenMobileMenu]);
 	const top = menu.filter((item) => item.position === 'left');
 
 	const bottom = menu
