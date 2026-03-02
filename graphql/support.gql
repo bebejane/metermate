@@ -40,11 +40,21 @@ fragment SupportFragment on SupportRecord {
 			text {
 				blocks {
 					__typename
-					id
 					... on VideoRecord {
+						id
 						caption
 						video {
 							...VideoFragment
+						}
+					}
+					... on ToggleTextRecord {
+						id
+						headline
+						text {
+							blocks
+							inlineBlocks
+							links
+							value
 						}
 					}
 				}
@@ -67,11 +77,21 @@ fragment SupportLightFragment on SupportRecord {
 			text {
 				blocks {
 					__typename
-					id
 					... on VideoRecord {
+						id
 						caption
 						video {
 							...VideoFragment
+						}
+					}
+					... on ToggleTextRecord {
+						id
+						headline
+						text {
+							blocks
+							inlineBlocks
+							links
+							value
 						}
 					}
 				}
