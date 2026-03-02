@@ -3,7 +3,7 @@
 import s from './Footer.module.scss';
 import cn from 'classnames';
 import Link from 'next/link';
-import Content from '@/components/common/Content';
+import Content from '@/components/content/Content';
 import classNames from 'classnames';
 import { useScrollInfo } from 'next-dato-utils/hooks';
 import { use, useEffect, useRef, useState } from 'react';

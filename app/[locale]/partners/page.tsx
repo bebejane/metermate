@@ -8,7 +8,7 @@ import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 import Article from '@/components/layout/Article';
-import Content from '@/components/common/Content';
+import Content from '@/components/content/Content';
 
 export default async function Partners({ params }: PageProps) {
 	const { locale } = await params;

@@ -10,11 +10,11 @@ import { getPathname } from '@/i18n/routing';
 import { Image } from 'react-datocms';
 import Article from '@/components/layout/Article';
 import { Link } from '@/i18n/routing';
-import Shortcut from '@/components/blocks/Shortcut';
+import Shortcut from '@/components/content/blocks/Shortcut';
 import NewsTicker from '@/components/common/NewsTicker';
 import Hero from './Hero';
 import Logos from '@/app/[locale]/Logos';
-import Content from '@/components/common/Content';
+import Content from '@/components/content/Content';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
@@ -95,7 +95,9 @@ export default async function Home({ params }: PageProps) {
 									}}
 								>
 									<li>
-										<figure>{thumb?.responsiveImage && <Image data={thumb.responsiveImage} />}</figure>
+										<figure>
+											{thumb?.responsiveImage && <Image data={thumb.responsiveImage} />}
+										</figure>
 										<h4>{variant?.title}</h4>
 									</li>
 								</Link>
@@ -118,7 +120,7 @@ export default async function Home({ params }: PageProps) {
 					)}
 				</section>
 				<NewsTicker news={start.news} headline='Senaste nytt' />
-			</Article >
+			</Article>
 			<DraftMode url={draftUrl} path={`/`} />
 		</>
 	);

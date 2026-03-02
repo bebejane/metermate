@@ -9,7 +9,7 @@ import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 import { Image } from 'react-datocms';
 import Article from '@/components/layout/Article';
-import Content from '@/components/common/Content';
+import Content from '@/components/content/Content';
 
 export default async function References({ params }: PageProps) {
 	const { locale } = await params;

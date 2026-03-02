@@ -7,7 +7,7 @@ export type LinkTextProps = {
 export default function LinkText({ data }: LinkTextProps) {
 	const { text, url } = data;
 	return (
-		<Link href={url} target='_blank' rel='noopener noreferrer'>
+		<Link href={url} target='_blank' rel='noopener noreferrer' data-datocms-content-link-boundary>
 			{text}
 		</Link>
 	);

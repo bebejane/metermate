@@ -2,7 +2,7 @@
 
 import s from './ToggleText.module.scss';
 import cn from 'classnames';
-import Content from '@/components/common/Content';
+import Content from '@/components/content/Content';
 import { useStore, useShallow } from '@/lib/store';
 
 export type ToggleTextProps = {

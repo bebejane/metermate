@@ -2,7 +2,7 @@
 
 import s from './Article.module.scss';
 import cn from 'classnames';
-import Content from '@/components/common/Content';
+import Content from '@/components/content/Content';
 
 export type ArticleProps = {
 	title?: string;
@@ -17,7 +17,14 @@ export type ArticleProps = {
 	children?: React.ReactNode | React.ReactNode[];
 };
 
-export default function Article({ title, intro, content, link, className, children }: ArticleProps) {
+export default function Article({
+	title,
+	intro,
+	content,
+	link,
+	className,
+	children,
+}: ArticleProps) {
 	return (
 		<article className={cn(s.article, className)}>
 			{title && (

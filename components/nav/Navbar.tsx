@@ -6,7 +6,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { Link } from '@/i18n/routing';
 import { useEffect, useRef, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
-import Content from '@/components/common/Content';
+import Content from '@/components/content/Content';
 import { Image } from 'react-datocms';
 import { useSession } from 'next-auth/react';
 import { useStore, useShallow } from '@/lib/store';
@@ -28,7 +28,9 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 	const right = menu
 		.filter((item) => item.position === 'right' && item.id !== 'language')
 		.map((item) =>
-			item.id === 'login' && status === 'authenticated' ? { ...item, title: 'Medlem', slug: '/medlem' } : item
+			item.id === 'login' && status === 'authenticated'
+				? { ...item, title: 'Medlem', slug: '/medlem' }
+				: item,
 		);
 
 	function isSelected(item: MenuItem) {
@@ -63,7 +65,11 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 
 				<ul className={s.menu}>
 					{left.map((item, idx) => (
-						<li id={`${item.id}-menu`} key={`${item.id}-menu`} className={cn(isSelected(item) && s.active)}>
+						<li
+							id={`${item.id}-menu`}
+							key={`${item.id}-menu`}
+							className={cn(isSelected(item) && s.active)}
+						>
 							{item.slug && !item.sub ? (
 								<Link href={item.slug} prefetch={true}>
 									{item.title}
@@ -77,7 +83,11 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 
 				<ul className={cn(s.menu, s.right)}>
 					{right.map((item, idx) => (
-						<li id={`${item.id}-menu`} key={`${item.id}-menu`} className={cn(isSelected(item) && s.active)}>
+						<li
+							id={`${item.id}-menu`}
+							key={`${item.id}-menu`}
+							className={cn(isSelected(item) && s.active)}
+						>
 							{item.slug && !item.sub ? (
 								<Link href={item.slug}>{item.title}</Link>
 							) : (
@@ -87,10 +97,16 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 					))}
 				</ul>
 			</nav>
-			<div className={cn(s.sub, subMenu === 'contact' && s.show, s.contact)} onMouseLeave={handleLeaveSub}>
+			<div
+				className={cn(s.sub, subMenu === 'contact' && s.show, s.contact)}
+				onMouseLeave={handleLeaveSub}
+			>
 				<Content content={contact.text} className={s.content} />
 			</div>
-			<div className={cn(s.sub, subMenu === 'products' && s.show, s.products)} onMouseLeave={handleLeaveSub}>
+			<div
+				className={cn(s.sub, subMenu === 'products' && s.show, s.products)}
+				onMouseLeave={handleLeaveSub}
+			>
 				<div className={s.products}>
 					<ul>
 						{allProducts
@@ -109,7 +125,9 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 									}}
 								>
 									<li>
-										{product.thumb?.responsiveImage && <Image data={product.thumb.responsiveImage} />}
+										{product.thumb?.responsiveImage && (
+											<Image data={product.thumb.responsiveImage} />
+										)}
 										<h5>{product.variant?.title}</h5>
 									</li>
 								</Link>

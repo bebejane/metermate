@@ -10,7 +10,7 @@ import { getPathname } from '@/i18n/routing';
 import { Image } from 'react-datocms';
 import { getTranslations } from 'next-intl/server';
 import Article from '@/components/layout/Article';
-import Content from '@/components/common/Content';
+import Content from '@/components/content/Content';
 
 export default async function Products({ params }: PageProps) {
 	const { locale } = await params;

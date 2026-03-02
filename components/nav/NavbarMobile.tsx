@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
 import Hamburger from './Hamburger';
 import { useSession } from 'next-auth/react';
-import Content from '@/components/common/Content';
+import Content from '@/components/content/Content';
 import { useShallow, useStore } from '@/lib/store';
 
 export type NavbarMobileProps = {
@@ -25,7 +25,9 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 	const [selected, setSelected] = useState<string | null>(null);
 	const [open, setOpen] = useState(false);
 	const [subMenu, setSubMenu] = useStore(useShallow((state) => [state.subMenu, state.setSubMenu]));
-	const [openMobileMenu, setOpenMobileMenu] = useStore(useShallow((state) => [state.openMobileMenu, state.setOpenMobileMenu]));
+	const [openMobileMenu, setOpenMobileMenu] = useStore(
+		useShallow((state) => [state.openMobileMenu, state.setOpenMobileMenu]),
+	);
 
 	useEffect(() => {
 		if (openMobileMenu) {
@@ -38,7 +40,9 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 	const bottom = menu
 		.filter((item) => item.position === 'right' && item.id !== 'language')
 		.map((item) =>
-			item.id === 'login' && status === 'authenticated' ? { ...item, title: 'Medlem', slug: '/medlem' } : item
+			item.id === 'login' && status === 'authenticated'
+				? { ...item, title: 'Medlem', slug: '/medlem' }
+				: item,
 		);
 
 	function handleClick(id: string) {
@@ -66,7 +70,12 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 					</Link>
 				</figure>
 				<div className={s.hamburger}>
-					<Hamburger toggled={open} color={open ? 'white' : 'black'} size={36} onToggle={(state) => setOpen(state)} />
+					<Hamburger
+						toggled={open}
+						color={open ? 'white' : 'black'}
+						size={36}
+						onToggle={(state) => setOpen(state)}
+					/>
 				</div>
 			</div>
 			<nav className={cn(s.navbarMobile, open && s.open)}>
@@ -77,7 +86,11 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 							className={cn(subMenu && s.dropdown, isSelected(item) && s.active)}
 							onClick={() => handleClick(selected === item.id ? null : item.id)}
 						>
-							{item.slug && !item.sub ? <Link href={item.slug}>{item.title}</Link> : <span>{item.title}</span>}
+							{item.slug && !item.sub ? (
+								<Link href={item.slug}>{item.title}</Link>
+							) : (
+								<span>{item.title}</span>
+							)}
 							{item.id === 'products' && subMenu === 'products' && (
 								<ul>
 									{allProducts
@@ -109,7 +122,11 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 							className={cn(subMenu && s.dropdown, isSelected(item) && s.active)}
 							onClick={() => handleClick(selected === item.id ? null : item.id)}
 						>
-							{item.slug && !item.sub ? <Link href={item.slug}>{item.title}</Link> : <span>{item.title}</span>}
+							{item.slug && !item.sub ? (
+								<Link href={item.slug}>{item.title}</Link>
+							) : (
+								<span>{item.title}</span>
+							)}
 							{item.id === 'contact' && subMenu === 'contact' && (
 								<Content content={contact.text} className={s.contact} />
 							)}

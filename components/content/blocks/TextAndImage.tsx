@@ -1,15 +1,19 @@
+'use client';
+
 import s from './TextAndImage.module.scss';
 import cn from 'classnames';
-import Content from '@/components/common/Content';
-import { Image } from 'react-datocms';
+import Content from '@/components/content/Content';
+import { Image, stripStega } from 'react-datocms';
 
 export type TextAndImageProps = {
 	data: TextAndImageRecord;
 };
 
-export default function TextAndImage({ data: { media, content, layout, color } }: TextAndImageProps) {
+export default function TextAndImage({
+	data: { media, content, layout, color },
+}: TextAndImageProps) {
 	return (
-		<section className={cn(s.textandimage, s[layout], s[color])}>
+		<section className={cn(s.textandimage, s[stripStega(layout)], s[stripStega(color)])}>
 			<div className={s.text}>
 				<Content content={content} />
 			</div>

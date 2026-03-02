@@ -8,9 +8,9 @@ import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 import { Image } from 'react-datocms';
-import { Block } from '@/components/blocks';
+import { Block } from '@/components/content/blocks';
 import Article from '@/components/layout/Article';
-import Content from '@/components/common/Content';
+import Content from '@/components/content/Content';
 
 export default async function Products({ params }: PageProps) {
 	const { locale, product: slug, category } = await params;
@@ -43,7 +43,10 @@ export default async function Products({ params }: PageProps) {
 					<Block key={idx} data={data} />
 				))}
 			</Article>
-			<DraftMode url={draftUrl} path={`/produkter/${category}/${slug}`} />
+			<DraftMode
+				url={draftUrl}
+				path={`/produkter/${category}/${product.productType.slug}/${slug}`}
+			/>
 		</>
 	);
 }
