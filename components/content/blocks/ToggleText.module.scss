@@ -1,11 +1,16 @@
 .toggletext {
-	h3 {
+	h5 {
 		display: inline-block;
 		cursor: pointer;
+		padding-bottom: 0.25em;
 	}
 
 	p:last-of-type {
-		padding-bottom: 1rem;
+		//padding-bottom: 0.5rem;
+	}
+
+	.text {
+		padding-top: 0.25rem;
 	}
 
 	span {

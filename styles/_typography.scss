@@ -75,7 +75,7 @@ h3 strong {
 	color: var(--green);
 	padding-bottom: 0.5em;
 	@include mq($from: desktop) {
-		font-size: 1.1rem;
+		font-size: 1.15rem;
 	}
 }
 
@@ -92,7 +92,7 @@ h4 strong {
 	font-size: 1.3rem;
 
 	@include mq($from: desktop) {
-		font-size: 1.1rem;
+		font-size: 1.15rem;
 	}
 }
 
@@ -111,7 +111,7 @@ h4 strong {
 h5 {
 	color: var(--green);
 	padding-top: 0.5em;
-	font-size: 1rem;
+	font-size: 1.05rem;
 	padding-bottom: 0.5em;
 }
 

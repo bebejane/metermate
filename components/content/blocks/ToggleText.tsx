@@ -26,12 +26,13 @@ export default function ToggleText({ data }: ToggleTextProps) {
 
 	return (
 		<section className={s.toggletext}>
-			<h3 onClick={handleToggle}>
+			<h5 onClick={handleToggle}>
 				{headline}
 				<span className={cn(isOpen && s.open)}>▾</span>
-			</h3>
+			</h5>
 
-			{isOpen && text && <Content content={text} />}
+			{isOpen && text && <article className={s.text}>
+				<Content content={text} /></article>}
 		</section>
 	);
 }

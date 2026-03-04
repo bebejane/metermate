@@ -8,8 +8,27 @@
 	margin-right: calc(-1 * var(--outer-margin));
 	padding-bottom: var(--space);
 
+	h2 {
+		padding-bottom: 0;
+		padding-top: 3rem;
+		&:first-child {
+			padding-top: 0;
+		}
+	}
+
 	@include mq($from: desktop) {
 		flex-direction: row;
+	}
+
+	ol {
+		padding-top: 0.5em;
+		list-style: decimal !important;
+		list-style-position: outside;
+		//padding-left: 1.5rem;
+		li {
+			display: list-item !important;
+			padding-bottom: 0.5rem;
+		}
 	}
 
 	* {
@@ -51,9 +70,29 @@
 			flex-direction: column;
 			padding-left: 0rem;
 			padding-top: 0;
+
+			&.sections {
+			}
+
 			li {
 				display: flex;
 				flex-direction: column;
+			}
+
+			& > li {
+				margin-top: 1.5rem;
+				padding-top: 1.5rem;
+				border-top: 3px solid var(--white);
+				padding-bottom: 0.5rem;
+
+				&:last-child {
+					padding-bottom: 2rem;
+					border-bottom: 3px solid var(--white);
+				}
+
+				h3 {
+					padding-bottom: 1rem;
+				}
 			}
 		}
 	}
