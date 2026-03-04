@@ -35,7 +35,7 @@ export default async function Support({ params }: PageProps) {
 					<div className={s.items}>
 						{allSupports.map(({ id, slug, title, sections }) => (
 							<React.Fragment key={id}>
-								<h3 id={slug}>{title}</h3>
+								<h2 id={slug}>{title}</h2>
 								<ul className={s.sections}>
 									{sections.map((item) => (
 										<li id={`${slug}-${item.slug}`} key={item.id}>
