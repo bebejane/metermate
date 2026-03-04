@@ -3,6 +3,11 @@
 		display: inline-block;
 		cursor: pointer;
 	}
+
+	p:last-of-type {
+		padding-bottom: 1rem;
+	}
+
 	span {
 		display: inline-block;
 		color: var(--green);

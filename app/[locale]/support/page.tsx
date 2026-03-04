@@ -39,7 +39,7 @@ export default async function Support({ params }: PageProps) {
 								<ul className={s.sections}>
 									{sections.map((item) => (
 										<li id={`${slug}-${item.slug}`} key={item.id}>
-											<h5>{item.title}</h5>
+											<h3>{item.title}</h3>
 											<Content content={item.text} />
 										</li>
 									))}
