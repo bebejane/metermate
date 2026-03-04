@@ -17,6 +17,7 @@ import { Jost } from 'next/font/google';
 import { getServerSession } from 'next-auth';
 import SessionProvider from '@/lib/provider/SessionProvider';
 import { authOptions } from '@/lib/auth';
+import { DraftModeContentLink } from 'next-dato-utils/components';
 
 export type LayoutProps = {
 	children: React.ReactNode;
@@ -65,6 +66,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 							</Suspense>
 						</SessionProvider>
 					</NextIntlClientProvider>
+					<DraftModeContentLink />
 				</body>
 				{/*<GoogleAnalytics gaId='G-3YJRN86MF7' />*/}
 			</html>
@@ -126,7 +128,11 @@ export async function buildMetadata({
 	image,
 	locale,
 }: BuildMetadataProps): Promise<Metadata> {
-	description = !description ? '' : description.length > 160 ? `${description.substring(0, 157)}...` : description;
+	description = !description
+		? ''
+		: description.length > 160
+			? `${description.substring(0, 157)}...`
+			: description;
 	const url = pathname ? `${process.env.NEXT_PUBLIC_SITE_URL}${pathname}` : undefined;
 
 	return {
