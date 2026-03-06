@@ -14,6 +14,7 @@ query AllProducts($first: IntType = 500, $skip: IntType = 0, $locale: SiteLocale
 }
 
 fragment ProductFragment on ProductRecord {
+	_editingUrl
 	id
 	intro {
 		blocks
@@ -109,6 +110,7 @@ fragment ProductFragment on ProductRecord {
 }
 
 fragment ProductLightFragment on ProductRecord {
+	_editingUrl
 	image {
 		...ImageFragment
 	}

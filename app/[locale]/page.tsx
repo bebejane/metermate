@@ -26,7 +26,7 @@ export default async function Home({ params }: PageProps) {
 		},
 	});
 
-	const { allProducts } = await apiQuery(AllProductsDocument, {
+	const { allProducts, draftUrl: allProductsDraftUrl } = await apiQuery(AllProductsDocument, {
 		variables: {
 			locale,
 		},
@@ -82,7 +82,7 @@ export default async function Home({ params }: PageProps) {
 					<ul>
 						{allProducts
 							.filter(({ forIndividuals }) => !forIndividuals)
-							.map(({ id, slug, category, productType, thumb, variant }) => (
+							.map(({ id, slug, category, productType, thumb, variant, _editingUrl }) => (
 								<Link
 									key={id}
 									href={{
@@ -94,7 +94,7 @@ export default async function Home({ params }: PageProps) {
 										},
 									}}
 								>
-									<li>
+									<li data-datocms-content-link-url={_editingUrl} data-datocms-content-link-group>
 										<figure>
 											{thumb?.responsiveImage && <Image data={thumb.responsiveImage} />}
 										</figure>
@@ -121,7 +121,7 @@ export default async function Home({ params }: PageProps) {
 				</section>
 				<NewsTicker news={start.news} headline='Senaste nytt' />
 			</Article>
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode url={[draftUrl, allProductsDraftUrl]} path={`/${locale}`} />
 		</>
 	);
 }
