@@ -124,7 +124,10 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 										},
 									}}
 								>
-									<li>
+									<li
+										data-datocms-content-link-url={product._editingUrl}
+										data-datocms-content-link-group
+									>
 										{product.thumb?.responsiveImage && (
 											<Image data={product.thumb.responsiveImage} />
 										)}

@@ -16,10 +16,15 @@ export default function StartHeader({ start }: StartHeaderProps) {
 	}, 5000);
 
 	return (
-		<section className={s.hero}>
-			<VideoPlayer data={start.film} className={s.player} videoClassName={s.video} />
+		<section className={s.hero} data-datocms-content-link-group>
+			<span
+				data-datocms-content-link-url={start.film._editingUrl}
+				data-datocms-content-link-boundary
+			>
+				<VideoPlayer data={start.film} className={s.player} videoClassName={s.video} />
+			</span>
 			<header>
-				<h1 className={s.title} key={index}>
+				<h1 className={s.title} key={index} data-datocms-content-link-boundary>
 					{start.filmText[index]?.text}
 				</h1>
 			</header>

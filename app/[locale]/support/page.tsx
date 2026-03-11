@@ -15,13 +15,13 @@ export default async function Support({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { supportStart } = await apiQuery(SupportStartDocument, {
+	const { supportStart, draftUrl } = await apiQuery(SupportStartDocument, {
 		variables: {
 			locale,
 		},
 	});
 
-	const { allSupports, draftUrl } = await apiQuery(AllSupportsDocument, {
+	const { allSupports, draftUrl: allSupportsDraftUrl } = await apiQuery(AllSupportsDocument, {
 		variables: {
 			locale,
 		},
@@ -49,7 +49,7 @@ export default async function Support({ params }: PageProps) {
 					</div>
 				</section>
 			</Article>
-			<DraftMode url={draftUrl} path={`/support`} />
+			<DraftMode url={[draftUrl, allSupportsDraftUrl]} path={`/support`} />
 		</>
 	);
 }
