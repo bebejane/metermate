@@ -7,3 +7,4 @@ export { default as Cta } from './Cta';
 export { default as LinkText } from './LinkText';
 export { default as Video } from './Video';
 export { default as ToggleText } from './ToggleText';
+export { default as Image } from './Image';
