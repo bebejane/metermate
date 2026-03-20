@@ -5479,7 +5479,7 @@ packages:
       sass:
         optional: true
     dependencies:
-      '@next/env': 15.5.9
+      '@next/env': 15.5.14
       '@swc/helpers': 0.5.15
       caniuse-lite: 1.0.30001777
       postcss: 8.4.31
