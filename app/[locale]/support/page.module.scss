@@ -72,26 +72,25 @@
 			padding-top: 0;
 
 			&.sections {
-			}
-
-			li {
-				display: flex;
-				flex-direction: column;
-			}
-
-			& > li {
-				margin-top: 1.5rem;
-				padding-top: 1.5rem;
-				border-top: 3px solid var(--white);
-				padding-bottom: 0.5rem;
-
-				&:last-child {
-					padding-bottom: 2rem;
-					border-bottom: 3px solid var(--white);
+				li {
+					display: flex;
+					flex-direction: column;
 				}
 
-				h3 {
-					padding-bottom: 1rem;
+				& > li {
+					margin-top: 1.5rem;
+					padding-top: 1.5rem;
+					border-top: 3px solid var(--white);
+					padding-bottom: 0.5rem;
+
+					&:last-child {
+						padding-bottom: 2rem;
+						border-bottom: 3px solid var(--white);
+					}
+
+					h3 {
+						padding-bottom: 1rem;
+					}
 				}
 			}
 		}
