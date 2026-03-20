@@ -93,6 +93,12 @@ fragment ClientSupportLightFragment on ClientSupportRecord {
 							value
 						}
 					}
+					... on ImageRecord {
+						id
+						image {
+							...ImageFragment
+						}
+					}
 				}
 				links
 				value

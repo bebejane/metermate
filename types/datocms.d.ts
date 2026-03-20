@@ -537,6 +537,32 @@ type GlobalSeoField = {
   twitterAccount?: Maybe<Scalars['String']['output']>;
 };
 
+/** Block of type Bild (image) */
+type ImageRecord = RecordInterface & {
+  __typename?: 'ImageRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  image?: Maybe<FileField>;
+};
+
+
+/** Block of type Bild (image) */
+type ImageRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
 type ImgixParams = {
   /**
    * Aspect Ratio
@@ -3318,7 +3344,7 @@ type ResponsiveImage = {
   width: Scalars['IntType']['output'];
 };
 
-type SectionModelTextBlocksField = ToggleTextRecord | VideoRecord;
+type SectionModelTextBlocksField = ImageRecord | ToggleTextRecord | VideoRecord;
 
 type SectionModelTextField = {
   __typename?: 'SectionModelTextField';
@@ -4348,6 +4374,7 @@ type ClientSupportQueryVariables = Exact<{
 
 
 type ClientSupportQuery = { __typename?: 'Query', clientSupport?: { __typename?: 'ClientSupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<
+          | { __typename: 'ImageRecord' }
           | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, inlineBlocks: Array<string>, links: Array<string>, value: any } | null }
           | { __typename: 'VideoRecord', id: any, caption?: string | null, video?: { __typename?: 'VideoFileField', _editingUrl?: string | null, id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } } | null }
         > } | null }> } | null };
@@ -4360,16 +4387,19 @@ type AllClientSupportsQueryVariables = Exact<{
 
 
 type AllClientSupportsQuery = { __typename?: 'Query', allClientSupports: Array<{ __typename?: 'ClientSupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<
+          | { __typename: 'ImageRecord' }
           | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, inlineBlocks: Array<string>, links: Array<string>, value: any } | null }
           | { __typename: 'VideoRecord', id: any, caption?: string | null, video?: { __typename?: 'VideoFileField', _editingUrl?: string | null, id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } } | null }
         > } | null }> }>, _allClientSupportsMeta: { __typename?: 'CollectionMetadata', count: any } };
 
 type ClientSupportFragment = { __typename?: 'ClientSupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<
+        | { __typename: 'ImageRecord' }
         | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, inlineBlocks: Array<string>, links: Array<string>, value: any } | null }
         | { __typename: 'VideoRecord', id: any, caption?: string | null, video?: { __typename?: 'VideoFileField', _editingUrl?: string | null, id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } } | null }
       > } | null }> };
 
 type ClientSupportLightFragment = { __typename?: 'ClientSupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<
+        | { __typename: 'ImageRecord', id: any, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }
         | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, inlineBlocks: Array<string>, links: Array<string>, value: any } | null }
         | { __typename: 'VideoRecord', id: any, caption?: string | null, video?: { __typename?: 'VideoFileField', _editingUrl?: string | null, id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } } | null }
       > } | null }> };
@@ -4545,6 +4575,7 @@ type SupportQueryVariables = Exact<{
 
 
 type SupportQuery = { __typename?: 'Query', support?: { __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<
+          | { __typename: 'ImageRecord', id: any, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }
           | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, inlineBlocks: Array<string>, links: Array<string>, value: any } | null }
           | { __typename: 'VideoRecord', id: any, caption?: string | null, video?: { __typename?: 'VideoFileField', _editingUrl?: string | null, id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } } | null }
         > } | null }> } | null };
@@ -4557,16 +4588,19 @@ type AllSupportsQueryVariables = Exact<{
 
 
 type AllSupportsQuery = { __typename?: 'Query', allSupports: Array<{ __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<
+          | { __typename: 'ImageRecord', id: any, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }
           | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, inlineBlocks: Array<string>, links: Array<string>, value: any } | null }
           | { __typename: 'VideoRecord', id: any, caption?: string | null, video?: { __typename?: 'VideoFileField', _editingUrl?: string | null, id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } } | null }
         > } | null }> }>, _allSupportsMeta: { __typename?: 'CollectionMetadata', count: any } };
 
 type SupportFragment = { __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<
+        | { __typename: 'ImageRecord', id: any, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }
         | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, inlineBlocks: Array<string>, links: Array<string>, value: any } | null }
         | { __typename: 'VideoRecord', id: any, caption?: string | null, video?: { __typename?: 'VideoFileField', _editingUrl?: string | null, id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } } | null }
       > } | null }> };
 
 type SupportLightFragment = { __typename?: 'SupportRecord', id: any, title?: string | null, slug: string, sections: Array<{ __typename?: 'SectionRecord', id: any, title?: string | null, slug: string, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<
+        | { __typename: 'ImageRecord', id: any, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }
         | { __typename: 'ToggleTextRecord', id: any, headline?: string | null, text?: { __typename?: 'ToggleTextModelTextField', blocks: Array<string>, inlineBlocks: Array<string>, links: Array<string>, value: any } | null }
         | { __typename: 'VideoRecord', id: any, caption?: string | null, video?: { __typename?: 'VideoFileField', _editingUrl?: string | null, id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width: any, height: any, video: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, mp4Url?: string | null, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } } | null }
       > } | null }> };
