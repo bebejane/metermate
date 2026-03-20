@@ -13,6 +13,7 @@
 	@include mq($until: desktop) {
 		border-top: 1px solid var(--gray);
 		border-bottom: 1px solid var(--gray);
+		z-index: 10000;
 	}
 
 	li {
@@ -43,10 +44,10 @@
 
 			@include mq($until: desktop) {
 				position: absolute;
-				top: 0;
-				left: 50%;
-				width: 50%;
-				transform: translateX(-50%);
+				top: 0.8rem;
+				left: 0;
+				width: calc(100% - var(--outer-margin));
+				//transform: translateX(-50%);
 				background-color: var(--background);
 				margin-left: 0;
 				margin-top: 1em;

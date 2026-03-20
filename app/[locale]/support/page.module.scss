@@ -91,6 +91,15 @@
 					h3 {
 						padding-bottom: 1rem;
 					}
+
+					& ul {
+						display: block;
+						list-style-type: disc !important;
+						padding-left: 1em !important;
+						li {
+							display: list-item !important;
+						}
+					}
 				}
 			}
 		}
