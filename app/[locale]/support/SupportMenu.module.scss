@@ -32,12 +32,16 @@
 		}
 	}
 
+	.active {
+		color: var(--green);
+		a {
+			color: var(--green);
+		}
+	}
+
 	> li {
 		position: relative;
 		cursor: pointer;
-		span.active {
-			color: var(--green);
-		}
 
 		ul {
 			display: none;
@@ -47,9 +51,8 @@
 			@include mq($until: desktop) {
 				position: absolute;
 				top: 0.8rem;
-				left: 0;
-				width: calc(100% - var(--outer-margin));
-				//transform: translateX(-50%);
+				left: var(--outer-margin);
+				width: calc(100% - calc(2 * var(--outer-margin)));
 				background-color: var(--background);
 				margin-left: 0;
 				margin-top: 1em;
@@ -59,8 +62,11 @@
 
 			a {
 				color: var(--gray);
-				&:hover {
-					color: var(--green) !important;
+
+				@include mq($from: desktop) {
+					&:hover {
+						color: var(--green) !important;
+					}
 				}
 			}
 
