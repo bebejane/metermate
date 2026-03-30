@@ -13,7 +13,7 @@
 	@include mq($until: desktop) {
 		border-top: 1px solid var(--gray);
 		border-bottom: 1px solid var(--gray);
-		z-index: 10000;
+		z-index: 10;
 		padding-top: 1.8em !important;
 		padding-bottom: 1rem;
 	}
@@ -57,7 +57,7 @@
 				margin-left: 0;
 				margin-top: 1em;
 				padding: 1.5em;
-				z-index: 10;
+				z-index: 2;
 			}
 
 			a {

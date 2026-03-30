@@ -16,6 +16,10 @@
 		flex: 0 0;
 		flex-direction: column;
 		width: 30%;
+		@include mq($until: desktop) {
+			width: 80%;
+		}
+
 		input,
 		div,
 		.grid,
