@@ -1,6 +1,6 @@
 'use client';
 
-import { use, useEffect, useState } from 'react';
+import { use, useEffect, useRef, useState } from 'react';
 import s from './SupportMenu.module.scss';
 import cn from 'classnames';
 import useIsDesktop from '@/lib/hooks/useIsDesktop';
@@ -13,7 +13,7 @@ export default function SupportMenu({ allSupports }: SupportMenuProps) {
 	const [active, setActive] = useState<string | null>(null);
 	const [activeItem, setActiveItem] = useState<string | null>(null);
 	const [toggles, setToggles] = useState<any>({});
-	const [showSubMenu, setShowSubMenu] = useState<boolean>(false);
+	const scrollingRef = useRef<boolean>(false);
 	const isDesktop = useIsDesktop();
 
 	function handleClick(e: React.MouseEvent<HTMLElement>) {
@@ -24,15 +24,10 @@ export default function SupportMenu({ allSupports }: SupportMenuProps) {
 	}
 
 	useEffect(() => {
-		setShowSubMenu(toggles[active] ? true : false);
-		//else setShowSubMenu(toggles[active] ? true : false);
-	}, [isDesktop, toggles]);
-
-	useEffect(() => {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
-					if (!entry.isIntersecting) return;
+					if (!entry.isIntersecting || scrollingRef.current) return;
 					if (entry.target.getAttribute('data-item-slug'))
 						setActiveItem(entry.target.getAttribute('data-item-slug'));
 
@@ -86,8 +81,14 @@ export default function SupportMenu({ allSupports }: SupportMenuProps) {
 								onClick={() => {
 									if (!isDesktop) {
 										setToggles((prev) => ({ ...prev, [slug]: false }));
-										setShowSubMenu(false);
 									}
+
+									scrollingRef.current = true;
+									setTimeout(() => {
+										scrollingRef.current = false;
+									}, 1000);
+
+									setActiveItem(item.slug);
 								}}
 							>
 								<a href={`#${slug}-${item.slug}`}>{item.title}</a>
