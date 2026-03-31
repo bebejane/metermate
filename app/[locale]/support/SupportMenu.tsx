@@ -21,6 +21,16 @@ export default function SupportMenu({ allSupports }: SupportMenuProps) {
 		setToggles((t: any) =>
 			isDesktop ? { ...t, [slug]: t[slug] ? false : true } : { [slug]: t[slug] ? false : true },
 		);
+		scrollingRef.current = true;
+		setTimeout(() => (scrollingRef.current = false), 1000);
+	}
+
+	function handleItemClick(e: React.MouseEvent<HTMLElement>) {
+		const slug = e.currentTarget.getAttribute('id');
+		if (!isDesktop) setToggles((prev) => ({ ...prev, [slug]: false }));
+		scrollingRef.current = true;
+		setTimeout(() => (scrollingRef.current = false), 1000);
+		setActiveItem(slug);
 	}
 
 	useEffect(() => {
@@ -53,7 +63,7 @@ export default function SupportMenu({ allSupports }: SupportMenuProps) {
 			.flat()
 			.map(({ slug }) => document.querySelector(`[data-item-slug="${slug}"]`));
 
-		[...supports, ...items].forEach((el) => observer.observe(el));
+		[...supports, ...items].reverse().forEach((el) => observer.observe(el));
 
 		return () => {
 			[...supports, ...items].forEach((el) => observer.observe(el));
@@ -75,21 +85,10 @@ export default function SupportMenu({ allSupports }: SupportMenuProps) {
 					<ul className={cn(toggles[slug] && s.show)}>
 						{sections.map((item) => (
 							<li
-								id={`${item.slug}`}
+								id={item.slug}
 								key={item.id}
 								className={cn(activeItem === item.slug && s.active)}
-								onClick={() => {
-									if (!isDesktop) {
-										setToggles((prev) => ({ ...prev, [slug]: false }));
-									}
-
-									scrollingRef.current = true;
-									setTimeout(() => {
-										scrollingRef.current = false;
-									}, 1000);
-
-									setActiveItem(item.slug);
-								}}
+								onClick={handleItemClick}
 							>
 								<a href={`#${slug}-${item.slug}`}>{item.title}</a>
 							</li>
