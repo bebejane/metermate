@@ -2578,6 +2578,38 @@ type PositionFilter = {
   neq?: InputMaybe<Scalars['IntType']['input']>;
 };
 
+/** Record of type Privacy Policy (privacy_policy) */
+type PrivacyPolicyRecord = RecordInterface & {
+  __typename?: 'PrivacyPolicyRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  text?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Record of type Privacy Policy (privacy_policy) */
+type PrivacyPolicyRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Privacy Policy (privacy_policy) */
+type PrivacyPolicyRecordtextArgs = {
+  markdown?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 type ProductCategoryModelFilter = {
   AND?: InputMaybe<Array<InputMaybe<ProductCategoryModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ProductCategoryModelFilter>>>;
@@ -2941,6 +2973,8 @@ type Query = {
   footer?: Maybe<FooterRecord>;
   /** Returns the single instance record */
   partner?: Maybe<PartnerRecord>;
+  /** Returns the single instance record */
+  privacyPolicy?: Maybe<PrivacyPolicyRecord>;
   /** Returns a specific record */
   product?: Maybe<ProductRecord>;
   /** Returns a specific record */
@@ -3134,6 +3168,13 @@ type QueryfooterArgs = {
 
 /** The query root for this schema */
 type QuerypartnerArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
+type QueryprivacyPolicyArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
@@ -4456,6 +4497,11 @@ type PartnerQueryVariables = Exact<{
 type PartnerQuery = { __typename?: 'Query', partner?: { __typename?: 'PartnerRecord', title?: string | null, intro?: { __typename?: 'PartnerModelIntroField', blocks: Array<string>, links: Array<string>, value: any } | null, examples: Array<{ __typename?: 'PartnerBlockRecord', id: any, url?: string | null, text?: { __typename?: 'PartnerBlockModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }>, seo?: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } | null } | null };
 
 type PartnerFragment = { __typename?: 'PartnerRecord', title?: string | null, intro?: { __typename?: 'PartnerModelIntroField', blocks: Array<string>, links: Array<string>, value: any } | null, examples: Array<{ __typename?: 'PartnerBlockRecord', id: any, url?: string | null, text?: { __typename?: 'PartnerBlockModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }>, seo?: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } | null };
+
+type PrivacyPolicyQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PrivacyPolicyQuery = { __typename?: 'Query', privacyPolicy?: { __typename?: 'PrivacyPolicyRecord', text?: string | null } | null };
 
 type AllProductCategoriesQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']['input']>;

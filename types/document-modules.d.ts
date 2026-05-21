@@ -116,6 +116,15 @@ export const PartnerFragment: DocumentNode;
 }
     
 
+declare module '*/privacy-policy.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const PrivacyPolicy: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/product-category.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

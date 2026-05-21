@@ -17,9 +17,11 @@ const config = {
 		locales,
 	},
 	routes: {
-		start: async (record, locale) => [getPathname({ locale, href: '/' })],
-		partner: async (record, locale) => [getPathname({ locale, href: '/partners' })],
-		about: async (record, locale) => [getPathname({ locale, href: '/om' })],
+		start: async (record, locale) => [getPathname({ locale, href: '/', forcePrefix: true })],
+		partner: async (record, locale) => [
+			getPathname({ locale, href: '/partners', forcePrefix: true }),
+		],
+		about: async (record, locale) => [getPathname({ locale, href: '/om', forcePrefix: true })],
 		product: async ({ id }, locale) => {
 			const { slug, category, product_type } = await getItemWithLinked(id);
 			return [
@@ -29,20 +31,32 @@ const config = {
 						pathname: '/produkter/[category]/[productType]/[product]',
 						params: { product: slug, category: category.slug, productType: product_type.slug },
 					},
+					forcePrefix: true,
 				}),
 			];
 		},
 		product_type: async ({ id }, locale) => getItemReferenceRoutes(id, locales),
 		product_category: async ({ id }, locale) => getItemReferenceRoutes(id, locales),
 		product_variant: async ({ id }, locale) => getItemReferenceRoutes(id, locales),
-		reference: async (record, locale) => [getPathname({ locale, href: '/referenser' })],
-		support: async (record, locale) => [getPathname({ locale, href: '/support' })],
-		support_start: async (record, locale) => [getPathname({ locale, href: '/support' })],
-		contact: async (record, locale) => [getPathname({ locale, href: '/' })],
-		footer: async (record, locale) => [getPathname({ locale, href: '/' })],
-		client_support: async () => ['/'],
-		client_support_start: async () => ['/'],
-		upload: async ({ id }, locale) => getUploadReferenceRoutes(id),
+		privacy_policy: async (record, locale) => [
+			getPathname({ locale, href: '/privacy-policy', forcePrefix: true }),
+		],
+		reference: async (record, locale) => [
+			getPathname({ locale, href: '/referenser', forcePrefix: true }),
+		],
+		support: async (record, locale) => [
+			getPathname({ locale, href: '/support', forcePrefix: true }),
+		],
+		support_start: async (record, locale) => [
+			getPathname({ locale, href: '/support', forcePrefix: true }),
+		],
+		contact: async (record, locale) => [getPathname({ locale, href: '/', forcePrefix: true })],
+		footer: async (record, locale) => [getPathname({ locale, href: '/', forcePrefix: true })],
+		client_support: async (item, locale) => [getPathname({ locale, href: '/', forcePrefix: true })],
+		client_support_start: async (item, locale) => [
+			getPathname({ locale, href: '/', forcePrefix: true }),
+		],
+		upload: async ({ id }) => getUploadReferenceRoutes(id, locales),
 	},
 	sitemap: async () => {
 		const locale = defaultLocale;
