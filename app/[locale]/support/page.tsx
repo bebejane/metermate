@@ -51,7 +51,7 @@ export default async function Support({ params }: PageProps) {
 					</div>
 				</section>
 			</Article>
-			<DraftMode url={[draftUrl, allSupportsDraftUrl]} path={`/support`} />
+			<DraftMode url={[draftUrl, allSupportsDraftUrl]} path={getPathname({ locale, href: '/support' })} />
 		</>
 	);
 }

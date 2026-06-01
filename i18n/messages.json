@@ -2,59 +2,197 @@
 	"menu": {
 		"products": {
 			"en": "Products",
-			"sv": "Produkter"
+			"sv": "Produkter",
+			"fi": "Tuotteet"
 		},
 		"references": {
 			"en": "References",
-			"sv": "Referenser"
+			"sv": "Referenser",
+			"fi": "Referenssit"
 		},
 		"partners": {
 			"en": "Partners",
-			"sv": "Partners"
+			"sv": "Partners",
+			"fi": "Kumppanit"
 		},
 		"support": {
 			"en": "Support",
-			"sv": "Support"
+			"sv": "Support",
+			"fi": "Tuki"
 		},
 		"about": {
 			"en": "About us",
-			"sv": "Om oss"
+			"sv": "Om oss",
+			"fi": "Tietoa meistä"
 		},
 		"login": {
 			"en": "Login",
-			"sv": "Logga in"
+			"sv": "Logga in",
+			"fi": "Kirjaudu"
 		},
 		"logout": {
 			"en": "Logout",
-			"sv": "Logga ut"
+			"sv": "Logga ut",
+			"fi": "Kirjaudu ulos"
 		},
 		"contact": {
 			"en": "Contact",
-			"sv": "Kontakt"
+			"sv": "Kontakt",
+			"fi": "Yhteys"
 		},
 		"language": {
 			"en": "SV",
-			"sv": "EN"
+			"sv": "EN",
+			"fi": "SV"
 		},
 		"member": {
 			"en": "Member",
-			"sv": "Medlem"
+			"sv": "Medlem",
+			"fi": "Jäsen"
 		}
 	},
 	"Start": {
 		"readmore": {
 			"en": "Read more",
-			"sv": "Läs mer"
+			"sv": "Läs mer",
+			"fi": "Lue lisää"
+		},
+		"realtimeMeters": {
+			"en": "Our real-time meters for electricity",
+			"sv": "Våra realtidsmätare för el",
+			"fi": "Reaaliaikaiset sähkömittarimme"
+		},
+		"privatePerson": {
+			"en": "Are you here as a private person?",
+			"sv": "Är du här som privatperson?",
+			"fi": "Oletko täällä yksityishenkilönä?"
+		},
+		"readMoreProducts": {
+			"en": "Read more about our products here.",
+			"sv": "Läs mer om våra produkter här.",
+			"fi": "Lue lisää tuotteistamme täällä."
+		},
+		"latestNews": {
+			"en": "Latest news",
+			"sv": "Senaste nytt",
+			"fi": "Uusimmat uutiset"
+		},
+		"appStore": {
+			"en": "App Store",
+			"sv": "App Store",
+			"fi": "App Store"
+		},
+		"googlePlay": {
+			"en": "Google Play",
+			"sv": "Google Play",
+			"fi": "Google Play"
 		}
 	},
 	"Contact": {
 		"title": {
 			"en": "Contact",
-			"sv": "Kontakt"
+			"sv": "Kontakt",
+			"fi": "Yhteys"
 		},
 		"close": {
 			"en": "Close",
-			"sv": "Stäng"
+			"sv": "Stäng",
+			"fi": "Sulje"
+		}
+	},
+	"Error": {
+		"somethingWrong": {
+			"en": "Something went wrong!",
+			"sv": "Något gick fel!",
+			"fi": "Jotain meni pieleen!"
+		},
+		"tryAgain": {
+			"en": "Try again",
+			"sv": "Försök igen",
+			"fi": "Yritä uudelleen"
+		}
+	},
+	"NotFound": {
+		"title": {
+			"en": "Not Found",
+			"sv": "Sidan hittades inte",
+			"fi": "Sivua ei löydy"
+		},
+		"description": {
+			"en": "Could not find requested resource",
+			"sv": "Kunde inte hitta den begärda resursen",
+			"fi": "Pyydettyä sivua ei löytynyt"
+		},
+		"returnHome": {
+			"en": "Return Home",
+			"sv": "Gå till startsidan",
+			"fi": "Takaisin etusivulle"
+		}
+	},
+	"Login": {
+		"title": {
+			"en": "Customer login",
+			"sv": "Kundlogin",
+			"fi": "Asiakaskirjautuminen"
+		},
+		"email": {
+			"en": "Email",
+			"sv": "E-post",
+			"fi": "Sähköposti"
+		},
+		"password": {
+			"en": "Password",
+			"sv": "Lösenord",
+			"fi": "Salasana"
+		},
+		"loggingIn": {
+			"en": "Logging in...",
+			"sv": "Loggar in...",
+			"fi": "Kirjaudutaan..."
+		},
+		"loginButton": {
+			"en": "Log in",
+			"sv": "Logga in",
+			"fi": "Kirjaudu sisään"
+		},
+		"invalidCredentials": {
+			"en": "Invalid username or password",
+			"sv": "Felaktigt användarnamn eller lösenord",
+			"fi": "Virheellinen käyttäjätunnus tai salasana"
+		},
+		"errorPrefix": {
+			"en": "Something went wrong, please try again.",
+			"sv": "Något gick fel, försök igen.",
+			"fi": "Jotain meni pieleen, yritä uudelleen."
+		}
+	},
+	"Logout": {
+		"loggingOut": {
+			"en": "Logging out...",
+			"sv": "Loggar ut...",
+			"fi": "Kirjaudutaan ulos..."
+		}
+	},
+	"Common": {
+		"logoAlt": {
+			"en": "Logo",
+			"sv": "Logotyp",
+			"fi": "Logo"
+		},
+		"readMore": {
+			"en": "Read more",
+			"sv": "Läs mer",
+			"fi": "Lue lisää"
+		},
+		"member": {
+			"en": "Member",
+			"sv": "Medlem",
+			"fi": "Jäsen"
+		},
+		"privacyPolicy": {
+			"en": "Privacy Policy",
+			"sv": "Integritetspolicy",
+			"fi": "Tietosuojakäytäntö"
 		}
 	},
 	"About": {},

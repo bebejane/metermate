@@ -37,7 +37,7 @@ export default async function Products({ params }: PageProps) {
 					</figure>
 				</section>
 			</Article>
-			<DraftMode url={draftUrl} path={`/om`} />
+			<DraftMode url={draftUrl} path={getPathname({ locale, href: '/om' })} />
 		</>
 	);
 }

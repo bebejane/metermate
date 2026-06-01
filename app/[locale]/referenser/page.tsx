@@ -23,6 +23,7 @@ export default async function References({ params }: PageProps) {
 
 	if (!reference) return notFound();
 	const { title, intro, examples } = reference;
+	const t = await getTranslations('Common');
 	return (
 		<>
 			<Article title={title} intro={intro}>
@@ -32,7 +33,7 @@ export default async function References({ params }: PageProps) {
 							<img className={s.logo} src={logo.url} alt={logo.alt} />
 							<h2>{title}</h2>
 							<Content content={text} />
-							<a href={link}>Läs mer</a>
+							<a href={link}>{t('readMore')}</a>
 						</div>
 						<figure>
 							<Image data={image.responsiveImage} />
@@ -40,7 +41,7 @@ export default async function References({ params }: PageProps) {
 					</section>
 				))}
 			</Article>
-			<DraftMode url={draftUrl} path={`/referenser`} />
+			<DraftMode url={draftUrl} path={getPathname({ locale, href: '/referenser' })} />
 		</>
 	);
 }

@@ -45,7 +45,13 @@ export default async function Products({ params }: PageProps) {
 			</Article>
 			<DraftMode
 				url={draftUrl}
-				path={`/produkter/${category}/${product.productType.slug}/${slug}`}
+				path={getPathname({
+					locale,
+					href: {
+						pathname: '/produkter/[category]/[productType]/[product]',
+						params: { product: slug, category, productType: product.productType.slug },
+					},
+				})}
 			/>
 		</>
 	);

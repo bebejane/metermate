@@ -37,7 +37,7 @@ export default async function Partners({ params }: PageProps) {
 					))}
 				</ul>
 			</Article>
-			<DraftMode url={draftUrl} path={`/partners`} />
+			<DraftMode url={draftUrl} path={getPathname({ locale, href: '/partners' })} />
 		</>
 	);
 }

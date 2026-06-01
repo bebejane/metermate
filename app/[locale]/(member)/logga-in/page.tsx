@@ -7,10 +7,11 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 export default async function Login() {
+	const t = await getTranslations('Login');
 	return (
 		<Article>
 			<div className={s.wrap}>
-				<h1>Kundlogin</h1>
+				<h1>{t('title')}</h1>
 				<div className={s.form}>
 					<LoginForm />
 				</div>

@@ -3,13 +3,14 @@
 import s from './Navbar.module.scss';
 import cn from 'classnames';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { Link } from '@/i18n/routing';
+import { getPathname, Link, locales } from '@/i18n/routing';
 import { useEffect, useRef, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
 import Content from '@/components/content/Content';
 import { Image } from 'react-datocms';
 import { useSession } from 'next-auth/react';
 import { useStore, useShallow } from '@/lib/store';
+import { useTranslations } from 'next-intl';
 
 export type NavbarProps = {
 	menu: Menu;
@@ -18,6 +19,7 @@ export type NavbarProps = {
 };
 
 export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
+	const t = useTranslations('Common');
 	const { status } = useSession();
 	const path = usePathname();
 	const qs = useSearchParams().toString();
@@ -29,17 +31,16 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 		.filter((item) => item.position === 'right' && item.id !== 'language')
 		.map((item) =>
 			item.id === 'login' && status === 'authenticated'
-				? { ...item, title: 'Medlem', slug: '/medlem' }
+				? { ...item, title: t('member'), slug: '/medlem' }
 				: item,
 		);
 
 	function isSelected(item: MenuItem) {
-		return (
-			pathname.startsWith(item.slug) ||
-			pathname === item.slug ||
-			(item.id === 'products' && subMenu === 'products') ||
-			(item.id === 'contact' && subMenu === 'contact')
-		);
+		if (!item.slug) return false;
+		return locales.find((l) => {
+			const path = getPathname({ locale: l, href: { pathname: item.slug as any } });
+			return pathname.startsWith(path) || pathname === path;
+		});
 	}
 
 	function handleLeaveSub() {
@@ -59,7 +60,7 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 			<nav className={cn(s.navbar)}>
 				<figure className={s.logo}>
 					<Link href={'/'}>
-						<img src='/images/logo.svg' alt='Logo' ref={logoRef} />
+						<img src='/images/logo.svg' alt={t('logoAlt')} ref={logoRef} />
 					</Link>
 				</figure>
 

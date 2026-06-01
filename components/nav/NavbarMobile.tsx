@@ -3,13 +3,14 @@
 import s from './NavbarMobile.module.scss';
 import cn from 'classnames';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { Link } from '@/i18n/routing';
+import { getPathname, Link, locales } from '@/i18n/routing';
 import { useEffect, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
 import Hamburger from './Hamburger';
 import { useSession } from 'next-auth/react';
 import Content from '@/components/content/Content';
 import { useShallow, useStore } from '@/lib/store';
+import { useTranslations } from 'next-intl';
 
 export type NavbarMobileProps = {
 	menu: Menu;
@@ -18,6 +19,7 @@ export type NavbarMobileProps = {
 };
 
 export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobileProps) {
+	const t = useTranslations('Common');
 	const { status } = useSession();
 	const path = usePathname();
 	const qs = useSearchParams().toString();
@@ -41,7 +43,7 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 		.filter((item) => item.position === 'right' && item.id !== 'language')
 		.map((item) =>
 			item.id === 'login' && status === 'authenticated'
-				? { ...item, title: 'Medlem', slug: '/medlem' }
+				? { ...item, title: t('member'), slug: '/medlem' }
 				: item,
 		);
 
@@ -49,14 +51,15 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 		setSelected(id);
 		setSubMenu(id === 'contact' ? 'contact' : id === 'products' ? 'products' : null);
 	}
+
 	function isSelected(item: MenuItem) {
-		return (
-			pathname.startsWith(item.slug) ||
-			pathname === item.slug ||
-			(item.id === 'products' && subMenu === 'products') ||
-			(item.id === 'contact' && subMenu === 'contact')
-		);
+		if (!item.slug) return false;
+		return locales.find((l) => {
+			const path = getPathname({ locale: l, href: { pathname: item.slug as any } });
+			return pathname.startsWith(path) || pathname === path;
+		});
 	}
+
 	useEffect(() => {
 		setOpen(false);
 	}, [path, qs]);
@@ -66,7 +69,7 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 			<div className={cn(s.topbar, open && s.open)}>
 				<figure className={s.logo}>
 					<Link href={'/'}>
-						<img src={'/images/logo.svg'} alt='Logo' />
+						<img src={'/images/logo.svg'} alt={t('logoAlt')} />
 					</Link>
 				</figure>
 				<div className={s.hamburger}>

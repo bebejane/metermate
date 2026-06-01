@@ -27,14 +27,15 @@ export default async function PrivacyPolicy({ params }: PageProps) {
 					<Markdown content={privacyPolicy.text} />
 				</section>
 			</Article>
-			<DraftMode url={draftUrl} path={`/privacy-policy`} />
+			<DraftMode url={draftUrl} path={getPathname({ locale, href: '/privacy-policy' })} />
 		</>
 	);
 }
 
 export async function generateMetadata({ params }): Promise<Metadata> {
+	const t = await getTranslations('Common');
 	return await buildMetadata({
-		title: 'Privacy Policy',
+		title: t('privacyPolicy'),
 		pathname: '/privacy-policy',
 		locale: 'en' as SiteLocale,
 	});

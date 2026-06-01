@@ -15,6 +15,7 @@ import NewsTicker from '@/components/common/NewsTicker';
 import Hero from './Hero';
 import Logos from '@/app/[locale]/Logos';
 import Content from '@/components/content/Content';
+import { getTranslations } from 'next-intl/server';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
@@ -33,6 +34,7 @@ export default async function Home({ params }: PageProps) {
 	});
 
 	const individualProduct = allProducts.find(({ forIndividuals }) => forIndividuals);
+	const t = await getTranslations('Start');
 
 	if (!start) return notFound();
 
@@ -47,10 +49,10 @@ export default async function Home({ params }: PageProps) {
 					<h3>{start.textApp}</h3>
 					<div className={s.download}>
 						<a href={start.ios}>
-							<img className={s.store} src='/images/icon-appstore.png' alt='App Store' />
+							<img className={s.store} src='/images/icon-appstore.png' alt={t('appStore')} />
 						</a>
 						<a href={start.android}>
-							<img className={s.store} src='/images/icon-playstore.png' alt='Google Play' />
+							<img className={s.store} src='/images/icon-playstore.png' alt={t('googlePlay')} />
 						</a>
 					</div>
 				</section>
@@ -58,7 +60,7 @@ export default async function Home({ params }: PageProps) {
 				<section className={s.products}>
 					<div className={s.header}>
 						<div>
-							<h2>Våra realtidsmätare för el</h2>
+							<h2>{t('realtimeMeters')}</h2>
 						</div>
 						<p></p>
 						{individualProduct && (
@@ -74,8 +76,8 @@ export default async function Home({ params }: PageProps) {
 									},
 								}}
 							>
-								<h3>Är du här som privatperson?</h3>
-								<span className='small'>Läs mer om våra produkter här.</span>
+								<h3>{t('privatePerson')}</h3>
+								<span className='small'>{t('readMoreProducts')}</span>
 							</Link>
 						)}
 					</div>
@@ -119,9 +121,9 @@ export default async function Home({ params }: PageProps) {
 						</div>
 					)}
 				</section>
-				<NewsTicker news={start.news} headline='Senaste nytt' />
+				<NewsTicker news={start.news} headline={t('latestNews')} />
 			</Article>
-			<DraftMode url={[draftUrl, allProductsDraftUrl]} path={`/${locale}`} />
+			<DraftMode url={[draftUrl, allProductsDraftUrl]} path={getPathname({ locale, href: '/' })} />
 		</>
 	);
 }

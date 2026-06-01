@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useIntervalWhen } from 'rooks';
 import { AnimatePresence, motion } from 'motion/react';
 import useIsDesktop from '@/lib/hooks/useIsDesktop';
+import { useTranslations } from 'next-intl';
 
 export type Props = {
 	headline: string;
@@ -13,6 +14,7 @@ export type Props = {
 };
 
 export default function NewsTicker({ headline, news }: Props) {
+	const t = useTranslations('Common');
 	const [index, setIndex] = useState(0);
 	const isDesktop = useIsDesktop();
 
@@ -50,7 +52,7 @@ export default function NewsTicker({ headline, news }: Props) {
 					{newsItem?.text}
 				</motion.h3>
 			</AnimatePresence>
-			{newsItem?.url && <span className='mid'>Läs mer</span>}
+			{newsItem?.url && <span className='mid'>{t('readMore')}</span>}
 		</Link>
 	);
 }

@@ -54,7 +54,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 
 	return (
 		<>
-			<html lang={locale === 'sv' ? 'se-SE' : 'en-US'} className={jost.className}>
+			<html lang={locale === 'sv' ? 'se-SE' : locale === 'fi' ? 'fi-FI' : 'en-US'} className={jost.className}>
 				<body>
 					<NextIntlClientProvider locale={locale}>
 						<SessionProvider session={session}>

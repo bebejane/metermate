@@ -49,18 +49,16 @@ export default async function ClientSupport({ params }: PageProps) {
 					</div>
 				</section>
 			</Article>
-			<DraftMode url={draftUrl} path={`/clientSupport`} />
+			<DraftMode url={draftUrl} path={getPathname({ locale, href: '/medlem' })} />
 		</>
 	);
 }
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
-	const t = await getTranslations('menu');
-	//const title = t('support');
-
+	const t = await getTranslations('Common');
 	return await buildMetadata({
-		title: 'Medlem',
+		title: t('member'),
 		pathname: getPathname({ locale, href: '/medlem' }),
 		locale,
 	});
