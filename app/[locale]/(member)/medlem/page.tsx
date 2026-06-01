@@ -3,7 +3,7 @@ import { AllClientSupportsDocument, ClientSupportStartDocument } from '@/graphql
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { buildMetadata } from '@/app/layout';
+import { buildMetadata } from '@/app/[locale]/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 import Article from '@/components/layout/Article';

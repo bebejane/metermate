@@ -3,7 +3,7 @@ import { AllSupportsDocument, SupportStartDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { setRequestLocale } from 'next-intl/server';
-import { buildMetadata } from '@/app/layout';
+import { buildMetadata } from '@/app/[locale]/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 import Article from '@/components/layout/Article';
@@ -51,7 +51,10 @@ export default async function Support({ params }: PageProps) {
 					</div>
 				</section>
 			</Article>
-			<DraftMode url={[draftUrl, allSupportsDraftUrl]} path={getPathname({ locale, href: '/support' })} />
+			<DraftMode
+				url={[draftUrl, allSupportsDraftUrl]}
+				path={getPathname({ locale, href: '/support' })}
+			/>
 		</>
 	);
 }
