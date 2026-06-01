@@ -5,7 +5,7 @@ import {
 	getUploadReferenceRoutes,
 	getItemWithLinked,
 } from 'next-dato-utils/config';
-import { getPathname, defaultLocale, locales } from '@/i18n/routing';
+import { getInternalPath, getPathname, defaultLocale, locales } from '@/i18n/routing';
 import { apiQuery } from 'next-dato-utils/api';
 import { AllProductsDocument } from '@/graphql';
 import { MetadataRoute } from 'next';
@@ -17,21 +17,16 @@ const config = {
 		locales,
 	},
 	routes: {
-		start: async (record, locale) => [getPathname({ locale, href: '/', forcePrefix: true })],
+		start: async (record, locale) => [getInternalPath('/', locale)],
 		partner: async (record, locale) => [
-			getPathname({ locale, href: '/partners', forcePrefix: true }),
+			getInternalPath('/partners', locale),
 		],
-		about: async (record, locale) => [getPathname({ locale, href: '/om', forcePrefix: true })],
+		about: async (record, locale) => [getInternalPath('/om', locale)],
 		product: async ({ id }, locale) => {
 			const { slug, category, product_type } = await getItemWithLinked(id);
 			return [
-				getPathname({
-					locale,
-					href: {
-						pathname: '/produkter/[category]/[productType]/[product]',
-						params: { product: slug, category: category.slug, productType: product_type.slug },
-					},
-					forcePrefix: true,
+				getInternalPath('/produkter/[category]/[productType]/[product]', locale, {
+					product: slug, category: category.slug, productType: product_type.slug,
 				}),
 			];
 		},
@@ -39,47 +34,78 @@ const config = {
 		product_category: async ({ id }, locale) => getItemReferenceRoutes(id, locales),
 		product_variant: async ({ id }, locale) => getItemReferenceRoutes(id, locales),
 		privacy_policy: async (record, locale) => [
-			getPathname({ locale, href: '/privacy-policy', forcePrefix: true }),
+			getInternalPath('/privacy-policy', locale),
 		],
 		reference: async (record, locale) => [
-			getPathname({ locale, href: '/referenser', forcePrefix: true }),
+			getInternalPath('/referenser', locale),
 		],
 		support: async (record, locale) => [
-			getPathname({ locale, href: '/support', forcePrefix: true }),
+			getInternalPath('/support', locale),
 		],
 		support_start: async (record, locale) => [
-			getPathname({ locale, href: '/support', forcePrefix: true }),
+			getInternalPath('/support', locale),
 		],
-		contact: async (record, locale) => [getPathname({ locale, href: '/', forcePrefix: true })],
-		footer: async (record, locale) => [getPathname({ locale, href: '/', forcePrefix: true })],
-		client_support: async (item, locale) => [getPathname({ locale, href: '/', forcePrefix: true })],
+		contact: async (record, locale) => [getInternalPath('/', locale)],
+		footer: async (record, locale) => [getInternalPath('/', locale)],
+		client_support: async (item, locale) => [getInternalPath('/', locale)],
 		client_support_start: async (item, locale) => [
-			getPathname({ locale, href: '/', forcePrefix: true }),
+			getInternalPath('/', locale),
 		],
 		upload: async ({ id }) => getUploadReferenceRoutes(id, locales),
 	},
 	sitemap: async () => {
-		const locale = defaultLocale;
+		const otherLocales = locales.filter((l) => l !== defaultLocale);
+
 		const { allProducts } = await apiQuery(AllProductsDocument, {
 			variables: {
-				locale: locale as SiteLocale,
+				locale: defaultLocale as SiteLocale,
 			},
 		});
 
 		const staticRoutes = Object.keys(routing.pathnames)
 			.filter((p) => !p.includes('['))
 			.map((pathname) => ({
-				url: `${process.env.NEXT_PUBLIC_SITE_URL}${pathname}`,
+				url: `${process.env.NEXT_PUBLIC_SITE_URL}${getPathname({ href: { pathname: pathname as any }, locale: defaultLocale })}`,
 				lastModified: new Date().toISOString(),
 				changeFrequency: pathname === '/' ? 'weekly' : 'monthly',
 				priority: pathname === '/' ? 1 : 0.8,
+				alternates: {
+					languages: otherLocales.reduce(
+						(acc, l) => {
+							acc[l] = `${process.env.NEXT_PUBLIC_SITE_URL}${getPathname({ href: { pathname: pathname as any }, locale: l })}`;
+							return acc;
+						},
+						{} as Record<string, string>,
+					),
+				},
 			}));
 
-		const productRoutes = allProducts.map((product) => ({
-			url: `${process.env.NEXT_PUBLIC_SITE_URL}/produkter/${product.category?.slug}/${product.productType?.slug}/${product.slug}`,
+		const productRoutes = allProducts.map(({ slug, category, productType }) => ({
+			url: `${process.env.NEXT_PUBLIC_SITE_URL}${getPathname({
+				href: {
+					pathname: '/produkter/[category]/[productType]/[product]',
+					params: { product: slug, category: category?.slug, productType: productType?.slug },
+				},
+				locale: defaultLocale,
+			})}`,
 			lastModified: new Date().toISOString(),
 			changeFrequency: 'weekly',
 			priority: 0.8,
+			alternates: {
+				languages: otherLocales.reduce(
+					(acc, l) => {
+						acc[l] = `${process.env.NEXT_PUBLIC_SITE_URL}${getPathname({
+							href: {
+								pathname: '/produkter/[category]/[productType]/[product]',
+								params: { product: slug, category: category?.slug, productType: productType?.slug },
+							},
+							locale: l,
+						})}`;
+						return acc;
+					},
+					{} as Record<string, string>,
+				),
+			},
 		}));
 
 		return [...staticRoutes, ...productRoutes] as MetadataRoute.Sitemap;
