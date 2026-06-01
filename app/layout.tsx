@@ -36,12 +36,14 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 		variables: {
 			locale,
 		},
+		tags: ['footer'],
 	});
 
 	const { contact } = await apiQuery(ContactDocument, {
 		variables: {
 			locale,
 		},
+		tags: ['contact'],
 	});
 
 	const { allProducts } = await apiQuery(AllProductsDocument, {
@@ -54,7 +56,10 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 
 	return (
 		<>
-			<html lang={locale === 'sv' ? 'se-SE' : locale === 'fi' ? 'fi-FI' : 'en-US'} className={jost.className}>
+			<html
+				lang={locale === 'sv' ? 'se-SE' : locale === 'fi' ? 'fi-FI' : 'en-US'}
+				className={jost.className}
+			>
 				<body>
 					<NextIntlClientProvider locale={locale}>
 						<SessionProvider session={session}>
