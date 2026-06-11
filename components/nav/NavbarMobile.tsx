@@ -140,8 +140,8 @@ export default function NavbarMobile({ menu, allProducts, contact, locale }: Nav
 					<li className={s.language}>
 						{locales
 							.filter((l) => l !== locale)
-							.map((l) => (
-								<Link href='/' locale={l}>
+							.map((l, idx) => (
+								<Link href='/' locale={l} key={idx}>
 									{capitalize(l)}
 								</Link>
 							))}

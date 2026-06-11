@@ -101,8 +101,8 @@ export default function Navbar({ menu, contact, allProducts, locale }: NavbarPro
 					<li className={s.language}>
 						{locales
 							.filter((l) => l !== locale)
-							.map((l) => (
-								<Link href='/' locale={l}>
+							.map((l, idx) => (
+								<Link href='/' locale={l} key={idx}>
 									{capitalize(l)}
 								</Link>
 							))}
