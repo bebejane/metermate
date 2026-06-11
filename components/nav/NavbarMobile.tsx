@@ -11,14 +11,16 @@ import { useSession } from 'next-auth/react';
 import Content from '@/components/content/Content';
 import { useShallow, useStore } from '@/lib/store';
 import { useTranslations } from 'next-intl';
+import { capitalize } from 'next-dato-utils/utils';
 
 export type NavbarMobileProps = {
 	menu: Menu;
 	contact: ContactQuery['contact'];
 	allProducts: AllProductsQuery['allProducts'];
+	locale: SiteLocale;
 };
 
-export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobileProps) {
+export default function NavbarMobile({ menu, allProducts, contact, locale }: NavbarMobileProps) {
 	const t = useTranslations('Common');
 	const { status } = useSession();
 	const path = usePathname();
@@ -135,6 +137,15 @@ export default function NavbarMobile({ menu, allProducts, contact }: NavbarMobil
 							)}
 						</li>
 					))}
+					<li className={s.language}>
+						{locales
+							.filter((l) => l !== locale)
+							.map((l) => (
+								<Link href='/' locale={l}>
+									{capitalize(l)}
+								</Link>
+							))}
+					</li>
 				</ul>
 			</nav>
 		</>
