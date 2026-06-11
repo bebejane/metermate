@@ -11,14 +11,16 @@ import { Image } from 'react-datocms';
 import { useSession } from 'next-auth/react';
 import { useStore, useShallow } from '@/lib/store';
 import { useTranslations } from 'next-intl';
+import { capitalize } from 'next-dato-utils/utils';
 
 export type NavbarProps = {
 	menu: Menu;
 	contact: ContactQuery['contact'];
 	allProducts: AllProductsQuery['allProducts'];
+	locale: SiteLocale;
 };
 
-export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
+export default function Navbar({ menu, contact, allProducts, locale }: NavbarProps) {
 	const t = useTranslations('Common');
 	const { status } = useSession();
 	const path = usePathname();
@@ -96,6 +98,15 @@ export default function Navbar({ menu, contact, allProducts }: NavbarProps) {
 							)}
 						</li>
 					))}
+					<li className={s.language}>
+						{locales
+							.filter((l) => l !== locale)
+							.map((l) => (
+								<Link href='/' locale={l}>
+									{capitalize(l)}
+								</Link>
+							))}
+					</li>
 				</ul>
 			</nav>
 			<div

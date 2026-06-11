@@ -4370,14 +4370,24 @@ type SupportStartModelIntroField = {
   value: Scalars['JsonField']['output'];
 };
 
+type SupportStartModelIntroFieldMultiLocaleField = {
+  __typename?: 'SupportStartModelIntroFieldMultiLocaleField';
+  locale?: Maybe<SiteLocale>;
+  value?: Maybe<SupportStartModelIntroField>;
+};
+
 /** Record of type Support start (support_start) */
 type SupportStartRecord = RecordInterface & {
   __typename?: 'SupportStartRecord';
+  _allIntroLocales?: Maybe<Array<SupportStartModelIntroFieldMultiLocaleField>>;
+  _allSeoLocales?: Maybe<Array<SeoRecordMultiLocaleField>>;
+  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
   _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
+  _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _publishedAt: Scalars['DateTime']['output'];
@@ -4394,7 +4404,46 @@ type SupportStartRecord = RecordInterface & {
 
 
 /** Record of type Support start (support_start) */
+type SupportStartRecord_allIntroLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Support start (support_start) */
+type SupportStartRecord_allSeoLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Support start (support_start) */
+type SupportStartRecord_allTitleLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Support start (support_start) */
 type SupportStartRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Support start (support_start) */
+type SupportStartRecordintroArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Support start (support_start) */
+type SupportStartRecordseoArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Support start (support_start) */
+type SupportStartRecordtitleArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
 

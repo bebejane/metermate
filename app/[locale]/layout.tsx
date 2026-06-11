@@ -64,7 +64,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 					<NextIntlClientProvider locale={locale}>
 						<SessionProvider session={session}>
 							<Suspense fallback={null}>
-								<Navbar menu={menu} contact={contact} allProducts={allProducts} />
+								<Navbar menu={menu} contact={contact} allProducts={allProducts} locale={locale} />
 								<NavbarMobile menu={menu} contact={contact} allProducts={allProducts} />
 								<main className={s.main}>{children}</main>
 								<Footer footer={footer} />
